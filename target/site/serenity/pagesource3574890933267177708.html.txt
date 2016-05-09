@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- page: decorators/login_decorator -->
+<!-- 3.22-32 (3.22-SNAPSHOT 20160419-0555) -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="bg4 background" style="display: block;"><head>
+	<title>Tripolis Application - 3.22</title>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<meta content="no-cache" http-equiv="Pragma" />
+	<link type="text/css" rel="stylesheet" href="http://nb3-22.int.tripolis.com/dialogue/css/login.min.css" />
+	<link type="image/x-icon" href="http://nb3-22.int.tripolis.com/dialogue/images/favicon.ico" rel="shortcut icon" />
+	<script src="http://nb3-22.int.tripolis.com/dialogue/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="http://nb3-22.int.tripolis.com/dialogue/js/jquery.cookie.js" type="text/javascript"></script>
+    
+  	<!--[if IE 9]>
+	<link href="/tripolis-web/css/styles_ie9.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+    
+    
+    <style> html{display : none ; } </style>
+<script>
+/* submit form when &lt;enter&gt; key pressed */
+document.onkeypress = function(event) {
+	if (event != null &amp;&amp; event.keyCode == 13) {
+		document.loginForm.submit();
+	}
+ };
+function setDomainCookie() {
+    var domain = jQuery("#domainName").val();
+    if (domain &amp;&amp; domain != "") {
+        jQuery.cookie("domainName", domain);
+    }
+    return true;
+}
+jQuery(document).ready(function() {
+    if (jQuery.cookie("domainName") != null) {
+        jQuery("#domainName").val(jQuery.cookie("domainName"));
+    }
+	jQuery("#domainName").focus();
+	
+	if( self == top ) {
+	       document.documentElement.style.display = 'block' ; 
+	   } else {
+	       top.location = self.location ; 
+	}
+})
+</script>
+</head>
+<body>
+<div id="outer">
+	<div id="middle">
+		<div id="loginContainer">
+			<div id="loginTop">
+				<img width="136" height="35" src="http://nb3-22.int.tripolis.com/dialogue/images/login_logo.png" />
+			</div>
+			<div id="loginCenter">
+				
+				<!-- page: login -->
+
+
+
+
+
+
+
+
+
+<form onsubmit="setDomainCookie()" method="post" action="j_spring_security_check;jsessionid=6AD8903288B9499ECCC62962CA696541" name="loginForm">
+	<input type="hidden" autocomplete="off" value="C" name="domainType" />
+	
+<table cellspacing="0" cellpadding="0" border="0" class="loginForm">
+	
+	
+	<tbody><tr> 
+		<td class="row"><b>Client:</b> </td>
+		<td><input type="text" autocomplete="off" maxlength="50" id="domainName" name="domainName" class="textField" />
+		</td>
+	</tr>
+
+	
+	<tr> 
+		<td class="row"><b>Username:</b> </td>
+		<td><input type="text" autocomplete="off" value="" maxlength="50" id="j_username" name="j_username" class="textField" />
+		</td>
+	</tr>
+	
+
+	
+	<tr> 
+		<td class="row"><b>Password:</b> </td>
+		<td><input type="password" autocomplete="off" value="" maxlength="50" id="j_password" name="j_password" class="textField" />
+		</td>
+	</tr> 
+	
+
+	<tr>
+		<td></td>
+		<td><input type="submit" class="button" id="loginButton" value="Login" /></td>
+	</tr>
+	
+</tbody></table> 
+</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body><canvas id="fxdriver-screenshot-canvas" style="display: none;" width="1194" height="682"></canvas></html>

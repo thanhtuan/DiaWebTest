@@ -1,0 +1,13 @@
+com\tripolis\qa\pages\DiaHomePage.class
+com\tripolis\qa\pages\DiaAdminPage.class
+com\tripolis\qa\steps\serenity\DiaContactDatabaseSteps.class
+com\tripolis\qa\pages\DictionaryPage.class
+com\tripolis\qa\features\contactDatabase\DiaContactDatabaseStory.class
+com\tripolis\qa\pages\DiaLoginPage.class
+com\tripolis\qa\pages\ListContactDatabasesPage.class
+com\tripolis\qa\pages\AbstractPage.class
+com\tripolis\qa\steps\serenity\EndUserSteps.class
+com\tripolis\qa\pages\DictionaryPage$1.class
+com\tripolis\qa\features\search\SearchByKeywordStory.class
+com\tripolis\qa\features\login\DiaLoginStory.class
+com\tripolis\qa\steps\serenity\DiaLoginSteps.class

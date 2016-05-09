@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Search by keyword story","Searching by ambiguious keyword should display the disambiguation page","PENDING","2016-04-20T12:00:21.621+07:00","0.0","0.0"
+"Search by keyword story","Searching by keyword apple should display the corresponding article","PENDING","2016-04-20T12:00:21.622+07:00","0.0","0.0"
+"Search by keyword story","Searching by keyword banana should display the corresponding article","PENDING","2016-04-20T12:00:21.619+07:00","0.0","0.0"

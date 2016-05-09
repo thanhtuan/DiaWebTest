@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 14.77 sec <<< FAILURE! - in com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory
+scenario8ClickOnCancelButtonCreateContactDatabase(com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory)  Time elapsed: 13.875 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.tripolis.qa.pages.DiaLoginPage.navigateToHomePage(DiaLoginPage.java:79)
+	at com.tripolis.qa.steps.serenity.DiaContactDatabaseSteps.goToHomePage(DiaContactDatabaseSteps.java:35)
+	at com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory.setUp(DiaContactDatabaseStory.java:31)
+

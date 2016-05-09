@@ -1,0 +1,49 @@
+<acceptance-test-run title="Scenario4 login with wrong client domain" name="scenario4LoginWithWrongClientDomain" steps="7" successful="7" failures="0" skipped="0" ignored="0" pending="0" result="SUCCESS" duration="61426" timestamp="2016-04-20T11:57:07.818+07:00" session-id="1eac6223-ccba-4f98-8ece-b69102903324">
+  <user-story id="com.tripolis.qa.features.login.DiaLoginStory" name="Dia login story" path="com.tripolis.qa.features.login"/>
+  <tags>
+    <tag name="Login" type="feature"/>
+    <tag name="Login/Dia login story" type="story"/>
+  </tags>
+  <test-step result="SUCCESS" duration="8773">
+    <screenshots>
+      <screenshot image="fb40ad521bc270844671e32a9ef9aa75.png"/>
+    </screenshots>
+    <description>Is the login page</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="2380">
+    <screenshots>
+      <screenshot image="a38a0a33075e4b4b2980f90ff51c0175.png"/>
+    </screenshots>
+    <description>Enter domain: &lt;span class=&apos;step-parameter&apos;&gt;harald companies&lt;/span&gt;</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="2233">
+    <screenshots>
+      <screenshot image="f9bf39e6d4da209ec0f9ed9641e25652.png"/>
+    </screenshots>
+    <description>Enter user: &lt;span class=&apos;step-parameter&apos;&gt;telerik@tripolis.com&lt;/span&gt;</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="2228">
+    <screenshots>
+      <screenshot image="98b0c31925acd957e6ea5bc9b34bdcff.png"/>
+    </screenshots>
+    <description>Enter pass: &lt;span class=&apos;step-parameter&apos;&gt;Telerik1!&lt;/span&gt;</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="5831">
+    <screenshots>
+      <screenshot image="01d79e0bb84cf893ecd6066750073831.png"/>
+    </screenshots>
+    <description>Clickon login button</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="1346">
+    <screenshots>
+      <screenshot image="a2e8cf7a073bd2c3061a60b460a760a1.png"/>
+    </screenshots>
+    <description>See login form</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="1464">
+    <screenshots>
+      <screenshot image="a2e8cf7a073bd2c3061a60b460a760a1.png"/>
+    </screenshots>
+    <description>Verify login  unsuccessful</description>
+  </test-step>
+</acceptance-test-run>
