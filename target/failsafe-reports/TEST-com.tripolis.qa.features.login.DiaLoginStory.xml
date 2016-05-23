@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tripolis.qa.features.login.DiaLoginStory" time="300.378" tests="7" errors="0" skipped="0" failures="0">
+<testsuite name="com.tripolis.qa.features.login.DiaLoginStory" time="201.734" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\java\jdk1.8.0_77\jre\bin"/>
@@ -43,11 +43,11 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\java\jdk1.8.0_77\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean verify"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test verify"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="1.8.0_77"/>
     <property name="java.ext.dirs" value="C:\java\jdk1.8.0_77\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\java\jdk1.8.0_77\jre\lib\resources.jar;C:\java\jdk1.8.0_77\jre\lib\rt.jar;C:\java\jdk1.8.0_77\jre\lib\sunrsasign.jar;C:\java\jdk1.8.0_77\jre\lib\jsse.jar;C:\java\jdk1.8.0_77\jre\lib\jce.jar;C:\java\jdk1.8.0_77\jre\lib\charsets.jar;C:\java\jdk1.8.0_77\jre\lib\jfr.jar;C:\java\jdk1.8.0_77\jre\classes"/>
@@ -62,11 +62,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="scenario1LoginWithBlankClientDomain" classname="com.tripolis.qa.features.login.DiaLoginStory" time="36.423"/>
-  <testcase name="scenario2LoginWithBlankPassword" classname="com.tripolis.qa.features.login.DiaLoginStory" time="38.527"/>
-  <testcase name="scenario3LoginWithBlankUsername" classname="com.tripolis.qa.features.login.DiaLoginStory" time="33.455"/>
-  <testcase name="scenario4LoginWithWrongClientDomain" classname="com.tripolis.qa.features.login.DiaLoginStory" time="61.427"/>
-  <testcase name="scenario5LoginWithWrongPassword" classname="com.tripolis.qa.features.login.DiaLoginStory" time="61.443"/>
-  <testcase name="scenario6LoginWithWrongUsername" classname="com.tripolis.qa.features.login.DiaLoginStory" time="34.77"/>
-  <testcase name="scenario7LoginWithVaildCredentials" classname="com.tripolis.qa.features.login.DiaLoginStory" time="34.333"/>
+  <testcase name="scenario1LoginWithBlankClientDomain" classname="com.tripolis.qa.features.login.DiaLoginStory" time="26.548"/>
+  <testcase name="scenario2LoginWithBlankPassword" classname="com.tripolis.qa.features.login.DiaLoginStory" time="27.088"/>
+  <testcase name="scenario3LoginWithBlankUsername" classname="com.tripolis.qa.features.login.DiaLoginStory" time="35.071"/>
+  <testcase name="scenario4LoginWithWrongClientDomain" classname="com.tripolis.qa.features.login.DiaLoginStory" time="28.632"/>
+  <testcase name="scenario5LoginWithWrongPassword" classname="com.tripolis.qa.features.login.DiaLoginStory" time="29.186"/>
+  <testcase name="scenario6LoginWithWrongUsername" classname="com.tripolis.qa.features.login.DiaLoginStory" time="28.735"/>
+  <testcase name="scenario7LoginWithVaildCredentials" classname="com.tripolis.qa.features.login.DiaLoginStory" time="26.474"/>
 </testsuite>

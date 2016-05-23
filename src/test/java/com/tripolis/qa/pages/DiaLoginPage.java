@@ -66,18 +66,12 @@ public class DiaLoginPage extends PageObject {
 	}
 	
 	public void click_login() {
+		logger.info("Please click on Login button");
 		loginButton.click();
-		
+		logger.info("already click on Login button");
     }
 	
 	public boolean getErrorLoginUrl() {
 		return driver.getCurrentUrl().contains("/login.html?login_error=1");
-	}
-	
-	public void navigateToHomePage() {
-		logger.info("navigate To Home Page");
-		switchToPage(DiaHomePage.class).open();
-		
-		logger.info("/dialogue/home.html");
 	}
 }

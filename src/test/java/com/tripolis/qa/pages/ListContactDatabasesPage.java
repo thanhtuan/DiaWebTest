@@ -24,7 +24,7 @@ public class ListContactDatabasesPage extends PageObject {
 	@FindBy(id="editable")
 	private WebElementFacade newLink; 
 	
-	@FindBy(className="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable")
+	@FindBy(xpath=".//*[@id='dialog']")
 	private WebElementFacade createDatabaseDialog;
 	
 	@FindBy(id="label")
@@ -38,6 +38,12 @@ public class ListContactDatabasesPage extends PageObject {
 	
 	@FindBy(id="submitNext")
 	private WebElementFacade nextButton;
+	
+	public boolean getListContactDatabasesUrl() {
+		logger.info("Get List Contact Databases URL");
+		return driver.getCurrentUrl().contains("/dialogue/admin/contacts/listContactDatabases.html");
+		
+	}
 	
 	public void clickNewLink() {
 		newLink.click();
@@ -57,14 +63,4 @@ public class ListContactDatabasesPage extends PageObject {
 		}
 	}
 	
-	public void navigateToHomePage() {
-		DiaHomePage homepage = this.switchToPage(DiaHomePage.class);
-		homepage.open();
-	}
-	
-	public void navigateToAdminPage() {
-		DiaAdminPage adminpage = this.switchToPage(DiaAdminPage.class);
-		adminpage.open();
-	}
-
 }

@@ -1,5 +1,4 @@
 package com.tripolis.qa.features.login;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -23,88 +22,83 @@ public class DiaLoginStory {
     public WebDriver driver = null;
 	
 	@Steps
-	public DiaLoginSteps telerik;
+	public DiaLoginSteps EndUser;
 	
 	@Before
-	public void setUp() throws Exception {
-		telerik.is_the_login_page();
+	public void setUp() {
+		EndUser.is_the_login_page();
 	}
 	
 	@Test
-	public void scenario1LoginWithBlankClientDomain() throws InterruptedException {
-		telerik.enterDomain("");
-		telerik.enterUser("telerik@tripolis.com");
-		telerik.enterPass("Telerik1!");
-		telerik.clickonLoginButton();
-		Thread.sleep(5000);
-		telerik.seeLoginForm();
-		telerik.verify_login_Unsuccessful();
+	public void scenario1LoginWithBlankClientDomain() {
+		EndUser.enterDomain("");
+		EndUser.enterUser("telerik@tripolis.com");
+		EndUser.enterPass("Telerik1!");
+		EndUser.clickonLoginButton();
+		EndUser.seeLoginForm();
+		EndUser.verify_login_Unsuccessful();
 	}
 	
 	@Test
-	public void scenario2LoginWithBlankPassword() throws InterruptedException {
-		telerik.enterDomain("haralds company");
-		telerik.enterUser("telerik@tripolis.com");
-		telerik.enterPass("");
-		telerik.clickonLoginButton();
-		Thread.sleep(5000);
-		telerik.seeLoginForm();
-		telerik.verify_login_Unsuccessful();
+	public void scenario2LoginWithBlankPassword() {
+		EndUser.enterDomain("haralds company");
+		EndUser.enterUser("telerik@tripolis.com");
+		EndUser.enterPass("");
+		EndUser.clickonLoginButton();
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		EndUser.seeLoginForm();
+		EndUser.verify_login_Unsuccessful();
 	}
 	
 	@Test
-	public void scenario3LoginWithBlankUsername() throws InterruptedException {
-		telerik.enterDomain("haralds company");
-		telerik.enterUser("");
-		telerik.enterPass("Telerik1!");
-		telerik.clickonLoginButton();
-		Thread.sleep(5000);
-		telerik.seeLoginForm();
-		telerik.verify_login_Unsuccessful();
+	public void scenario3LoginWithBlankUsername() {
+		EndUser.enterDomain("haralds company");
+		EndUser.enterUser("");
+		EndUser.enterPass("Telerik1!");
+		EndUser.clickonLoginButton();
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		EndUser.seeLoginForm();
+		EndUser.verify_login_Unsuccessful();
 	}
 	
 	@Test
-	public void scenario4LoginWithWrongClientDomain() throws InterruptedException {
-		telerik.enterDomain("harald companies");
-		telerik.enterUser("telerik@tripolis.com");
-		telerik.enterPass("Telerik1!");
-		telerik.clickonLoginButton();
-		Thread.sleep(30000);
-		telerik.seeLoginForm();
-		telerik.verify_login_Unsuccessful();
+	public void scenario4LoginWithWrongClientDomain() {
+		EndUser.enterDomain("harald companies");
+		EndUser.enterUser("telerik@tripolis.com");
+		EndUser.enterPass("Telerik1!");
+		EndUser.clickonLoginButton();
+		EndUser.seeLoginForm();
+		EndUser.verify_login_Unsuccessful();
 	}
 	
 	@Test
-	public void scenario5LoginWithWrongPassword() throws InterruptedException {
-		telerik.enterDomain("haralds company");
-		telerik.enterUser("telerik@tripolis.com");
-		telerik.enterPass("Pa$$w0rt");
-		telerik.clickonLoginButton();
-		Thread.sleep(30000);
-		telerik.seeLoginForm();
-		telerik.verify_login_Unsuccessful();
+	public void scenario5LoginWithWrongPassword() {
+		EndUser.enterDomain("haralds company");
+		EndUser.enterUser("telerik@tripolis.com");
+		EndUser.enterPass("Pa$$w0rt");
+		EndUser.clickonLoginButton();
+		EndUser.seeLoginForm();
+		EndUser.verify_login_Unsuccessful();
 	}
 	
 	@Test
-	public void scenario6LoginWithWrongUsername() throws InterruptedException {
-		telerik.enterDomain("haralds company");
-		telerik.enterUser("tuan@tripolis.com");
-		telerik.enterPass("Telerik1!");
-		telerik.clickonLoginButton();
-		Thread.sleep(5000);
-		telerik.seeLoginForm();
-		telerik.verify_login_Unsuccessful();
+	public void scenario6LoginWithWrongUsername() {
+		EndUser.enterDomain("haralds company");
+		EndUser.enterUser("tuan@tripolis.com");
+		EndUser.enterPass("Telerik1!");
+		EndUser.clickonLoginButton();
+		EndUser.seeLoginForm();
+		EndUser.verify_login_Unsuccessful();
 	}
 	
 	@Test
-	public void scenario7LoginWithVaildCredentials() throws InterruptedException {
-		telerik.seeLoginForm();
-		telerik.enterDomain("haralds company");
-		telerik.enterUser("telerik@tripolis.com");
-		telerik.enterPass("Telerik1!");
-		telerik.clickonLoginButton();
-		Thread.sleep(5000);
-		telerik.verify_login_successful();
+	public void scenario7LoginWithVaildCredentials(){
+		EndUser.seeLoginForm();
+		EndUser.enterDomain("haralds company");
+		EndUser.enterUser("telerik@tripolis.com");
+		EndUser.enterPass("Telerik1!");
+		EndUser.clickonLoginButton();
+		EndUser.verify_login_successful();
 	}
 	
 	@After

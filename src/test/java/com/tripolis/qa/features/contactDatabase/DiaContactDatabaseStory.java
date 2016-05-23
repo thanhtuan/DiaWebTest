@@ -1,5 +1,4 @@
 package com.tripolis.qa.features.contactDatabase;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -23,20 +22,22 @@ public class DiaContactDatabaseStory {
     public WebDriver driver = null;
 
 	@Steps
-	public DiaContactDatabaseSteps tuan;
+	public DiaContactDatabaseSteps EndUser;
 	
 	@Before
-	public void setUp() {
-		tuan.loginAndNavigateToAdminPage("haralds company", "tuan.tran@tripolis.com", "Pa$$w0rt");
-		tuan.goToHomePage();
+	public void setUp() throws InterruptedException {
+		EndUser.loginToDia("haralds company", "tuan.tran@tripolis.com", "Pa$$w0rt");
 	}
 	
 	@Test
 	public void scenario8ClickOnCancelButtonCreateContactDatabase() {
-		tuan.goToAdminPage();
-		tuan.clickOnNewLink();
-		tuan.seeCreateDatabaseDialog();
-		tuan.clickOnCancelButton();
+		EndUser.navigateToAdministrationPage();
+		EndUser.onAdministrationPage();
+		EndUser.navigateToListContactDatabasesPage();
+		EndUser.onListContactDatabasesPage();
+		EndUser.clickOnNewLink();
+		EndUser.seeCreateDatabaseDialog();
+		EndUser.clickOnCancelButton();
 	}
 	@After
 	public void tearDown() throws Exception {

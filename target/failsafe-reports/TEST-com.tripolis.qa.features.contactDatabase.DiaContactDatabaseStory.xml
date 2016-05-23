@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory" time="13.875" tests="1" errors="1" skipped="0" failures="0">
+<testsuite name="com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory" time="27.025" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\java\jdk1.8.0_77\jre\bin"/>
@@ -43,11 +43,11 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\java\jdk1.8.0_77\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean verify"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test verify"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="1.8.0_77"/>
     <property name="java.ext.dirs" value="C:\java\jdk1.8.0_77\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\java\jdk1.8.0_77\jre\lib\resources.jar;C:\java\jdk1.8.0_77\jre\lib\rt.jar;C:\java\jdk1.8.0_77\jre\lib\sunrsasign.jar;C:\java\jdk1.8.0_77\jre\lib\jsse.jar;C:\java\jdk1.8.0_77\jre\lib\jce.jar;C:\java\jdk1.8.0_77\jre\lib\charsets.jar;C:\java\jdk1.8.0_77\jre\lib\jfr.jar;C:\java\jdk1.8.0_77\jre\classes"/>
@@ -62,78 +62,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="scenario8ClickOnCancelButtonCreateContactDatabase" classname="com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory" time="13.875">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.tripolis.qa.pages.DiaLoginPage.navigateToHomePage(DiaLoginPage.java:79)
-	at com.tripolis.qa.steps.serenity.DiaContactDatabaseSteps.goToHomePage(DiaContactDatabaseSteps.java:35)
-	at com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory.setUp(DiaContactDatabaseStory.java:31)
-</error>
-    <system-out><![CDATA[java.lang.NullPointerException: null
-]]></system-out>
-    <system-err><![CDATA[[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - LOADING LOCAL PROPERTIES FROM D:\automation_projects\DiaWebTest\serenity.properties 
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - LOADING LOCAL PROPERTIES FROM D:\automation_projects\DiaWebTest\serenity.properties 
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - LOADING LOCAL PROPERTIES FROM D:\automation_projects\DiaWebTest\serenity.properties 
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - serenity.browser.height=768
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - serenity.step.delay=1000
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - serenity.browser.width=1200
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - serenity.test.root=com.tripolis.qa.features
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - webdriver.base.url=http://nb3-22.int.tripolis.com
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - serenity.project.name=Tripolis Dialogue Project
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - webdriver.wait.for.timeout=5000
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - story.timeout.in.secs=3600
-[main] INFO net.thucydides.core.util.PropertiesFileLocalPreferences - webdriver.timeouts.implicitlywait=5000
-[main] INFO net.thucydides.core.webdriver.SystemPropertiesConfiguration - project.build.directory : null
-[main] INFO net.thucydides.core.webdriver.SystemPropertiesConfiguration - project.reporting.OutputDirectory : null
-[main] INFO net.thucydides.core.webdriver.SystemPropertiesConfiguration - OutputDirectory : D:\automation_projects\DiaWebTest\target\site\serenity
-[main] INFO net.serenitybdd.core.Serenity - 
-
--------------------------------------------------------------------------------------
-     _______. _______ .______       _______ .__   __.  __  .___________.____    ____ 
-    /       ||   ____||   _  \     |   ____||  \ |  | |  | |           |\   \  /   / 
-   |   (----`|  |__   |  |_)  |    |  |__   |   \|  | |  | `---|  |----` \   \/   /  
-    \   \    |   __|  |      /     |   __|  |  . `  | |  |     |  |       \_    _/   
-.----)   |   |  |____ |  |\  \----.|  |____ |  |\   | |  |     |  |         |  |     
-|_______/    |_______|| _| `._____||_______||__| \__| |__|     |__|         |__|    
--------------------------------------------------------------------------------------
-
-[main] INFO net.serenitybdd.core.Serenity - PREPARING TO EXECUTE 11 TESTS
-[main] INFO net.serenitybdd.core.Serenity - Test Suite Started: Dia contact database story
-[main] INFO net.serenitybdd.core.Serenity - 
- _____ _____ ____ _____   ____ _____  _    ____ _____ _____ ____  
-|_   _| ____/ ___|_   _| / ___|_   _|/ \  |  _ \_   _| ____|  _ \ 
-  | | |  _| \___ \ | |   \___ \ | | / _ \ | |_) || | |  _| | | | |
-  | | | |___ ___) || |    ___) || |/ ___ \|  _ < | | | |___| |_| |
-  |_| |_____|____/ |_|   |____/ |_/_/   \_\_| \_\|_| |_____|____/ 
-                                                                  
-
-TEST STARTED: scenario8ClickOnCancelButtonCreateContactDatabase
--------------------------------------------------------------------
-[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 1
-[main] INFO net.thucydides.core.webdriver.WebDriverFactory - Setting browser dimensions to 768/1200
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - Please input DomainName
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - already DomainName
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - Please input UserName
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - already UserName
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - Please input Password
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - already Password
-[main] INFO com.tripolis.qa.pages.DiaLoginPage - navigate To Home Page
-[main] INFO net.thucydides.core.webdriver.SystemPropertiesConfiguration - project.build.directory : null
-[main] INFO net.thucydides.core.webdriver.SystemPropertiesConfiguration - project.reporting.OutputDirectory : null
-[main] INFO net.thucydides.core.webdriver.SystemPropertiesConfiguration - OutputDirectory : D:\automation_projects\DiaWebTest\target\site\serenity
-[main] INFO net.thucydides.core.requirements.FileSystemRequirementsTagProvider - Loading requirements from isExists=true path:D:\automation_projects\DiaWebTest\target\test-classes\features
-[main] INFO net.thucydides.core.requirements.FileSystemRequirementsTagProvider - Loading requirements from isExists=true path:D:\automation_projects\DiaWebTest\target\test-classes\features\search
-[main] ERROR net.serenitybdd.core.Serenity - 
-           __  _____ _____ ____ _____   _____ _    ___ _     _____ ____  
-  _       / / |_   _| ____/ ___|_   _| |  ___/ \  |_ _| |   | ____|  _ \ 
- (_)_____| |    | | |  _| \___ \ | |   | |_ / _ \  | || |   |  _| | | | |
-  _|_____| |    | | | |___ ___) || |   |  _/ ___ \ | || |___| |___| |_| |
- (_)     | |    |_| |_____|____/ |_|   |_|/_/   \_\___|_____|_____|____/ 
-          \_\                                                            
-
-TEST FAILED WITH ERROR: Scenario8 click on cancel button create contact database
----------------------------------------------------------------------
-[main] ERROR net.serenitybdd.core.Serenity - TEST FAILED AT STEP Go to home page
-[main] ERROR net.serenitybdd.core.Serenity - 
-]]></system-err>
-  </testcase>
+  <testcase name="scenario8ClickOnCancelButtonCreateContactDatabase" classname="com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory" time="27.025"/>
 </testsuite>

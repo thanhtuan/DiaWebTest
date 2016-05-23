@@ -1,5 +1,4 @@
 package com.tripolis.qa.pages;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,25 +19,9 @@ public class DiaHomePage extends PageObject {
 		this.driver = driver;
 		// TODO Auto-generated constructor stub
 	}
-
-	@FindBy(linkText="Home")
-	private WebElementFacade menuHomePage;
 	
 	@FindBy(id="clientname")
 	private WebElementFacade spanText; 
-	
-	public void navigateToAdminPage() {
-		logger.info("navigate To Admin Page");
-		DiaAdminPage adminpage = this.switchToPage(DiaAdminPage.class);
-		adminpage.open();
-		logger.info("/dialogue/administration.html");
-	}
-	
-	public void clickOnHomeMainMenu() {
-		((JavascriptExecutor)driver).executeScript("document.getElementById('ElementID').click()");
-		//driver.findElement(By.linkText("Home")).click();
-		
-    }
 	
 	public boolean getHomeurl() {
 		logger.info("Get Home URL");
