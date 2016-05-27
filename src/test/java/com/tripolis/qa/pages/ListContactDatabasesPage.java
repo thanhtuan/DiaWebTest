@@ -24,20 +24,11 @@ public class ListContactDatabasesPage extends PageObject {
 	@FindBy(id="editable")
 	private WebElementFacade newLink; 
 	
-	@FindBy(xpath=".//*[@id='dialog']")
-	private WebElementFacade createDatabaseDialog;
-	
-	@FindBy(id="label")
-	private WebElementFacade databaselabel;
-	
-	@FindBy(id="name")
-	private WebElementFacade databasename;
-	
-	@FindBy(id="cancelButton")
-	private WebElementFacade cancelButton;
-	
-	@FindBy(id="submitNext")
-	private WebElementFacade nextButton;
+	public void clickNewLink() {
+		logger.info("Please click on New Link");
+		newLink.click();	
+		logger.info("already click on New Link");
+    }
 	
 	public boolean getListContactDatabasesUrl() {
 		logger.info("Get List Contact Databases URL");
@@ -45,22 +36,5 @@ public class ListContactDatabasesPage extends PageObject {
 		
 	}
 	
-	public void clickNewLink() {
-		newLink.click();
-		
-    }
-	
-	public void clickCancelButton() {
-		cancelButton.click();
-	}
-	
-	public boolean isShowCreateDatabaseDialog() {
-		try {
-			createDatabaseDialog.isDisplayed();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
 	
 }

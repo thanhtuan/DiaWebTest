@@ -16,26 +16,7 @@ public class AbstractPage extends PageObject {
 	//@FindBy(linkText="Contacts")
 	//private WebElementFacade contactsdashboardpage;
 	
-	@FindBy(linkText="Content")
-	private WebElementFacade Contentdashboardpage;
 	
-	@FindBy(linkText="Campaigns")
-	private WebElementFacade campaignsdashboardpage;
-	
-	@FindBy(linkText="Publishing")
-	private WebElementFacade publishingdashboardpage;
-	
-	@FindBy(linkText="Reports")
-	private WebElementFacade Reportsdashboardpage;
-	
-	@FindBy(linkText="Processes")
-	private WebElementFacade Processespage;
-	
-	@FindBy(linkText="Setup")
-	private WebElementFacade Setuppage;
-	
-	@FindBy(linkText="contacts")
-	private WebElementFacade subSetupContactPage;
 	
 	public WebDriver driver=null;
 	
@@ -46,21 +27,12 @@ public class AbstractPage extends PageObject {
 		this.driver=driver;
 	}
 	
-	public void clickOnSetupMainMenu() {
-		Setuppage.click();
-		
-    }
 	
 	public boolean getSetupUrl() {
 		logger.info("Get Setup URL");
 		return driver.getCurrentUrl().contains("/dialogue/administration.html");
 		
 	}
-	
-	public void clickOnContactSetupSubMenu() {
-		subSetupContactPage.click();
-		
-    }
 	
 	public boolean getContactSetupSubMenuUrl() {
 		logger.info("Get List Contact Database URL");

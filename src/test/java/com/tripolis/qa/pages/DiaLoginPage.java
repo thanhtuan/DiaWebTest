@@ -11,6 +11,15 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/login.html")
 public class DiaLoginPage extends PageObject {
 	
+	public WebDriver driver=null;
+	private static final Logger logger = LoggerFactory.getLogger(DiaLoginPage.class);
+
+	public DiaLoginPage(WebDriver driver) {
+		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+		this.driver = driver;
+		// TODO Auto-generated constructor stub
+	}
+	
 	@FindBy(id="loginContainer")
 	private WebElementFacade loginForm;
 	
@@ -26,17 +35,8 @@ public class DiaLoginPage extends PageObject {
 	@FindBy(id="loginButton")
 	private WebElementFacade loginButton;
 	
-	@FindBy(css="div#tagline center")
+	@FindBy(xpath=".//*[@id='tagline']/center", timeoutInSeconds="5")
 	private WebElementFacade errorMessage;
-	
-	public WebDriver driver=null;
-	private static final Logger logger = LoggerFactory.getLogger(DiaLoginPage.class);
-
-	public DiaLoginPage(WebDriver driver) {
-		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-		this.driver = driver;
-		// TODO Auto-generated constructor stub
-	}
 	
 	public void enter_DomainName(String keyword) {
 		logger.info("Please input DomainName");
@@ -70,6 +70,10 @@ public class DiaLoginPage extends PageObject {
 		loginButton.click();
 		logger.info("already click on Login button");
     }
+	
+	public String getErrorMessage() {
+		return errorMessage.getText();
+	}
 	
 	public boolean getErrorLoginUrl() {
 		return driver.getCurrentUrl().contains("/login.html?login_error=1");

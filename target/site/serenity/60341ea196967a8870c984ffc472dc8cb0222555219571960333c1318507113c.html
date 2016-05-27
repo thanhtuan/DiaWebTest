@@ -34,8 +34,8 @@
     <script class="code" type="text/javascript">$(document).ready(function () {
         var plot1 = $.jqplot('coverage_pie_chart', [
             [
-                ['Passing', 1],
-                ['Pending', 0],
+                ['Passing', 0.666667],
+                ['Pending', 0.333333],
                 ['Ignored', 0],
                 ['Failing', 0],
                 ['Errors',  0],
@@ -68,8 +68,8 @@
                 marginTop: '15px'
             },
             series: [
-                {label: '100% requirements tested successfully'},
-                {label: '0% requirements untested'},
+                {label: '66.7% requirements tested successfully'},
+                {label: '33.3% requirements untested'},
                 {label: '0%} requirements failing'},
                 {label: '0%} requirements with errors'},
                 {label: '0%} requirements with compromised tests'}
@@ -170,7 +170,7 @@
             <a href="2a4631d87648e59c428d4cf0e9247f9d286e4679f436ca2ce872e931eb4dfd58.html"><i class="fa fa-comments-o"></i> Stories</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 23-05-2016 17:05</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 27-05-2016 18:12</span>
     <br style="clear:left"/>
 </div>
 
@@ -208,18 +208,18 @@
                                     <tr>
                                         <td class="summary-leading-column">Stories</td>
                                         <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td>1</td>
-                                        <td>0</td>
-                                        <td>0</td>
                                         <td>0</td>
                                         <td>0</td>
                                     </tr>
                                 <tr>
                                     <td class="summary-leading-column">Acceptance Criteria (tests)</td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td>3</td>
+                                    <td>2</td>
                                     <td>0</td>
-                                    <td>0</td>
+                                    <td>1</td>
                                     <td>0</td>
                                     <td></td>
                                 </tr>
@@ -247,10 +247,10 @@
         <body>
         <tr>
             <td class="summary-leading-column">Automated</td>
-            <td>1</td>
-            <td>1 (100%)</td>
+            <td>3</td>
+            <td>2 (67%)</td>
             <td>0 (0%)</td>
-            <td>0 (0%)</td>
+            <td>1 (33%)</td>
             <td>0 (0%)</td>
         </tr>
         <tr>
@@ -263,15 +263,15 @@
         </tr>
         <tr>
             <td class="summary-leading-column">Total</td>
-            <td>1</td>
-            <td>1 (100%)</td>
+            <td>3</td>
+            <td>2 (67%)</td>
             <td>0 (0%)</td>
-            <td>0 (0%)</td>
+            <td>1 (33%)</td>
             <td>0 (0%)</td>
         </tr>
         <tr>
             <td class="summary-leading-column">Total Duration</td>
-                <td colspan="5">27 seconds</td>
+                <td colspan="5">1 minutes 30 seconds</td>
         </tr>
         </body>
     </table>
@@ -330,14 +330,14 @@
             <tbody>
 
 
-                <tr class="test-SUCCESS requirementRow">
+                <tr class="test-PENDING requirementRow">
                     <td class="requirementRowCell">
-                        <span class="status_icon"><i class='fa fa-check-square-o success-icon ' title='SUCCESS'></i></span>
-                        <span style="display:none">1</span>
+                        <span class="status_icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
+                        <span style="display:none">2</span>
                     </td>
                     <td class="cardNumber requirementRowCell"></td>
 
-                    <td class="SUCCESS-text requirementRowCell">
+                    <td class="PENDING-text requirementRowCell">
                     <a href="javaScript:void(0)" class="read-more-link">
                     <img src="images/plus.png" height="16"/></a>
                         <span class="requirementName"><a
@@ -348,9 +348,9 @@
 
 
 
-                    <td class="greentext highlighted-value requirementRowCell">1</td>
-                    <td class="greentext requirementRowCell">1</td>
-                    <td class="bluetext requirementRowCell">0</td>
+                    <td class="greentext highlighted-value requirementRowCell">3</td>
+                    <td class="greentext requirementRowCell">2</td>
+                    <td class="bluetext requirementRowCell">1</td>
                     <td class="redtext requirementRowCell">0</td>
                     <td class="lightorangetext requirementRowCell">0</td>
                     <td class="violettext requirementRowCell">0</td>
@@ -365,19 +365,19 @@
                         <table>
                             <tr>
                                 <td width="40px">
-                                    <div class="small">100%</div>
+                                    <div class="small">66.7%</div>
                                 </td>
                                 <td width="125px">
                                     <div class="percentagebar"
                                          title="Dia contact database story
-Tests implemented: 1
-  - Passing tests: 1 (100% of specified requirements)
+Tests implemented: 3
+  - Passing tests: 2 (66.7% of specified requirements)
   - Failing tests: 0 (0% of specified requirements)
   - Tests with errors: 0 (0% of specified requirements)
   - Compromised tests 0 (0% of specified requirements)
 
-Tests not implemented or not executed: 0
-  - Pending tests: 0 (0% of specified requirements)
+Tests not implemented or not executed: 1
+  - Pending tests: 1 (33.3% of specified requirements)
   - Ignored or skipped tests: 0 (0% of specified requirements)
 
 Requirements specified:     1
@@ -385,20 +385,20 @@ Requirements with no tests: 0
 
 
 Estimated unimplemented tests: 0
-Estimated unimplemented or pending requirements: 0%
+Estimated unimplemented or pending requirements: 33.3%
 Estimated ignored or skipped requirements: 0%"
                                          style="width: 125px;">
                                         <div class="ignoredbar"
-                                             style="width: 125px;"
+                                             style="width: 83px;"
                                              title="Dia contact database story
-Tests implemented: 1
-  - Passing tests: 1 (100% of specified requirements)
+Tests implemented: 3
+  - Passing tests: 2 (66.7% of specified requirements)
   - Failing tests: 0 (0% of specified requirements)
   - Tests with errors: 0 (0% of specified requirements)
   - Compromised tests 0 (0% of specified requirements)
 
-Tests not implemented or not executed: 0
-  - Pending tests: 0 (0% of specified requirements)
+Tests not implemented or not executed: 1
+  - Pending tests: 1 (33.3% of specified requirements)
   - Ignored or skipped tests: 0 (0% of specified requirements)
 
 Requirements specified:     1
@@ -406,19 +406,19 @@ Requirements with no tests: 0
 
 
 Estimated unimplemented tests: 0
-Estimated unimplemented or pending requirements: 0%
+Estimated unimplemented or pending requirements: 33.3%
 Estimated ignored or skipped requirements: 0%">
                                             <div class="compromisedbar"
-                                                 style="width: 125px;"
+                                                 style="width: 83px;"
                                                  title="Dia contact database story
-Tests implemented: 1
-  - Passing tests: 1 (100% of specified requirements)
+Tests implemented: 3
+  - Passing tests: 2 (66.7% of specified requirements)
   - Failing tests: 0 (0% of specified requirements)
   - Tests with errors: 0 (0% of specified requirements)
   - Compromised tests 0 (0% of specified requirements)
 
-Tests not implemented or not executed: 0
-  - Pending tests: 0 (0% of specified requirements)
+Tests not implemented or not executed: 1
+  - Pending tests: 1 (33.3% of specified requirements)
   - Ignored or skipped tests: 0 (0% of specified requirements)
 
 Requirements specified:     1
@@ -426,19 +426,19 @@ Requirements with no tests: 0
 
 
 Estimated unimplemented tests: 0
-Estimated unimplemented or pending requirements: 0%
+Estimated unimplemented or pending requirements: 33.3%
 Estimated ignored or skipped requirements: 0%">
                                                 <div class="errorbar"
-                                                     style="width: 125px;"
+                                                     style="width: 83px;"
                                                      title="Dia contact database story
-Tests implemented: 1
-  - Passing tests: 1 (100% of specified requirements)
+Tests implemented: 3
+  - Passing tests: 2 (66.7% of specified requirements)
   - Failing tests: 0 (0% of specified requirements)
   - Tests with errors: 0 (0% of specified requirements)
   - Compromised tests 0 (0% of specified requirements)
 
-Tests not implemented or not executed: 0
-  - Pending tests: 0 (0% of specified requirements)
+Tests not implemented or not executed: 1
+  - Pending tests: 1 (33.3% of specified requirements)
   - Ignored or skipped tests: 0 (0% of specified requirements)
 
 Requirements specified:     1
@@ -446,19 +446,19 @@ Requirements with no tests: 0
 
 
 Estimated unimplemented tests: 0
-Estimated unimplemented or pending requirements: 0%
+Estimated unimplemented or pending requirements: 33.3%
 Estimated ignored or skipped requirements: 0%">
                                                     <div class="failingbar"
-                                                         style="width: 125px;"
+                                                         style="width: 83px;"
                                                          title="Dia contact database story
-Tests implemented: 1
-  - Passing tests: 1 (100% of specified requirements)
+Tests implemented: 3
+  - Passing tests: 2 (66.7% of specified requirements)
   - Failing tests: 0 (0% of specified requirements)
   - Tests with errors: 0 (0% of specified requirements)
   - Compromised tests 0 (0% of specified requirements)
 
-Tests not implemented or not executed: 0
-  - Pending tests: 0 (0% of specified requirements)
+Tests not implemented or not executed: 1
+  - Pending tests: 1 (33.3% of specified requirements)
   - Ignored or skipped tests: 0 (0% of specified requirements)
 
 Requirements specified:     1
@@ -466,19 +466,19 @@ Requirements with no tests: 0
 
 
 Estimated unimplemented tests: 0
-Estimated unimplemented or pending requirements: 0%
+Estimated unimplemented or pending requirements: 33.3%
 Estimated ignored or skipped requirements: 0%">
                                                         <div class="passingbar"
-                                                             style="width: 125px;"
+                                                             style="width: 83px;"
                                                              title="Dia contact database story
-Tests implemented: 1
-  - Passing tests: 1 (100% of specified requirements)
+Tests implemented: 3
+  - Passing tests: 2 (66.7% of specified requirements)
   - Failing tests: 0 (0% of specified requirements)
   - Tests with errors: 0 (0% of specified requirements)
   - Compromised tests 0 (0% of specified requirements)
 
-Tests not implemented or not executed: 0
-  - Pending tests: 0 (0% of specified requirements)
+Tests not implemented or not executed: 1
+  - Pending tests: 1 (33.3% of specified requirements)
   - Ignored or skipped tests: 0 (0% of specified requirements)
 
 Requirements specified:     1
@@ -486,7 +486,7 @@ Requirements with no tests: 0
 
 
 Estimated unimplemented tests: 0
-Estimated unimplemented or pending requirements: 0%
+Estimated unimplemented or pending requirements: 33.3%
 Estimated ignored or skipped requirements: 0%">
                                                         </div>
                                                     </div>
@@ -530,15 +530,47 @@ Estimated ignored or skipped requirements: 0%">
                                     
                                     <span style="display:none">SUCCESS</span></td>
                                 <td class="SUCCESS-text">
-                                    <a href="a4c8d198f2dfcd66c4c9a7d7e1414b69df85530ca030ec44f12c1da3ac98f796.html" class="ellipsis" title="">
-                                    Scenario8 click on cancel button create contact database 
+                                    <a href="32f7605dcff8dd89ca0205d7c52db6874e20a6754ce3674c9cf645fd33f0e0a8.html" class="ellipsis" title="">
+                                    Scenario1 click on cancel button create contact database 
                                     </a>
                                 </td>
 
-                                <td class="lightgreentext">8</td>
+                                <td class="lightgreentext">10</td>
 
 
-                                <td class="lightgreentext">26.98</td>
+                                <td class="lightgreentext">35.78</td>
+                            </tr>
+
+                            <tr class="test-SUCCESS">
+                                <td><span class="summary-icon"><i class='fa fa-check-square-o success-icon ' title='SUCCESS'></i></span>
+                                    
+                                    <span style="display:none">SUCCESS</span></td>
+                                <td class="SUCCESS-text">
+                                    <a href="91cd6db026982a92b479e3da99f6ae5d9b217187bb2171a3c75aee45b44a5cc6.html" class="ellipsis" title="">
+                                    Scenario2 create vaild contact database 
+                                    </a>
+                                </td>
+
+                                <td class="lightgreentext">19</td>
+
+
+                                <td class="lightgreentext">54.71</td>
+                            </tr>
+
+                            <tr class="test-PENDING">
+                                <td><span class="summary-icon"><i class='fa fa-square-o pending-icon ' title='PENDING'></i></span>
+                                    
+                                    <span style="display:none">PENDING</span></td>
+                                <td class="PENDING-text">
+                                    <a href="df7aabe8435ae25482d92c60d37829c22c8993e9a526fc9f1906eda89420a707.html" class="ellipsis" title="">
+                                    Scenario3 delete contact database 
+                                    </a>
+                                </td>
+
+                                <td class="lightgreentext">0</td>
+
+
+                                <td class="lightgreentext">0</td>
                             </tr>
                         </tbody>
                     </table>

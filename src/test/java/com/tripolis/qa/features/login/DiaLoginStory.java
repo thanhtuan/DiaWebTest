@@ -99,6 +99,7 @@ public class DiaLoginStory {
 		EndUser.enterPass("Telerik1!");
 		EndUser.clickonLoginButton();
 		EndUser.verify_login_successful();
+		EndUser.verify_ClientName();
 	}
 	
 	@After

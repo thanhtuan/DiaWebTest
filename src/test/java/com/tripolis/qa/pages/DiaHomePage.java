@@ -23,6 +23,10 @@ public class DiaHomePage extends PageObject {
 	@FindBy(id="clientname")
 	private WebElementFacade spanText; 
 	
+	public String getSpanText() {
+		return spanText.getText();
+	}
+	
 	public boolean getHomeurl() {
 		logger.info("Get Home URL");
 		return driver.getCurrentUrl().contains("/dialogue/home.html");

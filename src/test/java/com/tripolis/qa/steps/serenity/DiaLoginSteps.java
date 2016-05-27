@@ -44,6 +44,17 @@ public class DiaLoginSteps extends ScenarioSteps {
 		diaLoginPage.click_login();
 	}
 	
+	
+	@Step
+	public void verify_ClientName() {
+		assertThat(diaHomePage.getSpanText().equalsIgnoreCase("Client: Haralds Company"));
+	}
+	
+	@Step
+	public void verify_ErrorMessage() {
+		assertThat(diaLoginPage.getErrorMessage().equalsIgnoreCase("         	Bad credentials         "));
+	}
+	
 	@Step
 	public void verify_login_successful() {	
 		//System.out.println("-----------Test--------: " + diaHomePage.getHomeurl());

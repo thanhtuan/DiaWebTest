@@ -1,48 +1,48 @@
-<acceptance-test-run title="Scenario3 login with blank username" name="scenario3LoginWithBlankUsername" steps="7" successful="7" failures="0" skipped="0" ignored="0" pending="0" result="SUCCESS" duration="35069" timestamp="2016-05-23T17:03:27.789+07:00" session-id="0cc54808-f054-42e9-9167-085bc0bf503b">
+<acceptance-test-run title="Scenario3 login with blank username" name="scenario3LoginWithBlankUsername" steps="7" successful="7" failures="0" skipped="0" ignored="0" pending="0" result="SUCCESS" duration="31580" timestamp="2016-05-27T18:09:57.134+07:00" session-id="4388c37b-c4a3-405d-9a97-cbf3dc2bd976">
   <user-story id="com.tripolis.qa.features.login.DiaLoginStory" name="Dia login story" path="com.tripolis.qa.features.login"/>
   <tags>
     <tag name="Login" type="feature"/>
     <tag name="Login/Dia login story" type="story"/>
   </tags>
-  <test-step result="SUCCESS" duration="15011">
+  <test-step result="SUCCESS" duration="8564">
     <screenshots>
-      <screenshot image="6cea7c73eaee2bbae3678deb72101f09.png"/>
+      <screenshot image="628dfc5d4aabbabe0223223be01d27be.png"/>
     </screenshots>
     <description>Is the login page</description>
   </test-step>
-  <test-step result="SUCCESS" duration="1929">
+  <test-step result="SUCCESS" duration="2038">
     <screenshots>
-      <screenshot image="e64f5607f23f2ff25dd72ae06f806725.png"/>
+      <screenshot image="96e84246fa6f415eda319ab9b069e8a8.png"/>
     </screenshots>
     <description>Enter domain: &lt;span class=&apos;step-parameter&apos;&gt;haralds company&lt;/span&gt;</description>
   </test-step>
-  <test-step result="SUCCESS" duration="1879">
+  <test-step result="SUCCESS" duration="1880">
     <screenshots>
-      <screenshot image="4dca911a98ac4ba29d3caa23642a9865.png"/>
+      <screenshot image="648144000203ff859f0e7f1ecaaef74d.png"/>
     </screenshots>
     <description>Enter user: &lt;span class=&apos;step-parameter&apos;&gt;&lt;/span&gt;</description>
   </test-step>
-  <test-step result="SUCCESS" duration="1922">
+  <test-step result="SUCCESS" duration="1892">
     <screenshots>
-      <screenshot image="438f2669099a4f99ee2d46a61fc59c8f.png"/>
+      <screenshot image="c05ec27f177852ba32a1b64246be5876.png"/>
     </screenshots>
     <description>Enter pass: &lt;span class=&apos;step-parameter&apos;&gt;Telerik1!&lt;/span&gt;</description>
   </test-step>
-  <test-step result="SUCCESS" duration="10590">
+  <test-step result="SUCCESS" duration="6114">
     <screenshots>
-      <screenshot image="c66031273ba91d432c6ee7133118e47b.png"/>
+      <screenshot image="90214739e059e7552b9e559c1662f41e.png"/>
     </screenshots>
     <description>Clickon login button</description>
   </test-step>
-  <test-step result="SUCCESS" duration="1779">
+  <test-step result="SUCCESS" duration="1989">
     <screenshots>
-      <screenshot image="c66031273ba91d432c6ee7133118e47b.png"/>
+      <screenshot image="65538039d257157940d8d7ec5256f539.png"/>
     </screenshots>
     <description>See login form</description>
   </test-step>
-  <test-step result="SUCCESS" duration="1800">
+  <test-step result="SUCCESS" duration="1927">
     <screenshots>
-      <screenshot image="c66031273ba91d432c6ee7133118e47b.png"/>
+      <screenshot image="77067eecf8fcff083b9a4962310f0172.png"/>
     </screenshots>
     <description>Verify login  unsuccessful</description>
   </test-step>

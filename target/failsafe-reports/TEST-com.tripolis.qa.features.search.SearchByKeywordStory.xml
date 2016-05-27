@@ -47,7 +47,7 @@
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.version" value="1.8.0_77"/>
     <property name="java.ext.dirs" value="C:\java\jdk1.8.0_77\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\java\jdk1.8.0_77\jre\lib\resources.jar;C:\java\jdk1.8.0_77\jre\lib\rt.jar;C:\java\jdk1.8.0_77\jre\lib\sunrsasign.jar;C:\java\jdk1.8.0_77\jre\lib\jsse.jar;C:\java\jdk1.8.0_77\jre\lib\jce.jar;C:\java\jdk1.8.0_77\jre\lib\charsets.jar;C:\java\jdk1.8.0_77\jre\lib\jfr.jar;C:\java\jdk1.8.0_77\jre\classes"/>
@@ -75,7 +75,7 @@
 
 TEST STARTED: searching_by_keyword_banana_should_display_the_corresponding_article
 -------------------------------------------------------------------
-[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 9
+[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 11
 [main] INFO net.serenitybdd.core.Serenity - TEST PENDING
 [main] INFO net.serenitybdd.core.Serenity - 
           __  _____ _____ ____ _____   ____  _____ _   _ ____ ___ _   _  ____ 
@@ -99,7 +99,7 @@ TEST PENDING: Searching by keyword banana should display the corresponding artic
 
 TEST STARTED: searching_by_ambiguious_keyword_should_display_the_disambiguation_page
 -------------------------------------------------------------------
-[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 10
+[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 12
 [main] INFO net.serenitybdd.core.Serenity - TEST PENDING
 [main] INFO net.serenitybdd.core.Serenity - 
           __  _____ _____ ____ _____   ____  _____ _   _ ____ ___ _   _  ____ 
@@ -123,7 +123,7 @@ TEST PENDING: Searching by ambiguious keyword should display the disambiguation 
 
 TEST STARTED: searching_by_keyword_apple_should_display_the_corresponding_article
 -------------------------------------------------------------------
-[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 11
+[main] INFO net.serenitybdd.core.Serenity - TEST NUMBER: 13
 [main] INFO net.serenitybdd.core.Serenity - TEST PENDING
 [main] INFO net.serenitybdd.core.Serenity - 
           __  _____ _____ ____ _____   ____  _____ _   _ ____ ___ _   _  ____ 

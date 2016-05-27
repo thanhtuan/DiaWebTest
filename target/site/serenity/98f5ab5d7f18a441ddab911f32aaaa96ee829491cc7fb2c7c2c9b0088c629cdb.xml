@@ -1,4 +1,4 @@
-<acceptance-test-run title="Searching by keyword apple should display the corresponding article" name="searching_by_keyword_apple_should_display_the_corresponding_article" steps="0" successful="0" failures="0" skipped="0" ignored="0" pending="0" annotated-result="PENDING" result="PENDING" duration="1" timestamp="2016-05-23T17:05:56.629+07:00">
+<acceptance-test-run title="Searching by keyword apple should display the corresponding article" name="searching_by_keyword_apple_should_display_the_corresponding_article" steps="0" successful="0" failures="0" skipped="0" ignored="0" pending="0" annotated-result="PENDING" result="PENDING" duration="0" timestamp="2016-05-27T18:12:34.346+07:00">
   <user-story id="com.tripolis.qa.features.search.SearchByKeywordStory" name="Search by keyword story" path="com.tripolis.qa.features.search"/>
   <issues>
     <issue>#WIKI-1</issue>
