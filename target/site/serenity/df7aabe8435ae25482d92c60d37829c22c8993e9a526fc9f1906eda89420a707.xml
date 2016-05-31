@@ -1,7 +1,0 @@
-<acceptance-test-run title="Scenario3 delete contact database" name="scenario3DeleteContactDatabase" steps="0" successful="0" failures="0" skipped="0" ignored="0" pending="0" annotated-result="PENDING" result="PENDING" duration="0" timestamp="2016-05-27T18:08:43.353+07:00">
-  <user-story id="com.tripolis.qa.features.contactDatabase.DiaContactDatabaseStory" name="Dia contact database story" path="com.tripolis.qa.features.contactDatabase"/>
-  <tags>
-    <tag name="Contact database" type="feature"/>
-    <tag name="Contact database/Dia contact database story" type="story"/>
-  </tags>
-</acceptance-test-run>

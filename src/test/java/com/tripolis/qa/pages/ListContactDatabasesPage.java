@@ -21,8 +21,26 @@ public class ListContactDatabasesPage extends PageObject {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@FindBy(id="editable")
+	@FindBy(id="editable", timeoutInSeconds="5")
 	private WebElementFacade newLink; 
+	
+	@FindBy(id="edit", timeoutInSeconds="5")
+	private WebElementFacade editButton;
+	
+	@FindBy(id="delete", timeoutInSeconds="5")
+	private WebElementFacade deleteButton;
+	
+	@FindBy(name="confirmed", timeoutInSeconds="5")
+	private WebElementFacade confirmedButton;
+	
+	@FindBy(id="deleteBtn", timeoutInSeconds="5")
+	private WebElementFacade deleteBtn;
+	
+	@FindBy(css="option[selected]", timeoutInSeconds="5")
+	private WebElementFacade contactDatabasesDropDown;
+	
+	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
+	private WebElementFacade selectedContactDatabases;
 	
 	public void clickNewLink() {
 		logger.info("Please click on New Link");
@@ -36,5 +54,36 @@ public class ListContactDatabasesPage extends PageObject {
 		
 	}
 	
+	public String contactDatabasesAttribute() {
+		return contactDatabasesDropDown.getAttribute("value");
+	}
+	
+	public void select_ContactDatabases() {
+		selectedContactDatabases.click();
+	}
+	
+	public void clickEditButton() {
+		logger.info("Please click on Edit Button");
+		editButton.click();
+		logger.info("already click on Edit Button");
+	}
+	
+	public void clickDeleteButton() {
+		logger.info("Please click on Delete Button");
+		deleteButton.click();
+		logger.info("already click on Delete Button");
+	}
+	
+	public void clickconfirmedButton() {
+		logger.info("Please click on confirmed Button");
+		confirmedButton.click();
+		logger.info("already click on confirmed Button");
+	}
+	
+	public void clickDeleteBtn() {
+		logger.info("Please click on DeleteBtn");
+		deleteBtn.click();
+		logger.info("already click on DeleteBtn");
+	}
 	
 }

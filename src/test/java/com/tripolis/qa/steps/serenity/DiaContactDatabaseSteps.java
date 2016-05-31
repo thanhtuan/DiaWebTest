@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.tripolis.qa.pages.DiaAdministrationPage;
 import com.tripolis.qa.pages.DiaContactDatabaseWizard;
+import com.tripolis.qa.pages.DiaEditContactDatabaseDetailsPage;
 import com.tripolis.qa.pages.DiaHomePage;
-import com.tripolis.qa.pages.DiaLoginPage;
 import com.tripolis.qa.pages.DiaMainMenu;
 import com.tripolis.qa.pages.DiaSubMenuSetupModule;
 import com.tripolis.qa.pages.ListContactDatabasesPage;
@@ -17,35 +17,57 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 
 	DiaMainMenu diaMainMenu;
 	DiaSubMenuSetupModule diaSubMenuSetupModule;
-	DiaLoginPage diaLoginPage;
 	DiaHomePage diaHomePage;
 	DiaAdministrationPage diaAdministrationPage;
 	ListContactDatabasesPage listContactDatabasesPage;
+	DiaEditContactDatabaseDetailsPage diaEditContactDatabaseDetailsPage;
 	DiaContactDatabaseWizard diaContactDatabaseWizard;
 	
-	@Step
-	public void loginToDia(String keyword1, String keyword2, String keyword3) {
-		diaLoginPage.open();
-		diaLoginPage.enter_DomainName(keyword1);
-		diaLoginPage.enter_UserName(keyword2);
-		diaLoginPage.enter_passWord(keyword3);
-		diaLoginPage.click_login();
-	}
+	/*
+	 * Steps using methods from DiaMainMenu
+	 */
 	
 	@Step
 	public void navigateToAdministrationPage() {
 		diaMainMenu.click_SetupPageLink();
 	}
 	
-	@Step
-	public void onAdministrationPage() {
-		assert(diaAdministrationPage.getAdministrationUrl());
-	}
+	/*
+	 * *******End Steps using methods from DiaMainMenu********
+	 */
+	
+	
+	/*
+	 * Steps using methods from DiaSubMenuSetupModule
+	 */
 	
 	@Step
 	public void navigateToListContactDatabasesPage() {
 		diaSubMenuSetupModule.click_ListContactDatabasesPageLink();
 	}
+	
+	/*
+	 * *******End Steps using methods from DiaSubMenuSetupModule********
+	 */
+	
+	
+	/*
+	 * Steps using methods from DiaAdministrationPage
+	 */
+	
+	@Step
+	public void onAdministrationPage() {
+		assert(diaAdministrationPage.getAdministrationUrl());
+	}
+	
+	/*
+	 * *******End Steps using methods from DiaAdministrationPage********
+	 */
+	
+	
+	/*
+	 * Steps using methods from ListContactDatabasesPage
+	 */
 	
 	@Step
 	public void onListContactDatabasesPage() {
@@ -58,8 +80,91 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void clickOnEditButton() {
+		listContactDatabasesPage.clickEditButton();
+	}
+	
+	@Step
+	public void clickOnDeleteButton () {
+		listContactDatabasesPage.clickDeleteButton();
+	}
+	
+	@Step
+	public void clickOnConfirmedButton () {
+		listContactDatabasesPage.clickconfirmedButton();
+	}
+	
+	@Step
+	public void clickOnDeleteBtn () {
+		listContactDatabasesPage.clickDeleteBtn();
+	}
+	
+	@Step
+	public String getcontactDatabasesAttribute() {
+		return listContactDatabasesPage.contactDatabasesAttribute();
+	}
+	
+	@Step
+	public void selectContactDB() {
+		listContactDatabasesPage.select_ContactDatabases();
+	}
+	
+	/*
+	 * *******End Steps using methods from ListContactDatabasesPage********
+	 */
+	
+	
+	/*
+	 * Steps using methods from DiaEditContactDatabaseDetailsPage
+	 */
+	
+	@Step
+	public void onEditContactDatabasePage() {
+		assert(diaEditContactDatabaseDetailsPage.getEditContactDatabaseUrl());
+	}
+	
+	@Step
+	public void editLable(String keyword) {
+		diaEditContactDatabaseDetailsPage.enter_Label(keyword);
+	}
+	
+	@Step
+	public void editName(String keyword) {
+		diaEditContactDatabaseDetailsPage.enter_Name(keyword);
+	}
+	
+	@Step
+	public void verify_HeaderNameText(String keyword) {
+		assertThat(diaEditContactDatabaseDetailsPage.getHeaderNameText().equalsIgnoreCase("Edit contact database " + '"' + keyword + '"'));
+	}
+	
+	@Step
+	public void clickOnSubmitButton() {
+		diaEditContactDatabaseDetailsPage.clickSubmitButton();
+	}
+	
+	/*
+	 * *******End Steps using methods from DiaEditContactDatabaseDetailsPage********
+	 */
+	
+	
+	/*
+	 * Steps using methods from DiaContactDatabaseWizard
+	 */
+	
+	@Step
 	public void seeCreateDatabaseDialog() {
 		assertThat(diaContactDatabaseWizard.isShowCreateDatabaseDialog()).isTrue();
+	}
+	
+	@Step
+	public void setLabel(String keyword) {
+		diaContactDatabaseWizard.enter_Label(keyword);
+	}
+	
+	@Step
+	public void setName(String keyword) {
+		diaContactDatabaseWizard.enter_Name(keyword);
 	}
 	
 	@Step
@@ -87,16 +192,17 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 		diaContactDatabaseWizard.clickFinishButton();
 	}
 	
-	@Step
-	public void setLabel(String keyword) {
-		diaContactDatabaseWizard.enter_Label(keyword);
-	}
+	/*
+	 * *******End methods Steps using from DiaContactDatabaseWizard********
+	 */
 	
-	@Step
-	public void setName(String keyword) {
-		diaContactDatabaseWizard.enter_Name(keyword);
-	}
+
 	
+	
+	/*
+	 * *******Steps for create contact database********
+	 */
+		
 	/*
 	 * This function can use for some field types: string, int, decimal, email, mobile
 	 */

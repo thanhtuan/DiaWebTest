@@ -29,7 +29,6 @@ public class DiaHomePage extends PageObject {
 	
 	public boolean getHomeurl() {
 		logger.info("Get Home URL");
-		return driver.getCurrentUrl().contains("/dialogue/home.html");
-		
+		return driver.getCurrentUrl().contains("/dialogue/home.html");	
 	}
 }

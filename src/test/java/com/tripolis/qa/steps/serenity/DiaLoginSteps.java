@@ -14,6 +14,33 @@ public class DiaLoginSteps extends ScenarioSteps {
 	DiaLoginPage diaLoginPage;
 	DiaHomePage diaHomePage;
 	
+	
+	/*
+	 * Steps using methods from diaHomePage
+	 */
+	
+	@Step
+	public void verify_ClientName() {
+		assertThat(diaHomePage.getSpanText().equalsIgnoreCase("Client: Haralds Company"));
+	}
+	
+	@Step
+	public void verify_login_successful() {	
+		//System.out.println("-----------Test--------: " + diaHomePage.getHomeurl());
+		assert(diaHomePage.getHomeurl());
+		
+	}
+	
+	/*
+	 * *******End steps using methods from diaHomePage********
+	 */
+	
+	
+	
+	/*
+	 * *******Steps for Login to Dia********
+	 */
+	
 	@Step
 	public void is_the_login_page() {
 		diaLoginPage.open();
@@ -44,22 +71,9 @@ public class DiaLoginSteps extends ScenarioSteps {
 		diaLoginPage.click_login();
 	}
 	
-	
-	@Step
-	public void verify_ClientName() {
-		assertThat(diaHomePage.getSpanText().equalsIgnoreCase("Client: Haralds Company"));
-	}
-	
 	@Step
 	public void verify_ErrorMessage() {
 		assertThat(diaLoginPage.getErrorMessage().equalsIgnoreCase("         	Bad credentials         "));
-	}
-	
-	@Step
-	public void verify_login_successful() {	
-		//System.out.println("-----------Test--------: " + diaHomePage.getHomeurl());
-		assert(diaHomePage.getHomeurl());
-		
 	}
 	
 	@Step

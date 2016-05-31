@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Dia contact database story","Scenario1 click on cancel button create contact database","SUCCESS","2016-05-27T18:07:12.813+07:00","0.0","35.78"
-"Dia contact database story","Scenario2 create vaild contact database","SUCCESS","2016-05-27T18:07:48.640+07:00","0.0","54.71"
-"Dia contact database story","Scenario3 delete contact database","PENDING","2016-05-27T18:08:43.353+07:00","0.0","0.0"
