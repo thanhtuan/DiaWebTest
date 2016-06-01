@@ -21,7 +21,7 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaContactDatabaseStory {
 
-	 private String databaseName = "Dialogue DB Test "+ System.currentTimeMillis();
+	private String databaseName = "Dialogue DB Test "+ System.currentTimeMillis();
 	private String databaseLabel = "Dialogue DB Test "+ System.currentTimeMillis();
 	private String databaseId;
 	
@@ -36,7 +36,6 @@ public class DiaContactDatabaseStory {
 	
 	@Before
 	public void setUp() throws InterruptedException {
-		//EndUser.loginToDia("haralds company", "telerik@tripolis.com", );
 		diaLoginSteps.is_the_login_page();
 		diaLoginSteps.enterDomain("haralds company");
 		diaLoginSteps.enterUser("telerik@tripolis.com");
@@ -49,7 +48,7 @@ public class DiaContactDatabaseStory {
 	}
 	
 	@Test
-	public void scenario1ClickOnCancelButtonCreateContactDatabase() {
+	public void scenario1ClickOnCancelButtonWhenCreateContactDatabase() {
 		EndUser.clickOnNewLink();
 		EndUser.seeCreateDatabaseDialog();
 		EndUser.setLabel(databaseLabel);

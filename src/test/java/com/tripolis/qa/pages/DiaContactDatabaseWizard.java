@@ -118,6 +118,7 @@ public class DiaContactDatabaseWizard extends PageObject {
 	
 	public void enter_Label(String keyword) {
 		logger.info("Please input Label");
+		label.clear();
 		label.type(keyword);
 		logger.info("already input Label");
     }
@@ -166,6 +167,7 @@ public class DiaContactDatabaseWizard extends PageObject {
 	
 	public void select_FieldType(String keyword) {
 		fieldType.selectByVisibleText(keyword);
+		//fieldType.selectByValue(keyword);
 	}
 	
 	public void select_Order(String keyword) {

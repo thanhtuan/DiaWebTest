@@ -39,19 +39,19 @@ public class DiaSubMenuSetupModule extends PageObject {
 	
 	public void click_ListWorkspacesPageLink() {
 		logger.info("Please click on List Work spaces Page Link");
-		subMenuListContactDatabasesPage.click();
+		subMenuListWorkspacesPage.waitUntilClickable().click();
 		logger.info("already click on List Work spaces Page Link");
     }
 	
 	public void click_SetupModulePublishingPageLink() {
 		logger.info("Please click on Setup Module Publishing Page Link");
-		subMenuSetupModulePublishingPage.click();
+		subMenuSetupModulePublishingPage.waitUntilClickable().click();
 		logger.info("already click on Setup Module Publishing Page Link");
     }
 	
 	public void click_SetupModuleApplicationPageLink() {
 		logger.info("Please click on Setup Module Application Page Link");
-		subMenuSetupModuleApplicationPage.click();
+		subMenuSetupModuleApplicationPage.waitUntilClickable().click();
 		logger.info("already click on Setup Module Application Page Link");
     }
 	
