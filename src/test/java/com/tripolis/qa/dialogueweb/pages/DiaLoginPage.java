@@ -1,38 +1,37 @@
-package com.tripolis.qa.pages;
+package com.tripolis.qa.dialogueweb.pages;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.tripolis.qa.common.AbstractPage;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("/dialogue/login.html")
-public class DiaLoginPage extends PageObject {
-	
-	public WebDriver driver=null;
-	private static final Logger logger = LoggerFactory.getLogger(DiaLoginPage.class);
+public class DiaLoginPage extends AbstractPage {
 
 	public DiaLoginPage(WebDriver driver) {
-		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-		this.driver = driver;
 		// TODO Auto-generated constructor stub
+		super(driver);
 	}
 	
-	@FindBy(id="loginContainer")
+	private static final Logger logger = LoggerFactory.getLogger(DiaLoginPage.class);
+	
+	@FindBy(id="loginContainer", timeoutInSeconds="5")
 	private WebElementFacade loginForm;
 	
-	@FindBy(id="domainName")
+	@FindBy(id="domainName", timeoutInSeconds="5")
 	private WebElementFacade clientDomainName;
 	
-	@FindBy(id="j_username")
+	@FindBy(id="j_username", timeoutInSeconds="5")
 	private WebElementFacade userName;
 	
-	@FindBy(id="j_password")
+	@FindBy(id="j_password", timeoutInSeconds="5")
 	private WebElementFacade passWord;
 	
-	@FindBy(id="loginButton")
+	@FindBy(id="loginButton", timeoutInSeconds="5")
 	private WebElementFacade loginButton;
 	
 	@FindBy(xpath=".//*[@id='tagline']/center", timeoutInSeconds="5")
@@ -40,20 +39,23 @@ public class DiaLoginPage extends PageObject {
 	
 	public void enter_DomainName(String keyword) {
 		logger.info("Please input DomainName");
+		clientDomainName.clear();
 		clientDomainName.type(keyword);
-		logger.info("already DomainName");
+		logger.info("already input DomainName");
     }
 	
 	public void enter_UserName(String keyword) {
 		logger.info("Please input UserName");
+		userName.clear();
 		userName.type(keyword);
-		logger.info("already UserName");
+		logger.info("already input UserName");
     }
 	
 	public void enter_passWord(String keyword) {
 		logger.info("Please input Password");
+		passWord.clear();
 		passWord.type(keyword);
-		logger.info("already Password");
+		logger.info("already input Password");
     }
 	
 	public boolean isshowloginForm() {

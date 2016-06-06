@@ -1,4 +1,4 @@
-package com.tripolis.qa.features;
+package com.tripolis.qa.dialogueweb.features.workspace;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-import com.tripolis.qa.steps.serenity.DiaContactDatabaseSteps;
-import com.tripolis.qa.steps.serenity.DiaLoginSteps;
-import com.tripolis.qa.steps.serenity.DiaWorkspaceSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaWorkspaceSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -24,9 +24,12 @@ public class DiaWorkspaceStory {
 	private String databaseName = "Dialogue DB Test "+ System.currentTimeMillis();
 	private String databaseLabel = "Dialogue DB Test "+ System.currentTimeMillis();
 	private String databaseId;
+	private String workspaceLabel = "Dialogue Workspace Test "+ System.currentTimeMillis();
+	private String workspaceName = "Dialogue Workspace Test "+ System.currentTimeMillis();
+	private String workspaceId;	
 	
 	@Managed(uniqueSession = true)
-	public WebDriver driver = null;
+	public WebDriver driver=null;
 	
 	@Steps
 	DiaLoginSteps diaLoginSteps;
@@ -35,19 +38,17 @@ public class DiaWorkspaceStory {
 	public DiaContactDatabaseSteps diaContactDatabaseSteps;
 	
 	@Steps
-	DiaWorkspaceSteps EndUser;
+	DiaWorkspaceSteps diaWorkspaceSteps;
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.is_the_login_page();
-		diaLoginSteps.enterDomain("haralds company");
-		diaLoginSteps.enterUser("telerik@tripolis.com");
-		diaLoginSteps.enterPass("Telerik1!");
+		diaLoginSteps.inputDataToLoginForm("haralds company", "telerik@tripolis.com", "Telerik1!");
 		diaLoginSteps.clickonLoginButton();
 		diaContactDatabaseSteps.navigateToAdministrationPage();
 		diaContactDatabaseSteps.onAdministrationPage();
-		//EndUser.navigateToListWorkspacePage();
-		//EndUser.onListWorkspacesPage();
+		//diaWorkspaceSteps.navigateToListWorkspacePage();
+		//diaWorkspaceSteps.onListWorkspacesPage();
 	}
 	
 	@Test
@@ -71,47 +72,49 @@ public class DiaWorkspaceStory {
 		Thread.sleep(1000);
 		databaseId = diaContactDatabaseSteps.getcontactDatabasesAttribute();
 		System.out.println("Database id = " + databaseId);
-		EndUser.navigateToListWorkspacePage();
-		EndUser.onListWorkspacesPage();
-		EndUser.clickOnNewLink();
-		EndUser.onCreateWorkspacesPage();
-		EndUser.setLabel("Dialogue Workspace Test "+ System.currentTimeMillis());
-		EndUser.setName("Dialogue Workspace Test "+ System.currentTimeMillis());
-		EndUser.selected_DB(databaseLabel);
-		EndUser.setPublicDomainNameLinkAndPage("");
-		EndUser.setPublicDomainNameImages("");
-		EndUser.setBounceDomainName("");
-		EndUser.clickOnSaveButton();
+		diaWorkspaceSteps.navigateToListWorkspacePage();
+		diaWorkspaceSteps.onListWorkspacesPage();
+		diaWorkspaceSteps.clickOnNewLink();
+		diaWorkspaceSteps.onCreateWorkspacesPage();
+		diaWorkspaceSteps.setLabel(workspaceLabel);
+		diaWorkspaceSteps.setName(workspaceName);
+		diaWorkspaceSteps.selected_DB(databaseLabel);
+		diaWorkspaceSteps.setPublicDomainNameLinkAndPage("");
+		diaWorkspaceSteps.setPublicDomainNameImages("");
+		diaWorkspaceSteps.setBounceDomainName("");
+		diaWorkspaceSteps.clickOnSaveButton();
 		Thread.sleep(1000);
-		EndUser.navigateToListWorkspacePage();
+		workspaceId = diaWorkspaceSteps.getcontentWorkspaceAttribute();
+		System.out.println("Workspace id = " + workspaceId);
+		diaWorkspaceSteps.navigateToListWorkspacePage();
 	}
 	
 	@Test
 	public void scenario2EditWorkspace() throws Exception {
-		EndUser.navigateToListWorkspacePage();
-		EndUser.onListWorkspacesPage();
-		EndUser.selectWorkspace();
-		EndUser.clickOnEditButton();
-		EndUser.onEditWorkspacesPage();
-		EndUser.editLabel("ABC SerenityBDD "+ "Dialogue Workspace Test "+ System.currentTimeMillis());
-		EndUser.editName("ABC SerenityBDD "+ "Dialogue Workspace Test "+ System.currentTimeMillis());
-		EndUser.checkcontactDatabaseState();
-		EndUser.editPublicDomainNameLinkAndPage("http://site.int.tripolis.com/");
-		EndUser.editPublicDomainNameImages("http://site.int.tripolis.com/");
-		EndUser.editBounceDomainName("");
-		EndUser.checked_AddListUnsubscribeHeader();
-		EndUser.clickOnSaveButtonEditPage();
+		diaWorkspaceSteps.navigateToListWorkspacePage();
+		diaWorkspaceSteps.onListWorkspacesPage();
+		diaWorkspaceSteps.selectWorkspace();
+		diaWorkspaceSteps.clickOnEditButton();
+		diaWorkspaceSteps.onEditWorkspacesPage();
+		diaWorkspaceSteps.editLabel("ABC SerenityBDD "+ "Dialogue Workspace Test "+ System.currentTimeMillis());
+		diaWorkspaceSteps.editName("ABC SerenityBDD "+ "Dialogue Workspace Test "+ System.currentTimeMillis());
+		diaWorkspaceSteps.checkcontactDatabaseState();
+		diaWorkspaceSteps.editPublicDomainNameLinkAndPage("http://site.int.tripolis.com/");
+		diaWorkspaceSteps.editPublicDomainNameImages("http://site.int.tripolis.com/");
+		diaWorkspaceSteps.editBounceDomainName("");
+		diaWorkspaceSteps.checked_AddListUnsubscribeHeader();
+		diaWorkspaceSteps.clickOnSaveButtonEditPage();
 		//Thread.sleep(10000);
 	}
 	
 	@Test
 	public void scenario3DeleteWorkspace() throws Exception {
-		EndUser.navigateToListWorkspacePage();
-		EndUser.onListWorkspacesPage();
-		EndUser.selectWorkspace();
-		EndUser.clickOnDeleteButton();
-		EndUser.clickOnConfirmedButton();
-		EndUser.clickOnDeleteBtn();
+		diaWorkspaceSteps.navigateToListWorkspacePage();
+		diaWorkspaceSteps.onListWorkspacesPage();
+		diaWorkspaceSteps.selectWorkspace();
+		diaWorkspaceSteps.clickOnDeleteButton();
+		diaWorkspaceSteps.clickOnConfirmedButton();
+		diaWorkspaceSteps.clickOnDeleteBtn();
 		Thread.sleep(1000);
 		diaContactDatabaseSteps.navigateToListContactDatabasesPage();
 		diaContactDatabaseSteps.onListContactDatabasesPage();

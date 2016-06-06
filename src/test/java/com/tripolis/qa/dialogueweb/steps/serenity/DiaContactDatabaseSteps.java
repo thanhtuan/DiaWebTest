@@ -1,59 +1,46 @@
-package com.tripolis.qa.steps.serenity;
+package com.tripolis.qa.dialogueweb.steps.serenity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.tripolis.qa.pages.DiaAdministrationPage;
-import com.tripolis.qa.pages.DiaContactDatabaseWizard;
-import com.tripolis.qa.pages.DiaEditContactDatabaseDetailsPage;
-import com.tripolis.qa.pages.DiaHomePage;
-import com.tripolis.qa.pages.DiaMainMenu;
-import com.tripolis.qa.pages.DiaSubMenuSetupModule;
-import com.tripolis.qa.pages.ListContactDatabasesPage;
+import com.tripolis.qa.dialogueweb.pages.DiaAdministrationPage;
+import com.tripolis.qa.dialogueweb.pages.DiaContactDatabaseWizard;
+import com.tripolis.qa.dialogueweb.pages.DiaEditContactDatabaseDetailsPage;
+import com.tripolis.qa.dialogueweb.pages.DiaHomePage;
+import com.tripolis.qa.dialogueweb.pages.DiaListContactDatabasesPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaContactDatabaseSteps extends ScenarioSteps {
 
-	DiaMainMenu diaMainMenu;
-	DiaSubMenuSetupModule diaSubMenuSetupModule;
 	DiaHomePage diaHomePage;
 	DiaAdministrationPage diaAdministrationPage;
-	ListContactDatabasesPage listContactDatabasesPage;
+	DiaListContactDatabasesPage diaListContactDatabasesPage;
 	DiaEditContactDatabaseDetailsPage diaEditContactDatabaseDetailsPage;
 	DiaContactDatabaseWizard diaContactDatabaseWizard;
 	
 	/*
-	 * Steps using methods from DiaMainMenu
+	 * Steps using methods from DiaHomePage
 	 */
 	
 	@Step
 	public void navigateToAdministrationPage() {
-		diaMainMenu.click_SetupPageLink();
+		diaHomePage.click_SetupPageLink();
 	}
 	
 	/*
-	 * *******End Steps using methods from DiaMainMenu********
-	 */
-	
-	
-	/*
-	 * Steps using methods from DiaSubMenuSetupModule
-	 */
-	
-	@Step
-	public void navigateToListContactDatabasesPage() {
-		diaSubMenuSetupModule.click_ListContactDatabasesPageLink();
-	}
-	
-	/*
-	 * *******End Steps using methods from DiaSubMenuSetupModule********
+	 * *******End Steps using methods from DiaHomePage********
 	 */
 	
 	
 	/*
 	 * Steps using methods from DiaAdministrationPage
 	 */
+	
+	@Step
+	public void navigateToListContactDatabasesPage() {
+		diaAdministrationPage.clickOnsubMenuItem1();
+	}
 	
 	@Step
 	public void onAdministrationPage() {
@@ -66,51 +53,51 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	
 	
 	/*
-	 * Steps using methods from ListContactDatabasesPage
+	 * Steps using methods from DiaListContactDatabasesPage
 	 */
 	
 	@Step
 	public void onListContactDatabasesPage() {
-		assert(listContactDatabasesPage.getListContactDatabasesUrl());
+		assert(diaListContactDatabasesPage.getListContactDatabasesUrl());
 	}
 	
 	@Step
 	public void clickOnNewLink() {
-		listContactDatabasesPage.clickNewLink();
+		diaListContactDatabasesPage.clickNewLink();
 	}
 	
 	@Step
 	public void clickOnEditButton() {
-		listContactDatabasesPage.clickEditButton();
+		diaListContactDatabasesPage.clickEditButton();
 	}
 	
 	@Step
 	public void clickOnDeleteButton () {
-		listContactDatabasesPage.clickDeleteButton();
+		diaListContactDatabasesPage.clickDeleteButton();
 	}
 	
 	@Step
 	public void clickOnConfirmedButton () {
-		listContactDatabasesPage.clickconfirmedButton();
+		diaListContactDatabasesPage.clickconfirmedButton();
 	}
 	
 	@Step
 	public void clickOnDeleteBtn () {
-		listContactDatabasesPage.clickDeleteBtn();
+		diaListContactDatabasesPage.clickDeleteBtn();
 	}
 	
 	@Step
 	public String getcontactDatabasesAttribute() {
-		return listContactDatabasesPage.contactDatabasesAttribute();
+		return diaListContactDatabasesPage.contactDatabasesAttribute();
 	}
 	
 	@Step
 	public void selectContactDB() {
-		listContactDatabasesPage.select_ContactDatabases();
+		diaListContactDatabasesPage.select_ContactDatabases();
 	}
 	
 	/*
-	 * *******End Steps using methods from ListContactDatabasesPage********
+	 * *******End Steps using methods from diaListContactDatabasesPage********
 	 */
 	
 	
@@ -140,7 +127,7 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	
 	@Step
 	public void clickOnSubmitButton() {
-		diaEditContactDatabaseDetailsPage.clickSubmitButton();
+		diaEditContactDatabaseDetailsPage.clickSaveButton();
 	}
 	
 	/*

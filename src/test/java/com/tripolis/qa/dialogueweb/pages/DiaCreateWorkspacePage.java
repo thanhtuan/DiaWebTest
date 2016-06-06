@@ -1,25 +1,24 @@
-package com.tripolis.qa.pages;
+package com.tripolis.qa.dialogueweb.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.tripolis.qa.common.AbstractPage;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("/dialogue/admin/content/createWorkspace.html")
-public class DiaCreateWorkspacePage extends PageObject {
-
-	public WebDriver driver=null;
-	Logger logger = LoggerFactory.getLogger(DiaCreateWorkspacePage.class);
+public class DiaCreateWorkspacePage extends AbstractPage {
 	
 	public DiaCreateWorkspacePage(WebDriver driver) {
-		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-		this.driver = driver;
 		// TODO Auto-generated constructor stub
+		super(driver);
 	}
+	
+	Logger logger = LoggerFactory.getLogger(DiaCreateWorkspacePage.class);
 	
 	@FindBy(id="label", timeoutInSeconds="10")
 	private WebElementFacade label;
@@ -42,29 +41,10 @@ public class DiaCreateWorkspacePage extends PageObject {
 	@FindBy(name="addUnsubscribeHeader", timeoutInSeconds="5")
 	private WebElementFacade addListUnsubscribeHeader;
 	
-	@FindBy(id="submitOk", timeoutInSeconds="10")
-	private WebElementFacade saveButton;
-	
 	public boolean getCreateWorkspacesUrl() {
 		logger.info("Get Create Workspaces URL");
 		return driver.getCurrentUrl().contains("/dialogue/admin/content/createWorkspace.html");
 	}
-	
-	public void enter_Label(String keyword) {
-		logger.info("Please input Label");
-		label.clear();
-		label.type(keyword);
-		logger.info("already input Label");
-    }
-	
-	public void enter_Name(String keyword) {
-		logger.info("Please input Name");
-		name.clear();	
-		keyword = keyword.toLowerCase();
-		keyword = keyword.replaceAll(" ", "");
-		name.type(keyword);
-		logger.info("already input Name");
-    }
 	
 	public void select_ContactDatabase(String keyword) {
 		pContactDatabase.selectByVisibleText(keyword);
@@ -95,9 +75,4 @@ public class DiaCreateWorkspacePage extends PageObject {
 		addListUnsubscribeHeader.click();
 	}
 	
-	public void clickSaveButton() {
-		logger.info("Please click on save Button");
-		saveButton.click();
-		logger.info("already click on save Button");
-	}
 }

@@ -1,24 +1,22 @@
-package com.tripolis.qa.pages;
+package com.tripolis.qa.dialogueweb.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.tripolis.qa.common.AbstractPage;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
-public class DiaContactDatabaseWizard extends PageObject {
-
-	public WebDriver driver=null;
-	Logger logger = LoggerFactory.getLogger(DiaContactDatabaseWizard.class);
+public class DiaContactDatabaseWizard extends AbstractPage {
 	
 	public DiaContactDatabaseWizard(WebDriver driver) {
-		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-		this.driver = driver;
 		// TODO Auto-generated constructor stub
+		super(driver);
 	}
+	
+	Logger logger = LoggerFactory.getLogger(DiaContactDatabaseWizard.class);
 	
 	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
 	private WebElementFacade createDatabaseDialog;
@@ -37,12 +35,6 @@ public class DiaContactDatabaseWizard extends PageObject {
 	
 	@FindBy(id="finish", timeoutInSeconds="5")
 	private WebElementFacade finishButton;
-	
-	@FindBy(id="label", timeoutInSeconds="10")
-	private WebElementFacade label;
-	
-	@FindBy(id="name", timeoutInSeconds="5")
-	private WebElementFacade name;
 	
 	@FindBy(name="type", timeoutInSeconds="5")
 	private WebElementFacade fieldType;
@@ -88,49 +80,33 @@ public class DiaContactDatabaseWizard extends PageObject {
 	
 	public void clickCancelButton() {
 		logger.info("Please click on Cancel Button");
-		cancelButton.click();
+		cancelButton.waitUntilClickable().click();
 		logger.info("already click on Cancel Button");
 	}
 	
 	public void clickNextButton() {
 		logger.info("Please click on Next Button");
-		nextButton.click();
+		nextButton.waitUntilClickable().click();
 		logger.info("already click on Next Button");
 	}
 	
 	public void clickPreviousButton() {
 		logger.info("Please click on Previous Button");
-		previousButton.click();
+		previousButton.waitUntilClickable().click();
 		logger.info("already click on Previous Button");
 	}
 	
 	public void clickAddFieldButton() {
 		logger.info("Please click on Add Field Button");
-		addFieldButton.click();
+		addFieldButton.waitUntilClickable().click();
 		logger.info("already click on Add Field Button");
 	}
 	
 	public void clickFinishButton() {
 		logger.info("Please click on Finish Button");
-		finishButton.click();
+		finishButton.waitUntilClickable().click();
 		logger.info("already click on Finish Button");
 	}
-	
-	public void enter_Label(String keyword) {
-		logger.info("Please input Label");
-		label.clear();
-		label.type(keyword);
-		logger.info("already input Label");
-    }
-	
-	public void enter_Name(String keyword) {
-		logger.info("Please input Name");
-		name.clear();	
-		keyword = keyword.toLowerCase();
-		keyword = keyword.replaceAll(" ", "");
-		name.type(keyword);
-		logger.info("already input Name");
-    }
 	
 	public void enter_FieldDescriptorLabel(String keyword) {
 		logger.info("Please input Field Descriptor Label");

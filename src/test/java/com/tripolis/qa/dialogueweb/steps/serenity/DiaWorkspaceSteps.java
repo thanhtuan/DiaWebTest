@@ -1,32 +1,32 @@
-package com.tripolis.qa.steps.serenity;
+package com.tripolis.qa.dialogueweb.steps.serenity;
 
-import com.tripolis.qa.pages.DiaCreateWorkspacePage;
-import com.tripolis.qa.pages.DiaEditWorkspacePage;
-import com.tripolis.qa.pages.DiaListWorkspacesPage;
-import com.tripolis.qa.pages.DiaSubMenuSetupModule;
+import com.tripolis.qa.dialogueweb.pages.DiaCreateWorkspacePage;
+import com.tripolis.qa.dialogueweb.pages.DiaEditWorkspacePage;
+import com.tripolis.qa.dialogueweb.pages.DiaListContactDatabasesPage;
+import com.tripolis.qa.dialogueweb.pages.DiaListWorkspacesPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaWorkspaceSteps extends ScenarioSteps {
 	
-	DiaSubMenuSetupModule diaSubMenuSetupModule;
+	DiaListContactDatabasesPage diaListContactDatabasesPage;
 	DiaListWorkspacesPage diaListWorkspacesPage;
 	DiaCreateWorkspacePage diaCreateWorkspacePage;
 	DiaEditWorkspacePage diaEditWorkspacePage;
 	
 	
 	/*
-	 * Steps using methods from DiaSubMenuSetupModule
+	 * Steps using methods from DiaListContactDatabasesPage
 	 */
 	
 	@Step
 	public void navigateToListWorkspacePage() {
-		diaSubMenuSetupModule.click_ListWorkspacesPageLink();
+		diaListContactDatabasesPage.clickOnsubMenuItem2();
 	}
 	
 	/*
-	 * *******End Steps using methods from DiaSubMenuSetupModule********
+	 * *******End Steps using methods from DiaListContactDatabasesPage********
 	 */
 	
 	/*
@@ -61,6 +61,11 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	@Step
 	public void clickOnDeleteBtn () {
 		diaListWorkspacesPage.clickDeleteBtn();
+	}
+	
+	@Step
+	public String getcontentWorkspaceAttribute() {
+		return diaListWorkspacesPage.contentWorkspaceAttribute();
 	}
 	
 	@Step
