@@ -13,16 +13,17 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Story;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaLoginStory {
 	
 	@Managed(uniqueSession = true)
-	public WebDriver driver=null;
+	public WebDriver driver;
 	
 	@Steps
-	protected DiaLoginSteps diaLoginSteps;
+	public DiaLoginSteps diaLoginSteps;
 	
 	@Before
 	public void setUp() {

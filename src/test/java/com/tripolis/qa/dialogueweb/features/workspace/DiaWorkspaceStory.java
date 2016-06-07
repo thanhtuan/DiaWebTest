@@ -16,6 +16,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Story;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -29,10 +30,10 @@ public class DiaWorkspaceStory {
 	private String workspaceId;	
 	
 	@Managed(uniqueSession = true)
-	public WebDriver driver=null;
+	public WebDriver driver;
 	
 	@Steps
-	DiaLoginSteps diaLoginSteps;
+	public DiaLoginSteps diaLoginSteps;
 	
 	@Steps
 	public DiaContactDatabaseSteps diaContactDatabaseSteps;
