@@ -18,15 +18,9 @@ public class DiaEditContactDatabaseDetailsPage extends AbstractPage {
 	
 	Logger logger = LoggerFactory.getLogger(DiaEditContactDatabaseDetailsPage.class);
 	
-	@FindBy(xpath=".//*[@id='main']/div/div[1]", timeoutInSeconds="5")
-	private WebElementFacade headerNameText;
 	
 	@FindBy(css="option[selected]", timeoutInSeconds="5")
 	private WebElementFacade presentationField;
-	
-	public String getHeaderNameText() {
-		return headerNameText.getText();
-	}
 	
 	public void select_PresentationField(String keyword) {
 		presentationField.selectByVisibleText(keyword);

@@ -1,5 +1,7 @@
 package com.tripolis.qa.dialogueweb.steps.serenity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.tripolis.qa.dialogueweb.pages.DiaCreateWorkspacePage;
 import com.tripolis.qa.dialogueweb.pages.DiaEditWorkspacePage;
 import com.tripolis.qa.dialogueweb.pages.DiaListContactDatabasesPage;
@@ -39,6 +41,11 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void verifyheaderNameTextListWorkspaces() {
+		assertThat(diaListWorkspacesPage.getheaderNameText().equalsIgnoreCase("List of workspaces"));
+	}
+	
+	@Step
 	public void clickOnNewLink() {
 		diaListWorkspacesPage.clickNewLink();
 	}
@@ -51,6 +58,11 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	@Step
 	public void clickOnDeleteButton () {
 		diaListWorkspacesPage.clickDeleteButton();
+	}
+	
+	@Step
+	public void verifyDeleteconfirmedMessage() {
+		assertThat(diaListWorkspacesPage.getconfirmedMessage().equalsIgnoreCase("Are you sure you would like to delete this workspace?"));
 	}
 	
 	@Step
@@ -89,6 +101,11 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void verifyheaderNameTextCreateWorkspaces() {
+		assertThat(diaCreateWorkspacePage.getheaderNameText().equalsIgnoreCase("New workspace"));
+	}
+	
+	@Step
 	public void setLabel(String keyword) {
 		diaCreateWorkspacePage.enter_Label(keyword);
 	}
@@ -119,8 +136,8 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void checked_AddListUnsubscribeHeader() {
-		diaCreateWorkspacePage.checkbox_AddListUnsubscribeHeader();
+	public void setAddListUnsubscribeHeader(boolean value) {
+		diaCreateWorkspacePage.checkbox_AddListUnsubscribeHeader(value);
 	}
 	
 	@Step
@@ -140,6 +157,11 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	@Step
 	public void onEditWorkspacesPage() {
 		assert(diaEditWorkspacePage.getEditWorkspacesUrl());
+	}
+	
+	@Step
+	public void verify_HeaderNameTextEditWorkspaces(String keyword) {
+		assertThat(diaEditWorkspacePage.getheaderNameText().equalsIgnoreCase("Edit workspace " + '"' + keyword + '"'));
 	}
 	
 	@Step
@@ -173,8 +195,8 @@ public class DiaWorkspaceSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void editAddListUnsubscribeHeader() {
-		diaEditWorkspacePage.checkbox_AddListUnsubscribeHeader();
+	public void editAddListUnsubscribeHeader(boolean value) {
+		diaEditWorkspacePage.checkbox_AddListUnsubscribeHeader(value);
 	}
 	
 	@Step

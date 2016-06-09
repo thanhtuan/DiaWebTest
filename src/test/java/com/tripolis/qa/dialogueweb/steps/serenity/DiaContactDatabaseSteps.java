@@ -2,6 +2,8 @@ package com.tripolis.qa.dialogueweb.steps.serenity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.openqa.selenium.WebDriver;
+
 import com.tripolis.qa.dialogueweb.pages.DiaAdministrationPage;
 import com.tripolis.qa.dialogueweb.pages.DiaContactDatabaseWizard;
 import com.tripolis.qa.dialogueweb.pages.DiaEditContactDatabaseDetailsPage;
@@ -12,6 +14,11 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaContactDatabaseSteps extends ScenarioSteps {
+	
+	public DiaContactDatabaseSteps() {
+		// TODO Auto-generated constructor stub
+		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
+	}
 
 	DiaHomePage diaHomePage;
 	DiaAdministrationPage diaAdministrationPage;
@@ -62,10 +69,15 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void verifyheaderNameTextListContactDatabases() {
+		assertThat(diaListContactDatabasesPage.getheaderNameText().equalsIgnoreCase("List of contact databases"));
+	}
+	
+	@Step
 	public void clickOnNewLink() {
 		diaListContactDatabasesPage.clickNewLink();
 	}
-	
+
 	@Step
 	public void clickOnEditButton() {
 		diaListContactDatabasesPage.clickEditButton();
@@ -74,6 +86,11 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	@Step
 	public void clickOnDeleteButton () {
 		diaListContactDatabasesPage.clickDeleteButton();
+	}
+	
+	@Step
+	public void verifyDeleteconfirmedMessage(String keyword) {
+		assertThat(diaListContactDatabasesPage.getconfirmedMessage().equalsIgnoreCase("Are you sure you would like to delete these contact databases (" + keyword + ")?"));
 	}
 	
 	@Step
@@ -111,6 +128,11 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void verify_HeaderNameTextEditContactDatabase(String keyword) {
+		assertThat(diaEditContactDatabaseDetailsPage.getheaderNameText().equalsIgnoreCase("Edit contact database " + '"' + keyword + '"'));
+	}
+	
+	@Step
 	public void editLable(String keyword) {
 		diaEditContactDatabaseDetailsPage.enter_Label(keyword);
 	}
@@ -118,11 +140,6 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	@Step
 	public void editName(String keyword) {
 		diaEditContactDatabaseDetailsPage.enter_Name(keyword);
-	}
-	
-	@Step
-	public void verify_HeaderNameText(String keyword) {
-		assertThat(diaEditContactDatabaseDetailsPage.getHeaderNameText().equalsIgnoreCase("Edit contact database " + '"' + keyword + '"'));
 	}
 	
 	@Step
@@ -142,6 +159,31 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	@Step
 	public void seeCreateDatabaseDialog() {
 		assertThat(diaContactDatabaseWizard.isShowCreateDatabaseDialog()).isTrue();
+	}
+	
+	@Step
+	public void verifyheaderNameTextCreateDatabaseDialogStep1() {
+		assertThat(diaContactDatabaseWizard.getCreateDatabaseDialogheaderNameText().equalsIgnoreCase("Database Wizard - Step 1: Create database"));
+	}
+	
+	@Step
+	public void verifyheaderNameTextCreateDatabaseDialogStep2() {
+		assertThat(diaContactDatabaseWizard.getCreateDatabaseDialogheaderNameText().equalsIgnoreCase("Database Wizard - Step 2: Create key field descriptor"));
+	}
+	
+	@Step
+	public void verifyheaderNameTextCreateDatabaseDialogStep3() {
+		assertThat(diaContactDatabaseWizard.getCreateDatabaseDialogheaderNameText().equalsIgnoreCase("Database Wizard - Step 3: Create field descriptor"));
+	}
+	
+	@Step
+	public void verifyheaderNameTextCreateDatabaseDialogOverview() {
+		assertThat(diaContactDatabaseWizard.getCreateDatabaseDialogheaderNameText().equalsIgnoreCase("Database Wizard - Field overview"));
+	}
+	
+	@Step
+	public void verify_DatabaseLabelText(String keyword) {
+		assertThat(diaContactDatabaseWizard.getConfirmedDatabaseLabelText().equalsIgnoreCase(keyword));
 	}
 	
 	@Step

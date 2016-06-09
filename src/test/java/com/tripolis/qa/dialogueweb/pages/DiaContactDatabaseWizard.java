@@ -22,6 +22,12 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
 	private WebElementFacade createDatabaseDialog;
 	
+	@FindBy(xpath=".//*[@id='wizardForm']/div[1]/div[1]", timeoutInSeconds="5")
+	private WebElementFacade createDatabaseDialogheaderNameText;
+	
+	@FindBy(xpath=".//*[@id='wizardForm']/div[2]/div[1]/span", timeoutInSeconds="5")
+	private WebElementFacade confirmedDatabaseLabel;
+	
 	@FindBy(xpath=".//*[@id='cancelButton']", timeoutInSeconds="5")
 	private WebElementFacade cancelButton;
 	
@@ -77,6 +83,14 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+	
+	public String getCreateDatabaseDialogheaderNameText() {
+		return createDatabaseDialogheaderNameText.waitUntilPresent().getText();
+	}
+	
+	public String getConfirmedDatabaseLabelText() {
+		return confirmedDatabaseLabel.waitUntilPresent().getText();
 	}
 	
 	public void clickCancelButton() {
@@ -143,8 +157,7 @@ public class DiaContactDatabaseWizard extends AbstractPage {
     }
 	
 	public void select_FieldType(String keyword) {
-		fieldType.selectByVisibleText(keyword);
-		//fieldType.selectByValue(keyword);
+		fieldType.selectByValue(keyword);
 	}
 	
 	public void select_Order(String keyword) {

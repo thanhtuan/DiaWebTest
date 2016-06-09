@@ -210,7 +210,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem1() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem1.click();
+		leftpanelItem1.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -219,7 +219,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem2() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem2.click();
+		leftpanelItem2.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -228,7 +228,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem3() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem3.click();
+		leftpanelItem3.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -237,7 +237,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem4() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem4.click();
+		leftpanelItem4.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -246,7 +246,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem5() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem5.click();
+		leftpanelItem5.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -255,7 +255,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem6() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem6.click();
+		leftpanelItem6.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -264,7 +264,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnleftpanelItem7() {
 		logger.info("Please click on left panel Item Link");
-		leftpanelItem7.click();
+		leftpanelItem7.waitUntilClickable().click();
 		logger.info("already click on left panel Item Link");
     }
 	
@@ -273,7 +273,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus1() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus1.click();
+		leftpanelSpanIconPlus1.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -282,7 +282,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus2() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus2.click();
+		leftpanelSpanIconPlus2.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -291,7 +291,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus3() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus3.click();
+		leftpanelSpanIconPlus3.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -300,7 +300,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus4() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus4.click();
+		leftpanelSpanIconPlus4.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -309,7 +309,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus5() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus5.click();
+		leftpanelSpanIconPlus5.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -318,7 +318,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus6() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus6.click();
+		leftpanelSpanIconPlus6.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -327,7 +327,7 @@ public class AbstractPage extends PageObject {
 	
 	public void clickOnspanIconPlus7() {
 		logger.info("Please click on spanIconPlus Item Link");
-		leftpanelSpanIconPlus7.click();
+		leftpanelSpanIconPlus7.waitUntilClickable().click();
 		logger.info("already click on spanIconPlus Item Link");
     }
 	
@@ -335,64 +335,63 @@ public class AbstractPage extends PageObject {
 	 * End handle The Left Panel
 	 */
 	
-	@FindBy(xpath=".//*[@id='clientname']", timeoutInSeconds="5")
+	/*
+	 * Handle The Objects on the left area
+	 */
+	
+	
+	@FindBy(id="clientname", timeoutInSeconds="5")
 	protected WebElementFacade clientName; 
 	
 	public String getClientName() {
-		return clientName.getText();
+		return clientName.waitUntilPresent().getText();
 	}
 	
 	@FindBy(xpath=".//*[@id='contact']/option[@selected]", timeoutInSeconds="5")
 	protected WebElementFacade contactDatabasesDropDown;
 	
 	public String contactDatabasesAttribute() {
-		return contactDatabasesDropDown.getAttribute("value");
+		return contactDatabasesDropDown.waitUntilPresent().getAttribute("value");
 	}
 	
 	@FindBy(xpath=".//*[@id='content']/option[@selected]", timeoutInSeconds="5")
 	protected WebElementFacade contentWorkspaceDropDown;
 	
 	public String contentWorkspaceAttribute() {
-		return contentWorkspaceDropDown.getAttribute("value");
+		return contentWorkspaceDropDown.waitUntilPresent().getAttribute("value");
 	}
 	
-	@FindBy(id="label", timeoutInSeconds="5")
-	protected WebElementFacade label;
+	/*
+	 * End handle the objects on the left area
+	 */
 	
-	public void enter_Label(String keyword) {
-		logger.info("Please input Label");
-		label.clear();
-		label.type(keyword);
-		logger.info("already input Label");
-    }
 	
-	@FindBy(id="name", timeoutInSeconds="5")
-	protected WebElementFacade name;
-	
-	public void enter_Name(String keyword) {
-		logger.info("Please input Name");
-		name.clear();	
-		keyword = keyword.toLowerCase();
-		keyword = keyword.replaceAll(" ", "");
-		name.type(keyword);
-		logger.info("already input Name");
-    }
+	/*
+	 * Handle The Objects on the main area
+	 */
 	
 	@FindBy(id="editable", timeoutInSeconds="5")
 	protected WebElementFacade newLink; 
 	
 	public void clickNewLink() {
 		logger.info("Please click on New Link");
-		newLink.click();	
+		newLink.waitUntilClickable().click();	
 		logger.info("already click on New Link");
     }
+	
+	@FindBy(xpath=".//*[@id='main']/div/div[1]", timeoutInSeconds="5")
+	protected WebElementFacade headerNameText; 
+	
+	public String getheaderNameText() {
+		return headerNameText.waitUntilPresent().getText();
+	}
 	
 	@FindBy(id="edit", timeoutInSeconds="5")
 	protected WebElementFacade editButton;
 	
 	public void clickEditButton() {
 		logger.info("Please click on Edit Button");
-		editButton.click();
+		editButton.waitUntilClickable().click();
 		logger.info("already click on Edit Button");
 	}
 	
@@ -401,16 +400,76 @@ public class AbstractPage extends PageObject {
 	
 	public void clickDeleteButton() {
 		logger.info("Please click on Delete Button");
-		deleteButton.click();
+		deleteButton.waitUntilClickable().click();
 		logger.info("already click on Delete Button");
 	}
+	
+	/*
+	 * End handle The Objects on the main area
+	 */
+	
+	/*
+	 * Handle The Objects on Form
+	 */
+	
+	@FindBy(id="label", timeoutInSeconds="5")
+	protected WebElementFacade label;
+	
+	public void enter_Label(String keyword) {
+		logger.info("Please input Label");
+		label.waitUntilPresent().clear();
+		label.waitUntilPresent().type(keyword);
+		logger.info("already input Label");
+    }
+	
+	@FindBy(id="name", timeoutInSeconds="5")
+	protected WebElementFacade name;
+	
+	public void enter_Name(String keyword) {
+		logger.info("Please input Name");
+		name.waitUntilPresent().clear();	
+		keyword = keyword.toLowerCase();
+		keyword = keyword.replaceAll(" ", "");
+		name.waitUntilPresent().type(keyword);
+		logger.info("already input Name");
+    }
+	
+	@FindBy(id="fromAddress", timeoutInSeconds="5")
+	protected WebElementFacade fromAddress;
+	
+	public void enter_FromAddress(String keyword) {
+		logger.info("Please input From Address");
+		fromAddress.waitUntilPresent().clear();	
+		fromAddress.waitUntilPresent().type(keyword);
+		logger.info("already input From Address");
+    }
+	
+	@FindBy(id="fromName", timeoutInSeconds="5")
+	protected WebElementFacade fromName;
+	
+	public void enter_FromName(String keyword) {
+		logger.info("Please input From Name");
+		fromName.waitUntilPresent().clear();	
+		fromName.waitUntilPresent().type(keyword);
+		logger.info("already input From Name");
+    }
+	
+	@FindBy(id="replyToAddress", timeoutInSeconds="5")
+	protected WebElementFacade replyToAddress;
+	
+	public void enter_ReplyToAddress(String keyword) {
+		logger.info("Please input ReplyToAddress");
+		replyToAddress.waitUntilPresent().clear();	
+		replyToAddress.waitUntilPresent().type(keyword);
+		logger.info("already input ReplyToAddress");
+    }
 	
 	@FindBy(name="confirmed", timeoutInSeconds="5")
 	protected WebElementFacade confirmedButton;
 	
 	public void clickconfirmedButton() {
 		logger.info("Please click on confirmed Button");
-		confirmedButton.click();
+		confirmedButton.waitUntilClickable().click();
 		logger.info("already click on confirmed Button");
 	}
 	
@@ -419,17 +478,21 @@ public class AbstractPage extends PageObject {
 	
 	public void clickDeleteBtn() {
 		logger.info("Please click on DeleteBtn");
-		deleteBtn.click();
+		deleteBtn.waitUntilClickable().click();
 		logger.info("already click on DeleteBtn");
 	}
 	
-	@FindBy(id="submitOk", timeoutInSeconds="10")
+	@FindBy(id="submitOk", timeoutInSeconds="5")
 	protected WebElementFacade saveButton;
 	
 	public void clickSaveButton() {
 		logger.info("Please click on save Button");
-		saveButton.click();
+		saveButton.waitUntilClickable().click();
 		logger.info("already click on save Button");
 	}
+	
+	/*
+	 * End handle The Objects on Form
+	 */
 
 }

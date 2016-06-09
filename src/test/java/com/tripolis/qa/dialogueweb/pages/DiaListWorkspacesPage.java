@@ -21,15 +21,22 @@ public class DiaListWorkspacesPage extends AbstractPage {
 	Logger logger = LoggerFactory.getLogger(DiaListWorkspacesPage.class);
 	
 	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
-	private WebElementFacade selectedWorkspace;
+	private WebElementFacade selectedDeletedWorkspace;
+	
+	@FindBy(id="modalText", timeoutInSeconds="5")
+	private WebElementFacade confirmedMessage;
 	
 	public boolean getListWorkspacesUrl() {
 		logger.info("Get List Workspaces URL");
 		return driver.getCurrentUrl().contains("/dialogue/admin/content/listWorkspaces.html");		
 	}
 	
+	public String getconfirmedMessage() {
+		return confirmedMessage.waitUntilPresent().getText();
+	}
+	
 	public void select_Workspaces() {
-		selectedWorkspace.click();
+		selectedDeletedWorkspace.waitUntilClickable().click();
 	}
 	
 }

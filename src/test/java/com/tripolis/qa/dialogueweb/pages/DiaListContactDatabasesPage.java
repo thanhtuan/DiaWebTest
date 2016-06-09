@@ -21,7 +21,10 @@ public class DiaListContactDatabasesPage extends AbstractPage {
 	Logger logger = LoggerFactory.getLogger(DiaListContactDatabasesPage.class);
 	
 	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
-	private WebElementFacade selectedContactDatabases;
+	private WebElementFacade selectedDeletedContactDatabases;
+	
+	@FindBy(id="modalText", timeoutInSeconds="5")
+	private WebElementFacade confirmedMessage;
 	
 	public boolean getListContactDatabasesUrl() {
 		logger.info("Get List Contact Databases URL");
@@ -29,8 +32,12 @@ public class DiaListContactDatabasesPage extends AbstractPage {
 		
 	}
 	
+	public String getconfirmedMessage() {
+		return confirmedMessage.waitUntilPresent().getText();
+	}
+	
 	public void select_ContactDatabases() {
-		selectedContactDatabases.click();
+		selectedDeletedContactDatabases.waitUntilClickable().click();
 	}
 	
 }

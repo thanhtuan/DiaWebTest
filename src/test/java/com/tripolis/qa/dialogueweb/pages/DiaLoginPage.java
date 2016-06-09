@@ -39,22 +39,22 @@ public class DiaLoginPage extends AbstractPage {
 	
 	public void enter_DomainName(String keyword) {
 		logger.info("Please input DomainName");
-		clientDomainName.clear();
-		clientDomainName.type(keyword);
+		clientDomainName.waitUntilPresent().clear();
+		clientDomainName.waitUntilPresent().type(keyword);
 		logger.info("already input DomainName");
     }
 	
 	public void enter_UserName(String keyword) {
 		logger.info("Please input UserName");
-		userName.clear();
-		userName.type(keyword);
+		userName.waitUntilPresent().clear();
+		userName.waitUntilPresent().type(keyword);
 		logger.info("already input UserName");
     }
 	
 	public void enter_passWord(String keyword) {
 		logger.info("Please input Password");
-		passWord.clear();
-		passWord.type(keyword);
+		passWord.waitUntilPresent().clear();
+		passWord.waitUntilPresent().type(keyword);
 		logger.info("already input Password");
     }
 	
@@ -69,12 +69,12 @@ public class DiaLoginPage extends AbstractPage {
 	
 	public void click_login() {
 		logger.info("Please click on Login button");
-		loginButton.click();
+		loginButton.waitUntilClickable().click();
 		logger.info("already click on Login button");
     }
 	
 	public String getErrorMessage() {
-		return errorMessage.getText();
+		return errorMessage.waitUntilPresent().getText();
 	}
 	
 	public boolean getErrorLoginUrl() {

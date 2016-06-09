@@ -47,32 +47,32 @@ public class DiaCreateWorkspacePage extends AbstractPage {
 	}
 	
 	public void select_ContactDatabase(String keyword) {
-		pContactDatabase.selectByVisibleText(keyword);
+		pContactDatabase.selectByValue(keyword);
 	}
 	
 	public void enter_PublicDomainNameLinkAndPage(String keyword) {
 		logger.info("Please input Public URL for links and pages");
-		publicDomainNameLinkAndPage.clear();
-		publicDomainNameLinkAndPage.type(keyword);
+		publicDomainNameLinkAndPage.waitUntilPresent().clear();
+		publicDomainNameLinkAndPage.waitUntilPresent().type(keyword);
 		logger.info("already input Public URL for links and pages");
     }
 	
 	public void enter_PublicDomainNameImages(String keyword) {
 		logger.info("Please input Public URL for images");
-		publicDomainNameImages.clear();
-		publicDomainNameImages.type(keyword);
+		publicDomainNameImages.waitUntilPresent().clear();
+		publicDomainNameImages.waitUntilPresent().type(keyword);
 		logger.info("already input Public URL for images");
     }
 	
 	public void enter_BounceDomainName(String keyword) {
 		logger.info("Please input Bounce domain name");
-		bounceDomainName.clear();
-		bounceDomainName.type(keyword);
+		bounceDomainName.waitUntilPresent().clear();
+		bounceDomainName.waitUntilPresent().type(keyword);
 		logger.info("already input Bounce domain name");
     }
 	
-	public void checkbox_AddListUnsubscribeHeader() {
-		addListUnsubscribeHeader.click();
+	public void checkbox_AddListUnsubscribeHeader(boolean value) {
+		setCheckbox(addListUnsubscribeHeader.waitUntilPresent(), value);
 	}
 	
 }

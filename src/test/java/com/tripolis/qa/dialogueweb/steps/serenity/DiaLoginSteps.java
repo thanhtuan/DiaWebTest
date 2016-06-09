@@ -20,7 +20,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyClientName() {
-		assertThat(diaHomePage.getClientName().equalsIgnoreCase("Client: Haralds Company"));
+		assertThat(diaHomePage.getClientName().equalsIgnoreCase("Client: Tripolis QA"));
 	}
 	
 	@Step
@@ -29,7 +29,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void verify_login_successful() {	
+	public void verifyIsOnHomePage() {	
 		//System.out.println("-----------Test--------: " + diaHomePage.getHomeurl());
 		assert(diaHomePage.getHomeurl());
 		
@@ -46,7 +46,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	 */
 	
 	@Step
-	public void is_the_login_page() {
+	public void isOnLoginPage() {
 		diaLoginPage.open();
 	}
 	
@@ -73,7 +73,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void verify_login_Unsuccessful() {	
+	public void verifyIsOnErrorLoginPage() {	
 		//System.out.println("-----------Test--------: " + diaLoginPage.getErrorLoginUrl());
 		assert(diaLoginPage.getErrorLoginUrl());
 		
