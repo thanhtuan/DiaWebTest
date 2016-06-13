@@ -13,11 +13,6 @@ import net.thucydides.core.annotations.NamedUrl;
 import net.thucydides.core.annotations.NamedUrls;
 
 @DefaultUrl("/dialogue/admin/content/editEmailTypeDefinition.html")
-@NamedUrls(
-		  {
-		    @NamedUrl(name = "etdId", url = "?etdId={1}")
-		  }
-		)
 public class DiaEditEmailTypeDefinition extends AbstractPage {
 
 	public DiaEditEmailTypeDefinition(WebDriver driver) {
@@ -51,9 +46,9 @@ public class DiaEditEmailTypeDefinition extends AbstractPage {
 	@FindBy(name="externalAttachmentEnabled", timeoutInSeconds="5")
 	private WebElementFacade externalAttachmentEnabled;
 	
-	public boolean getEditEmailTypeDefinitionUrl(String value) {
+	public boolean getEditEmailTypeDefinitionUrl() {
 		logger.info("Get Edit Email Type Definition URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/editEmailTypeDefinition.html?etdId=" + value);	
+		return driver.getCurrentUrl().contains("/dialogue/admin/content/editEmailTypeDefinition.html");	
 	}
 	
 	public void directEmailTypeNameState() {

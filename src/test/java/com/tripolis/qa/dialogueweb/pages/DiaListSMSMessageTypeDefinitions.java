@@ -12,18 +12,23 @@ import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.NamedUrl;
 import net.thucydides.core.annotations.NamedUrls;
 
-@DefaultUrl("/dialogue/admin/content/listEmailTypeDefinitions.html")
-public class DiaListEmailTypeDefinitions extends AbstractPage {
+@DefaultUrl("/dialogue/admin/content/listSmsMessageTypeDefinitions.html")
+@NamedUrls(
+		  {
+		    @NamedUrl(name = "wId", url = "?wId={1}")
+		  }
+		)
+public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 
-	public DiaListEmailTypeDefinitions(WebDriver driver) {
+	public DiaListSMSMessageTypeDefinitions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
-	Logger logger = LoggerFactory.getLogger(DiaListEmailTypeDefinitions.class);
+	
+	Logger logger = LoggerFactory.getLogger(DiaListSMSMessageTypeDefinitions.class);
 	
 	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
-	private WebElementFacade selectedDeletedEmailType;
+	private WebElementFacade selectedDeletedSMSType;
 	
 	@FindBy(className="ui-dialogue-frame", timeoutInSeconds="5")
 	private WebElementFacade confirmedPopup;
@@ -37,12 +42,12 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 	@FindBy(xpath=".//*[@id='body']/div[6]/div/div[4]/div/button[2]", timeoutInSeconds="5")
 	private WebElementFacade confirmedCancelButton;
 	
-	public boolean getListEmailTypeDefinitionUrl() {
-		logger.info("Get List Email Type Definition URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/listEmailTypeDefinitions.html");	
+	public boolean getListSMSTypeDefinitionUrl() {
+		logger.info("Get List SMS Type Definition URL");
+		return driver.getCurrentUrl().contains("/dialogue/admin/content/listSmsMessageTypeDefinitions.html");	
 	}
 	
-	public boolean isshowconfirmedPopup() {
+	public boolean isshowSMSconfirmedPopup() {
 		try {
 			confirmedPopup.isDisplayed();
 			return true;
@@ -67,8 +72,8 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 		logger.info("already click on Cancel Button");
 	}
 	
-	public void select_EmailType() {
-		selectedDeletedEmailType.waitUntilClickable().click();
+	public void select_SMSType() {
+		selectedDeletedSMSType.waitUntilClickable().click();
 	}
-	
+
 }

@@ -2,159 +2,14 @@ package com.tripolis.qa.dialogueweb.steps.serenity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.openqa.selenium.WebDriver;
-
-import com.tripolis.qa.dialogueweb.pages.DiaAdministrationPage;
 import com.tripolis.qa.dialogueweb.pages.DiaContactDatabaseWizard;
-import com.tripolis.qa.dialogueweb.pages.DiaEditContactDatabaseDetailsPage;
-import com.tripolis.qa.dialogueweb.pages.DiaHomePage;
-import com.tripolis.qa.dialogueweb.pages.DiaListContactDatabasesPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class DiaContactDatabaseSteps extends ScenarioSteps {
+public class DiaContactDatabaseWizardSteps extends ScenarioSteps {
 	
-	public DiaContactDatabaseSteps() {
-		// TODO Auto-generated constructor stub
-		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-	}
-
-	DiaHomePage diaHomePage;
-	DiaAdministrationPage diaAdministrationPage;
-	DiaListContactDatabasesPage diaListContactDatabasesPage;
-	DiaEditContactDatabaseDetailsPage diaEditContactDatabaseDetailsPage;
 	DiaContactDatabaseWizard diaContactDatabaseWizard;
-	
-	/*
-	 * Steps using methods from DiaHomePage
-	 */
-	
-	@Step
-	public void navigateToAdministrationPage() {
-		diaHomePage.click_SetupPageLink();
-	}
-	
-	/*
-	 * *******End Steps using methods from DiaHomePage********
-	 */
-	
-	
-	/*
-	 * Steps using methods from DiaAdministrationPage
-	 */
-	
-	@Step
-	public void navigateToListContactDatabasesPage() {
-		diaAdministrationPage.clickOnsubMenuItem1();
-	}
-	
-	@Step
-	public void onAdministrationPage() {
-		assert(diaAdministrationPage.getAdministrationUrl());
-	}
-	
-	/*
-	 * *******End Steps using methods from DiaAdministrationPage********
-	 */
-	
-	
-	/*
-	 * Steps using methods from DiaListContactDatabasesPage
-	 */
-	
-	@Step
-	public void onListContactDatabasesPage() {
-		assert(diaListContactDatabasesPage.getListContactDatabasesUrl());
-	}
-	
-	@Step
-	public void verifyheaderNameTextListContactDatabases() {
-		assertThat(diaListContactDatabasesPage.getheaderNameText().equalsIgnoreCase("List of contact databases"));
-	}
-	
-	@Step
-	public void clickOnNewLink() {
-		diaListContactDatabasesPage.clickNewLink();
-	}
-
-	@Step
-	public void clickOnEditButton() {
-		diaListContactDatabasesPage.clickEditButton();
-	}
-	
-	@Step
-	public void clickOnDeleteButton () {
-		diaListContactDatabasesPage.clickDeleteButton();
-	}
-	
-	@Step
-	public void verifyDeleteconfirmedMessage(String keyword) {
-		assertThat(diaListContactDatabasesPage.getconfirmedMessage().equalsIgnoreCase("Are you sure you would like to delete these contact databases (" + keyword + ")?"));
-	}
-	
-	@Step
-	public void clickOnConfirmedButton () {
-		diaListContactDatabasesPage.clickconfirmedButton();
-	}
-	
-	@Step
-	public void clickOnDeleteBtn () {
-		diaListContactDatabasesPage.clickDeleteBtn();
-	}
-	
-	@Step
-	public String getcontactDatabasesAttribute() {
-		return diaListContactDatabasesPage.contactDatabasesAttribute();
-	}
-	
-	@Step
-	public void selectContactDB() {
-		diaListContactDatabasesPage.select_ContactDatabases();
-	}
-	
-	/*
-	 * *******End Steps using methods from diaListContactDatabasesPage********
-	 */
-	
-	
-	/*
-	 * Steps using methods from DiaEditContactDatabaseDetailsPage
-	 */
-	
-	@Step
-	public void onEditContactDatabasePage() {
-		assert(diaEditContactDatabaseDetailsPage.getEditContactDatabaseUrl());
-	}
-	
-	@Step
-	public void verify_HeaderNameTextEditContactDatabase(String keyword) {
-		assertThat(diaEditContactDatabaseDetailsPage.getheaderNameText().equalsIgnoreCase("Edit contact database " + '"' + keyword + '"'));
-	}
-	
-	@Step
-	public void editLable(String keyword) {
-		diaEditContactDatabaseDetailsPage.enter_Label(keyword);
-	}
-	
-	@Step
-	public void editName(String keyword) {
-		diaEditContactDatabaseDetailsPage.enter_Name(keyword);
-	}
-	
-	@Step
-	public void clickOnSubmitButton() {
-		diaEditContactDatabaseDetailsPage.clickSaveButton();
-	}
-	
-	/*
-	 * *******End Steps using methods from DiaEditContactDatabaseDetailsPage********
-	 */
-	
-	
-	/*
-	 * Steps using methods from DiaContactDatabaseWizard
-	 */
 	
 	@Step
 	public void seeCreateDatabaseDialog() {
@@ -220,13 +75,6 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 	public void clickOnFinishButton() {
 		diaContactDatabaseWizard.clickFinishButton();
 	}
-	
-	/*
-	 * *******End methods Steps using from DiaContactDatabaseWizard********
-	 */
-	
-
-	
 	
 	/*
 	 * *******Steps for create contact database********
@@ -310,5 +158,4 @@ public class DiaContactDatabaseSteps extends ScenarioSteps {
 		diaContactDatabaseWizard.enter_DefaultValue(keyword5);
 		diaContactDatabaseWizard.select_KindOfField(keyword6);
 	}
-	
 }

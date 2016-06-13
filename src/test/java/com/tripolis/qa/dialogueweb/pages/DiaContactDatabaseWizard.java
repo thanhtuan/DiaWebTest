@@ -19,7 +19,7 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	
 	Logger logger = LoggerFactory.getLogger(DiaContactDatabaseWizard.class);
 	
-	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
+	@FindBy(id="dialog", timeoutInSeconds="5")
 	private WebElementFacade createDatabaseDialog;
 	
 	@FindBy(xpath=".//*[@id='wizardForm']/div[1]/div[1]", timeoutInSeconds="5")
@@ -27,21 +27,6 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	
 	@FindBy(xpath=".//*[@id='wizardForm']/div[2]/div[1]/span", timeoutInSeconds="5")
 	private WebElementFacade confirmedDatabaseLabel;
-	
-	@FindBy(xpath=".//*[@id='cancelButton']", timeoutInSeconds="5")
-	private WebElementFacade cancelButton;
-	
-	@FindBy(xpath=".//*[@id='submitNext']", timeoutInSeconds="5")
-	private WebElementFacade nextButton;
-	
-	@FindBy(xpath=".//*[@id='submitPrevious']", timeoutInSeconds="5")
-	private WebElementFacade previousButton;
-	
-	@FindBy(className="buttongr", timeoutInSeconds="5")
-	private WebElementFacade addFieldButton;
-	
-	@FindBy(id="finish", timeoutInSeconds="5")
-	private WebElementFacade finishButton;
 	
 	@FindBy(name="type", timeoutInSeconds="5")
 	private WebElementFacade fieldType;
@@ -64,13 +49,13 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	@FindBy(id="_defaultStringValue", timeoutInSeconds="5")
 	private WebElementFacade defaultValue;
 	
-	@FindBy(xpath=".//*[@id='_key']", timeoutInSeconds="5")
+	@FindBy(id="_key", timeoutInSeconds="5")
 	private WebElementFacade key;
 	
-	@FindBy(xpath="..//*[@id='_required']']", timeoutInSeconds="5")
+	@FindBy(id="_required_required", timeoutInSeconds="5")
 	private WebElementFacade required;
 	
-	@FindBy(xpath=".//*[@id='_overview']", timeoutInSeconds="5")
+	@FindBy(id="_overview", timeoutInSeconds="5")
 	private WebElementFacade inOverView;
 	
 	@FindBy(name="kindOfField", timeoutInSeconds="5")
@@ -91,36 +76,6 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	
 	public String getConfirmedDatabaseLabelText() {
 		return confirmedDatabaseLabel.waitUntilPresent().getText();
-	}
-	
-	public void clickCancelButton() {
-		logger.info("Please click on Cancel Button");
-		cancelButton.waitUntilClickable().click();
-		logger.info("already click on Cancel Button");
-	}
-	
-	public void clickNextButton() {
-		logger.info("Please click on Next Button");
-		nextButton.waitUntilClickable().click();
-		logger.info("already click on Next Button");
-	}
-	
-	public void clickPreviousButton() {
-		logger.info("Please click on Previous Button");
-		previousButton.waitUntilClickable().click();
-		logger.info("already click on Previous Button");
-	}
-	
-	public void clickAddFieldButton() {
-		logger.info("Please click on Add Field Button");
-		addFieldButton.waitUntilClickable().click();
-		logger.info("already click on Add Field Button");
-	}
-	
-	public void clickFinishButton() {
-		logger.info("Please click on Finish Button");
-		finishButton.waitUntilClickable().click();
-		logger.info("already click on Finish Button");
 	}
 	
 	public void enter_FieldDescriptorLabel(String keyword) {

@@ -409,6 +409,59 @@ public class AbstractPage extends PageObject {
 	 */
 	
 	/*
+	 * Handle The Objects on Wizard
+	 */
+	
+	@FindBy(id="cancelButton", timeoutInSeconds="5")
+	protected WebElementFacade cancelButton;
+	
+	public void clickCancelButton() {
+		logger.info("Please click on Cancel Button");
+		cancelButton.waitUntilClickable().click();
+		logger.info("already click on Cancel Button");
+	}
+	
+	@FindBy(id="submitNext", timeoutInSeconds="5")
+	protected WebElementFacade nextButton;
+	
+	public void clickNextButton() {
+		logger.info("Please click on Next Button");
+		nextButton.waitUntilClickable().click();
+		logger.info("already click on Next Button");
+	}
+	
+	@FindBy(id="submitPrevious", timeoutInSeconds="5")
+	protected WebElementFacade previousButton;
+	
+	public void clickPreviousButton() {
+		logger.info("Please click on Previous Button");
+		previousButton.waitUntilClickable().click();
+		logger.info("already click on Previous Button");
+	}
+	
+	@FindBy(className="buttongr", timeoutInSeconds="5")
+	protected WebElementFacade addFieldButton;
+	
+	public void clickAddFieldButton() {
+		logger.info("Please click on Add Field Button");
+		addFieldButton.waitUntilClickable().click();
+		logger.info("already click on Add Field Button");
+	}
+	
+	@FindBy(id="finish", timeoutInSeconds="5")
+	protected WebElementFacade finishButton;
+	
+	public void clickFinishButton() {
+		logger.info("Please click on Finish Button");
+		finishButton.waitUntilClickable().click();
+		logger.info("already click on Finish Button");
+	}
+	
+	/*
+	 * Handle The Objects on Wizard
+	 */
+	
+	/*
 	 * Handle The Objects on Form
 	 */
 	
