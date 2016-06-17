@@ -37,6 +37,11 @@ public class DiaListContactDatabasesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void seeDeleteConfirmedPopup() {
+		assertThat(diaListContactDatabasesPage.isshowconfirmedPopup()).isTrue();
+	}
+	
+	@Step
 	public void verifyDeleteconfirmedMessage(String keyword) {
 		assertThat(diaListContactDatabasesPage.getconfirmedMessage().equalsIgnoreCase("Are you sure you would like to delete these contact databases (" + keyword + ")?"));
 	}
@@ -57,8 +62,18 @@ public class DiaListContactDatabasesSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectContactDB() {
-		diaListContactDatabasesPage.select_ContactDatabases();
+	public String getcontactDatabasesLabel() {
+		return diaListContactDatabasesPage.contactDatabasesLabel();
+	}
+	
+	@Step
+	public void selectContactDB (String value) {
+		diaListContactDatabasesPage.findContactDatabases(value);
+	}
+	
+	@Step
+	public void selectallContactDatabases(boolean value) {
+		diaListContactDatabasesPage.allContactDatabases(value);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.tripolis.qa.dialogueweb.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +22,11 @@ public class DiaListContactDatabasesPage extends AbstractPage {
 	
 	Logger logger = LoggerFactory.getLogger(DiaListContactDatabasesPage.class);
 	
-	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
-	private WebElementFacade selectedDeletedContactDatabases;
+	@FindBy(id="checkAll", timeoutInSeconds="5")
+	private WebElementFacade selectedAllContactDatabases;
+	
+	@FindBy(xpath=".//*[@class='tbody']/tr", timeoutInSeconds="5")
+	private List<WebElementFacade> listDB;
 	
 	@FindBy(id="modalText", timeoutInSeconds="5")
 	private WebElementFacade confirmedMessage;
@@ -36,8 +41,20 @@ public class DiaListContactDatabasesPage extends AbstractPage {
 		return confirmedMessage.waitUntilPresent().getText();
 	}
 	
-	public void select_ContactDatabases() {
-		selectedDeletedContactDatabases.waitUntilClickable().click();
+	public void allContactDatabases(boolean value) {
+		setCheckbox(selectedAllContactDatabases.waitUntilPresent(), value);
+	}
+	
+	public void findContactDatabases(String value) {
+		value = value.trim();
+		int itemCount = listDB.size();
+		for(int i=0; i < itemCount; i++) {
+			String DBlabel = listDB.get(i).findBy(".//td[2]/div").waitUntilPresent().getText();
+			if(value.equals(DBlabel)) {
+				WebElementFacade selected = listDB.get(i).findBy(".//td[1]/input[2]");
+				setCheckbox(selected, true);
+			}
+		}
 	}
 	
 }

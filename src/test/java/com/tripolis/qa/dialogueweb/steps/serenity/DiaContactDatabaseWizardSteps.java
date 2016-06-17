@@ -100,62 +100,17 @@ public class DiaContactDatabaseWizardSteps extends ScenarioSteps {
 	 */
 	
 	@Step
-	public void create_Key_Required_Field(String keyword1, String keyword2, String keyword3, String keyword4, String keyword5, String keyword6) {
+	public void create_Field(String keyword1, String keyword2, String keyword3, String keyword4, String keyword5, boolean value1, boolean value2, boolean value3, String keyword6) {
 		diaContactDatabaseWizard.enter_FieldDescriptorLabel(keyword1);
 		diaContactDatabaseWizard.enter_FieldDescriptorName(keyword1);
 		diaContactDatabaseWizard.select_FieldType(keyword2);
 		diaContactDatabaseWizard.enter_MinLength(keyword3);
 		diaContactDatabaseWizard.enter_MaxLength(keyword4);
 		diaContactDatabaseWizard.enter_DefaultValue(keyword5);
-		diaContactDatabaseWizard.checkbox_key();
-		diaContactDatabaseWizard.checkbox_required();
+		diaContactDatabaseWizard.checkbox_key(value1);
+		diaContactDatabaseWizard.checkbox_required(value2);
+		diaContactDatabaseWizard.checkbox_inOverView(value3);
 		diaContactDatabaseWizard.select_KindOfField(keyword6);
 	}
 	
-	/*
-	 * This function can use for some field types: string, int, decimal, email, mobile
-	 */
-	
-	@Step
-	public void create_Key_Field(String keyword1, String keyword2, String keyword3, String keyword4, String keyword5, String keyword6) {
-		diaContactDatabaseWizard.enter_FieldDescriptorLabel(keyword1);
-		diaContactDatabaseWizard.enter_FieldDescriptorName(keyword1);
-		diaContactDatabaseWizard.select_FieldType(keyword2);
-		diaContactDatabaseWizard.enter_MinLength(keyword3);
-		diaContactDatabaseWizard.enter_MaxLength(keyword4);
-		diaContactDatabaseWizard.enter_DefaultValue(keyword5);
-		diaContactDatabaseWizard.checkbox_key();
-		diaContactDatabaseWizard.select_KindOfField(keyword6);
-	}
-	
-	/*
-	 * This function can use for some field types: string, int, decimal, email, mobile
-	 */
-	
-	@Step
-	public void create_Required_Field(String keyword1, String keyword2, String keyword3, String keyword4, String keyword5, String keyword6) {
-		diaContactDatabaseWizard.enter_FieldDescriptorLabel(keyword1);
-		diaContactDatabaseWizard.enter_FieldDescriptorName(keyword1);
-		diaContactDatabaseWizard.select_FieldType(keyword2);
-		diaContactDatabaseWizard.enter_MinLength(keyword3);
-		diaContactDatabaseWizard.enter_MaxLength(keyword4);
-		diaContactDatabaseWizard.enter_DefaultValue(keyword5);
-		diaContactDatabaseWizard.checkbox_required();
-		diaContactDatabaseWizard.select_KindOfField(keyword6);
-	}
-	
-	/*
-	 * This function can use for some field types: string, int, decimal, email, mobile
-	 */
-	
-	@Step
-	public void create_Field(String keyword1, String keyword2, String keyword3, String keyword4, String keyword5, String keyword6) {
-		diaContactDatabaseWizard.enter_FieldDescriptorLabel(keyword1);
-		diaContactDatabaseWizard.enter_FieldDescriptorName(keyword1);
-		diaContactDatabaseWizard.select_FieldType(keyword2);
-		diaContactDatabaseWizard.enter_MinLength(keyword3);
-		diaContactDatabaseWizard.enter_MaxLength(keyword4);
-		diaContactDatabaseWizard.enter_DefaultValue(keyword5);
-		diaContactDatabaseWizard.select_KindOfField(keyword6);
-	}
 }

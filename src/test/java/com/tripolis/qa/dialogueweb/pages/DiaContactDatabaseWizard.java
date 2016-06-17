@@ -9,6 +9,7 @@ import com.tripolis.qa.common.AbstractPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.pages.Pages;
 
 public class DiaContactDatabaseWizard extends AbstractPage {
 	
@@ -52,7 +53,7 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	@FindBy(id="_key", timeoutInSeconds="5")
 	private WebElementFacade key;
 	
-	@FindBy(id="_required_required", timeoutInSeconds="5")
+	@FindBy(id="_required", timeoutInSeconds="5")
 	private WebElementFacade required;
 	
 	@FindBy(id="_overview", timeoutInSeconds="5")
@@ -80,59 +81,62 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	
 	public void enter_FieldDescriptorLabel(String keyword) {
 		logger.info("Please input Field Descriptor Label");
-		fieldDescriptorLabel.type(keyword);
+		fieldDescriptorLabel.waitUntilPresent().type(keyword);
 		logger.info("already input Field Descriptor Label");
     }
 	
 	public void enter_FieldDescriptorName(String keyword) {
 		logger.info("Please input Field Descriptor Name");
-		fieldDescriptorName.clear();	
+		fieldDescriptorName.waitUntilPresent().clear();	
 		keyword = keyword.toLowerCase();
 		keyword = keyword.replaceAll(" ", "");
-		fieldDescriptorName.type(keyword);
+		fieldDescriptorName.waitUntilPresent().type(keyword);
 		logger.info("already input Field Descriptor Name");
     }
 	
+	public void select_FieldType(String keyword) {
+		fieldType.waitUntilPresent().selectByValue(keyword);
+	}
+	
+	public void select_Order(String keyword) {
+		order.waitUntilPresent().selectByVisibleText(keyword);
+	}
+	
 	public void enter_MinLength(String keyword) {
 		logger.info("Please input Min Length");
-		minLength.type(keyword);
+		minLength.waitUntilPresent().clear();
+		minLength.waitUntilPresent().type(keyword);
 		logger.info("already input Min Length");
     }
 	
 	public void enter_MaxLength(String keyword) {
 		logger.info("Please input Max Length");
-		maxLength.type(keyword);
+		maxLength.waitUntilPresent().clear();
+		maxLength.waitUntilPresent().type(keyword);
 		logger.info("already input Max Length");
     }
 	
 	public void enter_DefaultValue(String keyword) {
 		logger.info("Please input Default Value");
-		defaultValue.type(keyword);
+		defaultValue.waitUntilPresent().clear();
+		defaultValue.waitUntilPresent().type(keyword);
 		logger.info("already input Default Value");
     }
 	
-	public void select_FieldType(String keyword) {
-		fieldType.selectByValue(keyword);
+	public void checkbox_key(boolean value) {
+		setCheckbox(key.waitUntilPresent(), value);
 	}
 	
-	public void select_Order(String keyword) {
-		order.selectByVisibleText(keyword);
+	public void checkbox_required(boolean value) {
+		setCheckbox(required.waitUntilPresent(), value);
+	}
+	
+	public void checkbox_inOverView(boolean value) {
+		setCheckbox(inOverView.waitUntilPresent(), value);
 	}
 	
 	public void select_KindOfField(String keyword) {
-		kindOfField.selectByVisibleText(keyword);
-	}
-	
-	public void checkbox_key() {
-		key.click();
-	}
-	
-	public void checkbox_required() {
-		required.click();
-	}
-	
-	public void checkbox_inOverView() {
-		inOverView.click();
+		kindOfField.waitUntilPresent().selectByVisibleText(keyword);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.tripolis.qa.dialogueweb.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,14 +29,11 @@ public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 	
 	Logger logger = LoggerFactory.getLogger(DiaListSMSMessageTypeDefinitions.class);
 	
-	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
-	private WebElementFacade selectedDeletedSMSType;
+	@FindBy(id="checkAll", timeoutInSeconds="5")
+	private WebElementFacade selectedAllSMSType;
 	
-	@FindBy(className="ui-dialogue-frame", timeoutInSeconds="5")
-	private WebElementFacade confirmedPopup;
-	
-	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
-	private WebElementFacade confirmedMessage;
+	@FindBy(xpath=".//*[@class='tbody']/tr", timeoutInSeconds="5")
+	private List<WebElementFacade> listSMSTypes;
 	
 	@FindBy(xpath=".//*[@id='body']/div[6]/div/div[4]/div/button[1]", timeoutInSeconds="5")
 	private WebElementFacade confirmedOkButton;
@@ -45,19 +44,6 @@ public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 	public boolean getListSMSTypeDefinitionUrl() {
 		logger.info("Get List SMS Type Definition URL");
 		return driver.getCurrentUrl().contains("/dialogue/admin/content/listSmsMessageTypeDefinitions.html");	
-	}
-	
-	public boolean isshowSMSconfirmedPopup() {
-		try {
-			confirmedPopup.isDisplayed();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
-	public String getconfirmedMessage() {
-		return confirmedMessage.waitUntilPresent().getText();
 	}
 	
 	public void clickConfirmedOkButton() {
@@ -72,8 +58,20 @@ public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 		logger.info("already click on Cancel Button");
 	}
 	
-	public void select_SMSType() {
-		selectedDeletedSMSType.waitUntilClickable().click();
+	public void allSMSType(boolean value) {
+		setCheckbox(selectedAllSMSType.waitUntilPresent(), value);
+	}
+	
+	public void findSMSype(String value) {
+		value = value.trim();
+		int itemCount = listSMSTypes.size();
+		for(int i=0; i < itemCount; i++) {
+			String smsTypelabel = listSMSTypes.get(i).findBy(".//td[2]/div").waitUntilPresent().getText();
+			if(value.equals(smsTypelabel)) {
+				WebElementFacade selected = listSMSTypes.get(i).findBy(".//td[1]/input[2]");
+				setCheckbox(selected, true);
+			}
+		}
 	}
 
 }

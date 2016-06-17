@@ -1,13 +1,16 @@
 package com.tripolis.qa.dialogueweb.pages;
+import org.fluentlenium.core.wait.WaitMessage;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.thoughtworks.selenium.webdriven.commands.WaitForPopup;
 import com.tripolis.qa.common.AbstractPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.pages.jquery.JQueryEnabledPage;
 
 @DefaultUrl("/dialogue/login.html")
 public class DiaLoginPage extends AbstractPage {

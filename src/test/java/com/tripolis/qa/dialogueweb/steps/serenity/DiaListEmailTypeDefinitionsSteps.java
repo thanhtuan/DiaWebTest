@@ -22,8 +22,13 @@ public class DiaListEmailTypeDefinitionsSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectEmailType() {
-		diaListEmailTypeDefinitions.select_EmailType();
+	public void selectAllDirectEmailType(boolean value) {
+		diaListEmailTypeDefinitions.allDirectEmailType(value);
+	}
+	
+	@Step
+	public void selectDirectEmailType(String value) {
+		diaListEmailTypeDefinitions.findDirectEmailType(value);
 	}
 	
 	@Step
@@ -42,7 +47,7 @@ public class DiaListEmailTypeDefinitionsSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void seeConfirmedPopup() {
+	public void seeDeleteConfirmedPopup() {
 		assertThat(diaListEmailTypeDefinitions.isshowconfirmedPopup()).isTrue();
 	}
 	

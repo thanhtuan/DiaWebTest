@@ -26,12 +26,13 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaWorkspaceStory {
 	
-	private String databaseName = "ABC Dialogue DB Test "+ System.currentTimeMillis();
-	private String databaseLabel = "ABC Dialogue DB Test "+ System.currentTimeMillis();
+	private static String databaseName = "Test DB "+ System.currentTimeMillis();
+	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
 	private String databaseId;
-	private String workspaceLabel = "ABC Dialogue Workspace Test "+ System.currentTimeMillis();
-	private String workspaceName = "ABC Dialogue Workspace Test "+ System.currentTimeMillis();
+	private static String workspaceLabel = "Test Workspace "+ System.currentTimeMillis();
+	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
 	private String workspaceId;	
+	private String WSlabel;
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
@@ -71,7 +72,7 @@ public class DiaWorkspaceStory {
 	}
 	
 	@Test
-	public void scenario1CreateBDForWorkspace() throws Exception {
+	public void scenario1_CreateContactDatabaseForDiaWorkspaceStory() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
@@ -87,12 +88,12 @@ public class DiaWorkspaceStory {
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
-		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", "General");
+		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
-		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", "General");
+		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
@@ -101,13 +102,11 @@ public class DiaWorkspaceStory {
 	}
 	
 	@Test
-	public void scenario2CreateVaildWorkspace() throws Exception {
+	public void scenario2_CreateWorkspace() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
 		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
 		diaListWorkspacesSteps.clickOnNewLink();
 		diaCreateWorkspaceSteps.onCreateWorkspacesPage();
 		diaCreateWorkspaceSteps.verifyheaderNameTextCreateWorkspaces();
@@ -119,23 +118,20 @@ public class DiaWorkspaceStory {
 		diaCreateWorkspaceSteps.setBounceDomainName("");
 		diaCreateWorkspaceSteps.setAddListUnsubscribeHeader(false);
 		diaCreateWorkspaceSteps.clickOnSaveButton();
-		Thread.sleep(1000);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 	}
 	
 	@Test
-	public void scenario3UpdateWorkspace() throws Exception {
+	public void scenario3_UpdateWorkspace() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.selectWorkspace();
+		diaListWorkspacesSteps.selectWorkspace(workspaceLabel);
 		diaListWorkspacesSteps.clickOnEditButton();
 		diaEditWorkspaceSteps.onEditWorkspacesPage();
 		diaEditWorkspaceSteps.verify_HeaderNameTextEditWorkspaces(workspaceLabel);
-		diaEditWorkspaceSteps.editLabel("ABC SerenityBDD "+ "Dialogue Workspace Test "+ System.currentTimeMillis());
-		diaEditWorkspaceSteps.editName("ABC SerenityBDD "+ "Dialogue Workspace Test "+ System.currentTimeMillis());
+		diaEditWorkspaceSteps.editLabel("SerenityBDD "+ workspaceLabel);
+		diaEditWorkspaceSteps.editName("SerenityBDD "+ workspaceLabel);
 		diaEditWorkspaceSteps.checkcontactDatabaseState();
 		diaEditWorkspaceSteps.editPublicDomainNameLinkAndPage("http://site.int.tripolis.com/");
 		diaEditWorkspaceSteps.editPublicDomainNameImages("http://site.int.tripolis.com/");
@@ -146,12 +142,14 @@ public class DiaWorkspaceStory {
 	}
 	
 	@Test
-	public void scenario4DeleteWorkspace() throws Exception {
+	public void scenario4_DeleteWorkspace() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.selectWorkspace();
+		WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
+		diaListWorkspacesSteps.selectWorkspace(WSlabel);
 		diaListWorkspacesSteps.clickOnDeleteButton();
+		diaListWorkspacesSteps.seeDeleteConfirmedPopup();
 		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
 		diaListWorkspacesSteps.clickOnConfirmedButton();
 		diaListWorkspacesSteps.clickOnDeleteBtn();
@@ -159,12 +157,13 @@ public class DiaWorkspaceStory {
 	}
 	
 	@Test
-	public void scenario5CleanUpDB() throws Exception {
+	public void scenario5_CleanUpContactDatabaseDiaWorkspaceStory() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		diaListContactDatabasesSteps.selectContactDB();
+		diaListContactDatabasesSteps.selectContactDB(databaseLabel);
 		diaListContactDatabasesSteps.clickOnDeleteButton();
+		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
 		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(databaseLabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
@@ -172,7 +171,7 @@ public class DiaWorkspaceStory {
 	}
 	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		driver.close();
 	}
 

@@ -28,15 +28,16 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaDirectEmailTypeStory {
 
-	private String databaseName = "ABC Dialogue DB Test "+ System.currentTimeMillis();
-	private String databaseLabel = "ABC Dialogue DB Test "+ System.currentTimeMillis();
+	private static String databaseName = "Test DB "+ System.currentTimeMillis();
+	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
 	private String databaseId;
-	private String workspaceLabel = "ABC Dialogue Workspace Test "+ System.currentTimeMillis();
-	private String workspaceName = "Dialogue Workspace Test "+ System.currentTimeMillis();
-	private String workspaceId;
-	private String directemailName = "ABC Dialogue Direct Email Test "+ System.currentTimeMillis();
-	private String directemailLabel = "ABC Dialogue Direct Email Test "+ System.currentTimeMillis();
-	private String directemailId;
+	private String BDlabel;
+	private static String workspaceLabel = "Test Workspace "+ System.currentTimeMillis();
+	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
+	private String workspaceId;	
+	private String WSlabel;
+	private static String directemailName = "Test Email Type "+ System.currentTimeMillis();
+	private static String directemailLabel = "Test Email Type "+ System.currentTimeMillis();
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
@@ -83,7 +84,7 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario1CreateDBForDirectEmailType() throws Exception {
+	public void scenario1_CreateContactDatabaseForDiaDirectEmailTypeStory() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
@@ -100,12 +101,12 @@ public class DiaDirectEmailTypeStory {
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
-		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", "General");
+		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
-		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", "General");
+		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
@@ -114,13 +115,11 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario2CreateWorkSpaceForDirectEmailType() throws Exception {
+	public void scenario2_CreateWorkSpaceForDiaDirectEmailTypeStory() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
 		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
 		diaListWorkspacesSteps.clickOnNewLink();
 		diaCreateWorkspaceSteps.onCreateWorkspacesPage();
 		diaCreateWorkspaceSteps.verifyheaderNameTextCreateWorkspaces();
@@ -136,15 +135,10 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario3GoTolistEmailTypeDefinitionsPage() throws Exception {
+	public void scenario3_GoTolistDirectEmailTypeDefinitionsPage() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
@@ -153,15 +147,10 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario4CreateVaildDirectEmailType() throws Exception {
+	public void scenario4_CreateDirectEmailType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
@@ -185,23 +174,18 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario5UpdateDirectEmailType() throws Exception {
+	public void scenario5_UpdateDirectEmailType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.selectEmailType();
+		diaListEmailTypeDefinitionsSteps.selectDirectEmailType(directemailLabel);
 		diaListEmailTypeDefinitionsSteps.clickOnEditButton();
 		diaEditEmailTypeDefinitionSteps.onEditDirectEmailTypePage();
 		diaEditEmailTypeDefinitionSteps.verifyheaderNameTextEditDirectEmailType(directemailLabel);
-		diaEditEmailTypeDefinitionSteps.editLabel("AAA" + directemailName);
+		diaEditEmailTypeDefinitionSteps.editLabel("Serenity " + directemailLabel);
 		diaEditEmailTypeDefinitionSteps.checkDirectEmailTypeNameState();
 		diaEditEmailTypeDefinitionSteps.editFromAddress("tuan.tran@tripolis.com");
 		diaEditEmailTypeDefinitionSteps.editFromName("Tuan Tran");
@@ -218,32 +202,28 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario6DeleteDirectEmailType() throws Exception {
+	public void scenario6_DeleteDirectEmailType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.selectEmailType();
+		diaListEmailTypeDefinitionsSteps.selectDirectEmailType("Serenity " + directemailLabel);
 		diaListEmailTypeDefinitionsSteps.clickOnDeleteButton();
-		diaListEmailTypeDefinitionsSteps.seeConfirmedPopup();
+		diaListEmailTypeDefinitionsSteps.seeDeleteConfirmedPopup();
 		diaListEmailTypeDefinitionsSteps.verifyconfirmedMessage();
 		diaListEmailTypeDefinitionsSteps.clickOnConfirmedOkButton();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
 	}
 	
 	@Test
-	public void scenario7CleanUpWorkSpace() throws Exception {
+	public void scenario7_CleanUpWorkSpaceDirectEmailTypeStory() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();		
-		diaListWorkspacesSteps.selectWorkspace();
+		WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
+		diaListWorkspacesSteps.selectWorkspace(WSlabel);
 		diaListWorkspacesSteps.clickOnDeleteButton();
 		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
 		diaListWorkspacesSteps.clickOnConfirmedButton();
@@ -252,12 +232,14 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@Test
-	public void scenario8CleanUpDB() throws Exception {
+	public void scenario8_CleanUpContactDatabaseDirectEmailTypeStory() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		diaListContactDatabasesSteps.selectContactDB();
+		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		diaListContactDatabasesSteps.selectContactDB(BDlabel);
 		diaListContactDatabasesSteps.clickOnDeleteButton();
+		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
 		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(databaseLabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
@@ -265,7 +247,7 @@ public class DiaDirectEmailTypeStory {
 	}
 	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		driver.close();
 	}
 }

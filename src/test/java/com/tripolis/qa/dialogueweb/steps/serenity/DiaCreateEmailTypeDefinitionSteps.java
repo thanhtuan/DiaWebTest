@@ -82,8 +82,18 @@ public class DiaCreateEmailTypeDefinitionSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void attachmentShouldDisplay() {
+		assertThat(diaCreateEmailTypeDefinition.isDisplayedAttachmentEnabled()).isTrue();
+	}
+	
+	@Step
 	public void setAttachmentEnabled(boolean value) {
 		diaCreateEmailTypeDefinition.checkbox_AttachmentEnabled(value);
+	}
+	
+	@Step
+	public void externalAttachmentShouldDisplay() {
+		assertThat(diaCreateEmailTypeDefinition.isDisplayedExternalAttachmentEnabled()).isTrue();
 	}
 	
 	@Step

@@ -9,6 +9,10 @@ public class DiaHomeSteps extends ScenarioSteps {
 	
 	DiaHomePage diaHomePage;
 	
+	/*
+	 * Main Menu
+	 */
+	
 	@Step
 	public void navigateToHomePage() {
 		diaHomePage.click_HomePageLink();
@@ -48,5 +52,9 @@ public class DiaHomeSteps extends ScenarioSteps {
 	public void navigateToAdministrationPage() {
 		diaHomePage.click_SetupPageLink();
 	}
+	
+	/*
+	 * End Main Menu
+	 */
 
 }

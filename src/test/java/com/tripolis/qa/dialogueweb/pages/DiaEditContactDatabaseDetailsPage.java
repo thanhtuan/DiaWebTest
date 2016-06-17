@@ -19,11 +19,11 @@ public class DiaEditContactDatabaseDetailsPage extends AbstractPage {
 	Logger logger = LoggerFactory.getLogger(DiaEditContactDatabaseDetailsPage.class);
 	
 	
-	@FindBy(css="option[selected]", timeoutInSeconds="5")
+	@FindBy(name="defaultFieldDescriptorId", timeoutInSeconds="5")
 	private WebElementFacade presentationField;
 	
 	public void select_PresentationField(String keyword) {
-		presentationField.selectByVisibleText(keyword);
+		presentationField.waitUntilPresent().selectByVisibleText(keyword);
 	}
 	
 	public boolean getEditContactDatabaseUrl() {

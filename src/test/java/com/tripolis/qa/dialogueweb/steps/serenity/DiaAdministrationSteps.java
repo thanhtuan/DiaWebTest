@@ -9,10 +9,62 @@ public class DiaAdministrationSteps extends ScenarioSteps {
 	
 	DiaAdministrationPage diaAdministrationPage;
 	
+	/*
+	 * Main Menu
+	 */
+	
+	@Step
+	public void navigateToHomePage() {
+		diaAdministrationPage.click_HomePageLink();
+	}
+	
+	@Step
+	public void navigateToContactPage() {
+		diaAdministrationPage.click_ContactPageLink();
+	}
+	
+	@Step
+	public void navigateToContentPage() {
+		diaAdministrationPage.click_ContentPageLink();
+	}
+	
+	@Step
+	public void navigateToCampaignPage() {
+		diaAdministrationPage.click_CampaignPageLink();
+	}
+	
+	@Step
+	public void navigateToPublishingPage() {
+		diaAdministrationPage.click_PublishingPageLink();
+	}
+	
+	@Step
+	public void navigateToReportPage() {
+		diaAdministrationPage.click_ReportPageLink();
+	}
+	
+	@Step
+	public void navigateToProcessingPage() {
+		diaAdministrationPage.click_ProcessePageLink();
+	}
+	
+	@Step
+	public void navigateToAdministrationPage() {
+		diaAdministrationPage.click_SetupPageLink();
+	}
+	
 	@Step
 	public void onAdministrationPage() {
 		assert(diaAdministrationPage.getAdministrationUrl());
 	}
+	
+	/*
+	 * End Main Menu
+	 */
+	
+	/*
+	 * Sub Menu
+	 */
 	
 	@Step
 	public void navigateToListContactDatabasesPage() {
@@ -33,5 +85,9 @@ public class DiaAdministrationSteps extends ScenarioSteps {
 	public void navigateToSelectAdminModuleApplicationPage() {
 		diaAdministrationPage.clickOnsubMenuItem4();
 	}
+	
+	/*
+	 * End Sub Menu
+	 */
 
 }

@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -28,16 +30,17 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaSMSTypeStory {
 	
-	private String databaseName = "ABC Dialogue DB Test "+ System.currentTimeMillis();
-	private String databaseLabel = "ABC Dialogue DB Test "+ System.currentTimeMillis();
+	private static String databaseName = "Test DB "+ System.currentTimeMillis();
+	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
 	private String databaseId;
-	private String workspaceLabel = "ABC Dialogue Workspace Test "+ System.currentTimeMillis();
-	private String workspaceName = "ABC Dialogue Workspace Test "+ System.currentTimeMillis();
-	private String workspaceId;
-	private String smsName = "ABC Dialogue SMS Type Test "+ System.currentTimeMillis();
-	private String smsLabel = "ABC Dialogue SMS Type Test "+ System.currentTimeMillis();
-	private String smsId;
-	
+	private String BDlabel;
+	private static String workspaceLabel = "Test Workspace "+ System.currentTimeMillis();
+	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
+	private String workspaceId;	
+	private String WSlabel;
+	private static String smsName = "Test SMS Type "+ System.currentTimeMillis();
+	private static String smsLabel = "Test SMS Type "+ System.currentTimeMillis();
+			
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
 	
@@ -82,7 +85,7 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario1CreateDBForSMSType() throws Exception {
+	public void scenario1_CreateContactDatabaseForDiaSMSTypeStory() {		
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
@@ -99,12 +102,12 @@ public class DiaSMSTypeStory {
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
-		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", "General");
+		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
-		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", "General");
+		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
@@ -113,13 +116,11 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario2CreateWorkSpaceForSMSType() throws Exception {
+	public void scenario2_CreateWorkSpaceForDiaSMSTypeStory() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
 		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
 		diaListWorkspacesSteps.clickOnNewLink();
 		diaCreateWorkspaceSteps.onCreateWorkspacesPage();
 		diaCreateWorkspaceSteps.verifyheaderNameTextCreateWorkspaces();
@@ -135,15 +136,10 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario3GoTolistSMSTypeDefinitionsPage() throws Exception {
+	public void scenario3_GoTolistSMSTypeDefinitionsPage() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
@@ -152,15 +148,10 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario4CreateVaildSMSMesageType() throws Exception {
+	public void scenario4_CreateSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
@@ -177,22 +168,17 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario5UpdateSMSMesageType() throws Exception {
+	public void scenario5_UpdateSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.selectSMSType();
+		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(smsLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnEditButton();
 		diaEditSMSTypeDefinitionSteps.verifyheaderNameTextEditSMSType(smsLabel);
-		diaEditSMSTypeDefinitionSteps.editLabel("AAA" + smsLabel);
+		diaEditSMSTypeDefinitionSteps.editLabel("Serenity " + smsLabel);
 		diaEditSMSTypeDefinitionSteps.checkSMSMesageNameState();
 		diaEditSMSTypeDefinitionSteps.editDefaultOriginatorNumber("19002096");
 		diaEditSMSTypeDefinitionSteps.editDefaultOriginator("SupportTeam");
@@ -203,32 +189,28 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario6DeleteSMSMesageType() throws Exception {
+	public void scenario6_DeleteSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		Thread.sleep(1000);
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		System.out.println("Database id = " + databaseId);
-		workspaceId = diaListWorkspacesSteps.getcontentWorkspaceAttribute();
-		System.out.println("Workspace id = " + workspaceId);
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.selectSMSType();
+		diaListSMSMessageTypeDefinitionsSteps.selectSMSType("Serenity " + smsLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnDeleteButton();
-		diaListSMSMessageTypeDefinitionsSteps.seeConfirmedPopup();
+		diaListSMSMessageTypeDefinitionsSteps.seeDeleteConfirmedPopup();
 		diaListSMSMessageTypeDefinitionsSteps.verifyconfirmedMessage();
 		diaListSMSMessageTypeDefinitionsSteps.clickOnConfirmedOkButton();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
 	}
 	
 	@Test
-	public void scenario7CleanUpWorkSpace() throws Exception {
+	public void scenario7_CleanUpWorkSpaceDiaSMSTypeStory() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();		
-		diaListWorkspacesSteps.selectWorkspace();
+		WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
+		diaListWorkspacesSteps.selectWorkspace(WSlabel);
 		diaListWorkspacesSteps.clickOnDeleteButton();
 		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
 		diaListWorkspacesSteps.clickOnConfirmedButton();
@@ -237,12 +219,14 @@ public class DiaSMSTypeStory {
 	}
 	
 	@Test
-	public void scenario8CleanUpDB() throws Exception {
+	public void scenario8_CleanUpContactDatabaseDiaSMSTypeStory() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		diaListContactDatabasesSteps.selectContactDB();
+		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		diaListContactDatabasesSteps.selectContactDB(BDlabel);
 		diaListContactDatabasesSteps.clickOnDeleteButton();
+		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
 		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(databaseLabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
@@ -250,7 +234,7 @@ public class DiaSMSTypeStory {
 	}
 	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		driver.close();
 	}
 	

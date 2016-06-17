@@ -347,18 +347,35 @@ public class AbstractPage extends PageObject {
 		return clientName.waitUntilPresent().getText();
 	}
 	
-	@FindBy(xpath=".//*[@id='contact']/option[@selected]", timeoutInSeconds="5")
+	@FindBy(id="contact", timeoutInSeconds="5")
 	protected WebElementFacade contactDatabasesDropDown;
 	
+	public String contactDatabasesLabel() {
+		/*Set<String> listDb = getSelectedOptionLabelsFrom(contactDatabasesDropDown);
+		System.out.println(">>>>>> listDb: " + listDb);
+		return listDb.iterator().next();*/
+		return getSelectedLabelFrom(contactDatabasesDropDown);
+	}
+	
+	@FindBy(xpath=".//*[@id='contact']/option[@selected]", timeoutInSeconds="5")
+	protected WebElementFacade selectedContactDatabases;
+	
 	public String contactDatabasesAttribute() {
-		return contactDatabasesDropDown.waitUntilPresent().getAttribute("value");
+		return selectedContactDatabases.waitUntilPresent().getAttribute("value");
+	}
+	
+	@FindBy(id="content", timeoutInSeconds="5")
+	protected WebElementFacade contentWorkspaceDropDown;
+	
+	public String contentWorkspaceLabel() {
+		return getSelectedLabelFrom(contentWorkspaceDropDown);
 	}
 	
 	@FindBy(xpath=".//*[@id='content']/option[@selected]", timeoutInSeconds="5")
-	protected WebElementFacade contentWorkspaceDropDown;
+	protected WebElementFacade selectedContentWorkspace;
 	
 	public String contentWorkspaceAttribute() {
-		return contentWorkspaceDropDown.waitUntilPresent().getAttribute("value");
+		return selectedContentWorkspace.waitUntilPresent().getAttribute("value");
 	}
 	
 	/*
@@ -386,6 +403,51 @@ public class AbstractPage extends PageObject {
 		return headerNameText.waitUntilPresent().getText();
 	}
 	
+	/*
+	 * End handle The Objects on the main area
+	 */
+	
+	/*
+	 * Handle the list action buttons on the main area
+	 */
+	
+	@FindBy(className="ui-dialogue-frame", timeoutInSeconds="5")
+	protected WebElementFacade confirmedPopup;
+	
+	public boolean isshowconfirmedPopup() {
+		try {
+			confirmedPopup.isDisplayed();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
+	protected WebElementFacade confirmedMessage;
+	
+	public String getconfirmedMessage() {
+		return confirmedMessage.waitUntilPresent().getText();
+	}
+	
+	@FindBy(id="archive", timeoutInSeconds="5")
+	protected WebElementFacade archiveButton;
+	
+	public void clickArchiveButton() {
+		logger.info("Please click on Edit Button");
+		archiveButton.waitUntilClickable().click();
+		logger.info("already click on Edit Button");
+	}
+	
+	@FindBy(id="view", timeoutInSeconds="5")
+	protected WebElementFacade viewButton;
+	
+	public void clickViewButton() {
+		logger.info("Please click on Edit Button");
+		viewButton.waitUntilClickable().click();
+		logger.info("already click on Edit Button");
+	}
+	
 	@FindBy(id="edit", timeoutInSeconds="5")
 	protected WebElementFacade editButton;
 	
@@ -404,8 +466,26 @@ public class AbstractPage extends PageObject {
 		logger.info("already click on Delete Button");
 	}
 	
+	@FindBy(name="confirmed", timeoutInSeconds="5")
+	protected WebElementFacade confirmedButton;
+	
+	public void clickconfirmedButton() {
+		logger.info("Please click on confirmed Button");
+		confirmedButton.waitUntilClickable().click();
+		logger.info("already click on confirmed Button");
+	}
+	
+	@FindBy(id="deleteBtn", timeoutInSeconds="5")
+	protected WebElementFacade deleteBtn;
+	
+	public void clickDeleteBtn() {
+		logger.info("Please click on DeleteBtn");
+		deleteBtn.waitUntilClickable().click();
+		logger.info("already click on DeleteBtn");
+	}
+	
 	/*
-	 * End handle The Objects on the main area
+	 * End handle the list action buttons on the main area
 	 */
 	
 	/*
@@ -516,24 +596,6 @@ public class AbstractPage extends PageObject {
 		replyToAddress.waitUntilPresent().type(keyword);
 		logger.info("already input ReplyToAddress");
     }
-	
-	@FindBy(name="confirmed", timeoutInSeconds="5")
-	protected WebElementFacade confirmedButton;
-	
-	public void clickconfirmedButton() {
-		logger.info("Please click on confirmed Button");
-		confirmedButton.waitUntilClickable().click();
-		logger.info("already click on confirmed Button");
-	}
-	
-	@FindBy(id="deleteBtn", timeoutInSeconds="5")
-	protected WebElementFacade deleteBtn;
-	
-	public void clickDeleteBtn() {
-		logger.info("Please click on DeleteBtn");
-		deleteBtn.waitUntilClickable().click();
-		logger.info("already click on DeleteBtn");
-	}
 	
 	@FindBy(id="submitOk", timeoutInSeconds="5")
 	protected WebElementFacade saveButton;

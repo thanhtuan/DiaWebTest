@@ -11,56 +11,6 @@ public class DiaListWorkspacesSteps extends ScenarioSteps {
 	
 	DiaListWorkspacesPage diaListWorkspacesPage;
 	
-	@Step
-	public void onListWorkspacesPage() {
-		assert(diaListWorkspacesPage.getListWorkspacesUrl());
-	}
-	
-	@Step
-	public void verifyheaderNameTextListWorkspaces() {
-		assertThat(diaListWorkspacesPage.getheaderNameText().equalsIgnoreCase("List of workspaces"));
-	}
-	
-	@Step
-	public void clickOnNewLink() {
-		diaListWorkspacesPage.clickNewLink();
-	}
-	
-	@Step
-	public void clickOnEditButton() {
-		diaListWorkspacesPage.clickEditButton();
-	}
-	
-	@Step
-	public void clickOnDeleteButton () {
-		diaListWorkspacesPage.clickDeleteButton();
-	}
-	
-	@Step
-	public void verifyDeleteconfirmedMessage() {
-		assertThat(diaListWorkspacesPage.getconfirmedMessage().equalsIgnoreCase("Are you sure you would like to delete this workspace?"));
-	}
-	
-	@Step
-	public void clickOnConfirmedButton () {
-		diaListWorkspacesPage.clickconfirmedButton();
-	}
-	
-	@Step
-	public void clickOnDeleteBtn () {
-		diaListWorkspacesPage.clickDeleteBtn();
-	}
-	
-	@Step
-	public String getcontentWorkspaceAttribute() {
-		return diaListWorkspacesPage.contentWorkspaceAttribute();
-	}
-	
-	@Step
-	public void selectWorkspace() {
-		diaListWorkspacesPage.select_Workspaces();
-	}
-	
 	/*
 	 * Handle the Left Panel on List Workspaces Page
 	 */
@@ -103,4 +53,71 @@ public class DiaListWorkspacesSteps extends ScenarioSteps {
 	/*
 	 * Handle the Left Panel on List Workspaces Page
 	 */
+	
+	@Step
+	public void onListWorkspacesPage() {
+		assert(diaListWorkspacesPage.getListWorkspacesUrl());
+	}
+	
+	@Step
+	public void verifyheaderNameTextListWorkspaces() {
+		assertThat(diaListWorkspacesPage.getheaderNameText().equalsIgnoreCase("List of workspaces"));
+	}
+	
+	@Step
+	public void clickOnNewLink() {
+		diaListWorkspacesPage.clickNewLink();
+	}
+	
+	@Step
+	public void clickOnEditButton() {
+		diaListWorkspacesPage.clickEditButton();
+	}
+	
+	@Step
+	public void clickOnDeleteButton () {
+		diaListWorkspacesPage.clickDeleteButton();
+	}
+	
+	@Step
+	public void seeDeleteConfirmedPopup() {
+		assertThat(diaListWorkspacesPage.isshowconfirmedPopup()).isTrue();
+	}
+	
+	@Step
+	public void verifyDeleteconfirmedMessage() {
+		assertThat(diaListWorkspacesPage.getconfirmedMessage().equalsIgnoreCase("Are you sure you would like to delete this workspace?"));
+	}
+	
+	@Step
+	public void clickOnConfirmedButton () {
+		diaListWorkspacesPage.clickconfirmedButton();
+	}
+	
+	@Step
+	public void clickOnDeleteBtn () {
+		diaListWorkspacesPage.clickDeleteBtn();
+	}
+	
+	@Step
+	public String getcontentWorkspaceAttribute() {
+		return diaListWorkspacesPage.contentWorkspaceAttribute();
+	}
+	
+	@Step
+	public String getcontentWorkspaceLabel() {
+		return diaListWorkspacesPage.contentWorkspaceLabel();
+	}
+	
+	@Step
+	public void selectAllWorkspaces(boolean value) {
+		diaListWorkspacesPage.allWorkspaces(value);
+	}
+	
+	@Step
+	public void selectWorkspace(String value) {
+		diaListWorkspacesPage.findWorkspace(value);
+	}
+	
+	
 }

@@ -69,7 +69,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	
 	@Step
 	public void verify_ErrorMessage() {
-		assertThat(diaLoginPage.getErrorMessage().equalsIgnoreCase("         	Bad credentials         "));
+		assertThat(diaLoginPage.getErrorMessage().equalsIgnoreCase("Bad credentials"));
 	}
 	
 	@Step

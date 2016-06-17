@@ -1,5 +1,7 @@
 package com.tripolis.qa.dialogueweb.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,14 +24,11 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 
 	Logger logger = LoggerFactory.getLogger(DiaListEmailTypeDefinitions.class);
 	
-	@FindBy(xpath=".//*[@id='table_row1']/td[1]/input[2]", timeoutInSeconds="5")
-	private WebElementFacade selectedDeletedEmailType;
+	@FindBy(id="checkAll", timeoutInSeconds="5")
+	private WebElementFacade selectedAllDirectEmailType;
 	
-	@FindBy(className="ui-dialogue-frame", timeoutInSeconds="5")
-	private WebElementFacade confirmedPopup;
-	
-	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
-	private WebElementFacade confirmedMessage;
+	@FindBy(xpath=".//*[@class='tbody']/tr", timeoutInSeconds="5")
+	private List<WebElementFacade> listDirectEmailTypes;
 	
 	@FindBy(xpath=".//*[@id='body']/div[6]/div/div[4]/div/button[1]", timeoutInSeconds="5")
 	private WebElementFacade confirmedOkButton;
@@ -40,19 +39,6 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 	public boolean getListEmailTypeDefinitionUrl() {
 		logger.info("Get List Email Type Definition URL");
 		return driver.getCurrentUrl().contains("/dialogue/admin/content/listEmailTypeDefinitions.html");	
-	}
-	
-	public boolean isshowconfirmedPopup() {
-		try {
-			confirmedPopup.isDisplayed();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
-	public String getconfirmedMessage() {
-		return confirmedMessage.waitUntilPresent().getText();
 	}
 	
 	public void clickConfirmedOkButton() {
@@ -67,8 +53,20 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 		logger.info("already click on Cancel Button");
 	}
 	
-	public void select_EmailType() {
-		selectedDeletedEmailType.waitUntilClickable().click();
+	public void allDirectEmailType(boolean value) {
+		setCheckbox(selectedAllDirectEmailType.waitUntilPresent(), value);
+	}
+	
+	public void findDirectEmailType(String value) {
+		value = value.trim();
+		int itemCount = listDirectEmailTypes.size();
+		for(int i=0; i < itemCount; i++) {
+			String directEmailTypelabel = listDirectEmailTypes.get(i).findBy(".//td[2]/div").waitUntilPresent().getText();
+			if(value.equals(directEmailTypelabel)) {
+				WebElementFacade selected = listDirectEmailTypes.get(i).findBy(".//td[1]/input[2]");
+				setCheckbox(selected, true);
+			}
+		}
 	}
 	
 }

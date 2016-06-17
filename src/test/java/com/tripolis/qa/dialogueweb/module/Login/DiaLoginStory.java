@@ -31,7 +31,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario1LoginWithBlankClientDomain() {
+	public void scenario1_LoginWithBlankClientDomain() {
 		diaLoginSteps.inputDataToLoginForm("", "telerik@tripolis.com", "Telerik1!");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
@@ -39,7 +39,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario2LoginWithBlankUsername() {
+	public void scenario2_LoginWithBlankUsername() {
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "", "Telerik1!");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
@@ -47,7 +47,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario3LoginWithBlankPassword() {
+	public void scenario3_LoginWithBlankPassword() {
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
@@ -55,7 +55,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario4LoginWithWrongClientDomain() {
+	public void scenario4_LoginWithWrongClientDomain() {
 		diaLoginSteps.inputDataToLoginForm("harald companies", "telerik@tripolis.com", "Telerik1!");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
@@ -63,7 +63,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario5LoginWithWrongPassword() {
+	public void scenario5_LoginWithWrongPassword() {
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "Pa$$w0rt");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
@@ -71,7 +71,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario6LoginWithWrongUsername() {
+	public void scenario6_LoginWithWrongUsername() {
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik2@tripolis.com", "Telerik1!");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
@@ -79,7 +79,7 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario7LoginWithVaildCredentials(){
+	public void scenario7_LoginWithVaildCredentials(){
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "Telerik1!");
 		diaLoginSteps.clickonLoginButton();

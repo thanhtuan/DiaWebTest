@@ -22,8 +22,13 @@ public class DiaListSMSMessageTypeDefinitionsSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectSMSType() {
-		diaListSMSMessageTypeDefinitions.select_SMSType();
+	public void selectAllSMSType(boolean value) {
+		diaListSMSMessageTypeDefinitions.allSMSType(value);
+	}
+	
+	@Step
+	public void selectSMSType(String value) {
+		diaListSMSMessageTypeDefinitions.findSMSype(value);
 	}
 	
 	@Step
@@ -42,8 +47,8 @@ public class DiaListSMSMessageTypeDefinitionsSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void seeConfirmedPopup() {
-		assertThat(diaListSMSMessageTypeDefinitions.isshowSMSconfirmedPopup()).isTrue();
+	public void seeDeleteConfirmedPopup() {
+		assertThat(diaListSMSMessageTypeDefinitions.isshowconfirmedPopup()).isTrue();
 	}
 	
 	@Step

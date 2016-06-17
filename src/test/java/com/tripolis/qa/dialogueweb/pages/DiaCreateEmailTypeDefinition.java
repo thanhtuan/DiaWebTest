@@ -72,8 +72,16 @@ public class DiaCreateEmailTypeDefinition extends AbstractPage {
 		characterSetEncoding.waitUntilPresent().selectByValue(keyword);
 	}
 	
+	public boolean isDisplayedAttachmentEnabled() {
+		return attachmentEnabled.isDisplayed();
+	}
+	
 	public void checkbox_AttachmentEnabled(boolean value) {
 		setCheckbox(attachmentEnabled.waitUntilPresent(), value);
+	}
+	
+	public boolean isDisplayedExternalAttachmentEnabled() {
+		return externalAttachmentEnabled.isDisplayed();
 	}
 	
 	public void checkbox_ExternalAttachmentEnabled(boolean value) {

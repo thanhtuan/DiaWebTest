@@ -32,6 +32,11 @@ public class DiaEditContactDatabaseDetailsSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void editPresentationField(String keyword) {
+		diaEditContactDatabaseDetailsPage.select_PresentationField(keyword);
+	}
+	
+	@Step
 	public void clickOnSubmitButton() {
 		diaEditContactDatabaseDetailsPage.clickSaveButton();
 	}
