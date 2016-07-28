@@ -1,6 +1,9 @@
 package com.tripolis.qa.dialogueweb.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +51,10 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	private WebElementFacade maxLength;
 	
 	@FindBy(id="_defaultStringValue", timeoutInSeconds="5")
-	private WebElementFacade defaultValue;
+	private WebElementFacade defaultStringValue;
+	
+	@FindBy(name="_defaultValue", timeoutInSeconds="5")
+	private List<WebElementFacade> radioButton;
 	
 	@FindBy(id="_key", timeoutInSeconds="5")
 	private WebElementFacade key;
@@ -61,6 +67,21 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	
 	@FindBy(name="kindOfField", timeoutInSeconds="5")
 	private WebElementFacade kindOfField;
+	
+	@FindBy(id="picklistItemLabel", timeoutInSeconds="5")
+	private WebElementFacade picklistItemLabel;
+	
+	@FindBy(name="picklistItemValue", timeoutInSeconds="5")
+	private WebElementFacade picklistItemValue;
+	
+	@FindBy(id="next", timeoutInSeconds="5")
+	private WebElementFacade addItem;
+	
+	@FindBy(id="previous", timeoutInSeconds="5")
+	private WebElementFacade previous;
+	
+	@FindBy(name="defaultValue", timeoutInSeconds="5")
+	private WebElementFacade defaultValue;
 	
 	public boolean isShowCreateDatabaseDialog() {
 		try {
@@ -116,10 +137,10 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 		logger.info("already input Max Length");
     }
 	
-	public void enter_DefaultValue(String keyword) {
+	public void enter_DefaultStringValue(String keyword) {
 		logger.info("Please input Default Value");
-		defaultValue.waitUntilPresent().clear();
-		defaultValue.waitUntilPresent().type(keyword);
+		defaultStringValue.waitUntilPresent().clear();
+		defaultStringValue.waitUntilPresent().type(keyword);
 		logger.info("already input Default Value");
     }
 	
@@ -139,4 +160,41 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 		kindOfField.waitUntilPresent().selectByVisibleText(keyword);
 	}
 	
+	public void enter_PicklistItemLabel(String keyword) {
+		logger.info("Please input Picklist Item Label");
+		picklistItemLabel.waitUntilPresent().clear();
+		picklistItemLabel.waitUntilPresent().type(keyword);
+		logger.info("already input Picklist Item Label");
+    }
+	
+	public void enter_PicklistItemValue(String keyword) {
+		logger.info("Please input Picklist Item Value");
+		picklistItemValue.waitUntilPresent().clear();
+		picklistItemValue.waitUntilPresent().type(keyword);
+		logger.info("already input Picklist Item Value");
+    }
+	
+	public void clickAddItemButton() {
+		logger.info("Please click on addItem button");
+		addItem.waitUntilClickable().click();
+		logger.info("already click on addItem button");
+    }
+	
+	public void clickPreviousButtonOnPicklist() {
+		logger.info("Please click on previous button");
+		previous.waitUntilClickable().click();
+		logger.info("already click on previous button");
+    }
+	
+	public void select_DefaultValue(String keyword) {
+		defaultValue.waitUntilPresent().selectByValue(keyword);
+	}
+	
+	public void select_RadioButton(int option) {
+		if (option > 0 && option <= radioButton.size()) {
+			radioButton.get(option - 1).click();
+	    } else {
+	        throw new NotFoundException("option " + option + " not found");
+	    }
+	}
 }

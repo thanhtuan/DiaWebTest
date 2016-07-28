@@ -19,15 +19,9 @@ public class DiaCreateWorkspacePage extends AbstractPage {
 	}
 	
 	Logger logger = LoggerFactory.getLogger(DiaCreateWorkspacePage.class);
-	
-	@FindBy(id="label", timeoutInSeconds="10")
-	private WebElementFacade label;
-	
-	@FindBy(id="name", timeoutInSeconds="5")
-	private WebElementFacade name;
-	
-	@FindBy(name="pContactDatabaseId", timeoutInSeconds="5")
-	private WebElementFacade pContactDatabase;
+		
+	@FindBy(name="contactDatabaseId", timeoutInSeconds="5")
+	private WebElementFacade contactDatabase;
 	
 	@FindBy(id="publicDomainName", timeoutInSeconds="10")
 	private WebElementFacade publicDomainNameLinkAndPage;
@@ -47,7 +41,7 @@ public class DiaCreateWorkspacePage extends AbstractPage {
 	}
 	
 	public void select_ContactDatabase(String keyword) {
-		pContactDatabase.selectByValue(keyword);
+		contactDatabase.selectByValue(keyword);
 	}
 	
 	public void enter_PublicDomainNameLinkAndPage(String keyword) {

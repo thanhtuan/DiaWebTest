@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.module.Admin;
+package com.tripolis.qa.dialogueweb.c.module.Admin;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,12 +10,12 @@ import org.openqa.selenium.WebDriver;
 
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateEmailTypeDefinitionSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateSMSTypeDefinitionSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateWorkspaceSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditEmailTypeDefinitionSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditSMSTypeDefinitionSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaListContactDatabasesSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaListEmailTypeDefinitionsSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaListSMSMessageTypeDefinitionsSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaListWorkspacesSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 
@@ -26,8 +26,8 @@ import net.thucydides.core.annotations.Steps;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DiaDirectEmailTypeStory {
-
+public class TestSuite4_DiaSMSTypeStory {
+	
 	private static String databaseName = "Test DB "+ System.currentTimeMillis();
 	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
 	private String databaseId;
@@ -36,9 +36,9 @@ public class DiaDirectEmailTypeStory {
 	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
 	private String workspaceId;	
 	private String WSlabel;
-	private static String directemailName = "Test Email Type "+ System.currentTimeMillis();
-	private static String directemailLabel = "Test Email Type "+ System.currentTimeMillis();
-	
+	private static String smsName = "Test SMS Type "+ System.currentTimeMillis();
+	private static String smsLabel = "Test SMS Type "+ System.currentTimeMillis();
+			
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
 	
@@ -58,33 +58,32 @@ public class DiaDirectEmailTypeStory {
 	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
 	
 	@Steps
-	DiaListWorkspacesSteps diaListWorkspacesSteps;
+	public DiaListWorkspacesSteps diaListWorkspacesSteps;
 	
 	@Steps
-	DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
+	public DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
 	
 	@Steps
-	public DiaListEmailTypeDefinitionsSteps diaListEmailTypeDefinitionsSteps;
+	public DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
 	
 	@Steps
-	public DiaCreateEmailTypeDefinitionSteps diaCreateEmailTypeDefinitionSteps;
+	public DiaCreateSMSTypeDefinitionSteps diaCreateSMSTypeDefinitionSteps;
 	
 	@Steps
-	public DiaEditEmailTypeDefinitionSteps diaEditEmailTypeDefinitionSteps;
-	
+	public DiaEditSMSTypeDefinitionSteps diaEditSMSTypeDefinitionSteps;
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "Telerik1!");
+		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
 		diaLoginSteps.clickonLoginButton();	
 		diaLoginSteps.verifyClientName();
 		diaHomeSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
-	@Test
-	public void scenario1_CreateContactDatabaseForDiaDirectEmailTypeStory() {
+	@Pending @Test
+	public void scenario1_CreateContactDatabaseForDiaSMSTypeStory() {		
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
@@ -95,7 +94,7 @@ public class DiaDirectEmailTypeStory {
 		diaContactDatabaseWizardSteps.setName(databaseName);
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep2();
-		diaContactDatabaseWizardSteps.create_First_Key_Field("Email", "EMAIL", "3", "254", "", "General");
+		diaContactDatabaseWizardSteps.create_Key_Field("Email", "EMAIL", "3", "254", "", "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
@@ -114,8 +113,8 @@ public class DiaDirectEmailTypeStory {
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	
-	@Test
-	public void scenario2_CreateWorkSpaceForDiaDirectEmailTypeStory() {
+	@Pending @Test
+	public void scenario2_CreateWorkSpaceForDiaSMSTypeStory() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
@@ -134,91 +133,77 @@ public class DiaDirectEmailTypeStory {
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 	}
 	
-	@Test
-	public void scenario3_GoTolistDirectEmailTypeDefinitionsPage() {
+	@Pending @Test
+	public void scenario3_GoTolistSMSTypeDefinitionsPage() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
-		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
-		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.clickOnNewLink();
-		diaCreateEmailTypeDefinitionSteps.verifyheaderNameTextCreateEmailTypeDefinitions();
+		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
+		diaCreateSMSTypeDefinitionSteps.verifyheaderNameTextCreateSMSTypeDefinitions();
 	}
 	
-	@Test
-	public void scenario4_CreateDirectEmailType() {
+	@Pending @Test
+	public void scenario4_CreateSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
-		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
-		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.clickOnNewLink();
-		diaCreateEmailTypeDefinitionSteps.onCreateDirectEmailTypePage();
-		diaCreateEmailTypeDefinitionSteps.verifyheaderNameTextCreateEmailTypeDefinitions();
-		diaCreateEmailTypeDefinitionSteps.setLabel(directemailName);
-		diaCreateEmailTypeDefinitionSteps.setName(directemailLabel);
-		diaCreateEmailTypeDefinitionSteps.setFromAddress("telerik@tripolis.com");
-		diaCreateEmailTypeDefinitionSteps.setFromName("Telerik");
-		diaCreateEmailTypeDefinitionSteps.setReplyToAddress("mimo@tripolis.com");
-		diaCreateEmailTypeDefinitionSteps.setExternalHtmlUrl("http://site.int.tripolis.com/~site/import_features/webimporter/basic_email.html");
-		diaCreateEmailTypeDefinitionSteps.setExternalTextUrl("http://site.int.tripolis.com/~site/import_features/webimporter/basic_email.html");
-		diaCreateEmailTypeDefinitionSteps.setTinyMceEnabled(true);
-		diaCreateEmailTypeDefinitionSteps.setEmailField("Email");
-		diaCreateEmailTypeDefinitionSteps.setCharacterSetEncoding("ISO8859_1");
-		diaCreateEmailTypeDefinitionSteps.setAttachmentEnabled(false);
-		diaCreateEmailTypeDefinitionSteps.setExternalAttachmentEnabled(false);
-		diaCreateEmailTypeDefinitionSteps.clickOnSaveButton();
-		diaEditEmailTypeDefinitionSteps.verifyheaderNameTextEditDirectEmailType(directemailLabel);
+		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
+		diaCreateSMSTypeDefinitionSteps.verifyheaderNameTextCreateSMSTypeDefinitions();
+		diaCreateSMSTypeDefinitionSteps.setLabel(smsLabel);
+		diaCreateSMSTypeDefinitionSteps.setName(smsName);
+		diaCreateSMSTypeDefinitionSteps.setDefaultOriginatorNumber("18001095");
+		diaCreateSMSTypeDefinitionSteps.setDefaultOriginator("Support");
+		diaCreateSMSTypeDefinitionSteps.setMobilePhoneField("Mobile");
+		diaCreateSMSTypeDefinitionSteps.setLongSMSEnabled(false);
+		diaCreateSMSTypeDefinitionSteps.clickOnSaveButton();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
 	}
 	
-	@Test
-	public void scenario5_UpdateDirectEmailType() {
+	@Pending @Test
+	public void scenario5_UpdateSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
-		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
-		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.selectDirectEmailType(directemailLabel);
-		diaListEmailTypeDefinitionsSteps.clickOnEditButton();
-		diaEditEmailTypeDefinitionSteps.onEditDirectEmailTypePage();
-		diaEditEmailTypeDefinitionSteps.verifyheaderNameTextEditDirectEmailType(directemailLabel);
-		diaEditEmailTypeDefinitionSteps.editLabel("Serenity " + directemailLabel);
-		diaEditEmailTypeDefinitionSteps.checkDirectEmailTypeNameState();
-		diaEditEmailTypeDefinitionSteps.editFromAddress("tuan.tran@tripolis.com");
-		diaEditEmailTypeDefinitionSteps.editFromName("Tuan Tran");
-		diaEditEmailTypeDefinitionSteps.editReplyToAddress("tuan.tran@tripolis.com");
-		diaEditEmailTypeDefinitionSteps.editExternalHtmlUrl("http://site.int.tripolis.com/~site/import_features/webimporter/basic_email.html");
-		diaEditEmailTypeDefinitionSteps.editExternalTextUrl("http://site.int.tripolis.com/~site/import_features/webimporter/basic_email.html");
-		diaEditEmailTypeDefinitionSteps.editTinyMceEnabled(true);
-		diaEditEmailTypeDefinitionSteps.editEmailField("Email");
-		diaEditEmailTypeDefinitionSteps.editCharacterSetEncoding("UTF8");
-		diaEditEmailTypeDefinitionSteps.editAttachmentEnabled(true);
-		diaEditEmailTypeDefinitionSteps.editExternalAttachmentEnabled(true);
-		diaEditEmailTypeDefinitionSteps.clickOnSaveButton();
-		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
+		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(smsLabel);
+		diaListSMSMessageTypeDefinitionsSteps.clickOnEditButton();
+		diaEditSMSTypeDefinitionSteps.verifyheaderNameTextEditSMSType(smsLabel);
+		diaEditSMSTypeDefinitionSteps.editLabel("Serenity " + smsLabel);
+		diaEditSMSTypeDefinitionSteps.checkSMSMesageNameState();
+		diaEditSMSTypeDefinitionSteps.editDefaultOriginatorNumber("19002096");
+		diaEditSMSTypeDefinitionSteps.editDefaultOriginator("SupportTeam");
+		diaEditSMSTypeDefinitionSteps.editMobilePhoneField("Mobile");
+		diaEditSMSTypeDefinitionSteps.editLongSMSEnabled(true);
+		diaEditSMSTypeDefinitionSteps.clickOnSaveButton();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
 	}
 	
-	@Test
-	public void scenario6_DeleteDirectEmailType() {
+	@Pending @Test
+	public void scenario6_DeleteSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
-		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
-		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.selectDirectEmailType("Serenity " + directemailLabel);
-		diaListEmailTypeDefinitionsSteps.clickOnDeleteButton();
-		diaListEmailTypeDefinitionsSteps.seeDeleteConfirmedPopup();
-		diaListEmailTypeDefinitionsSteps.verifyconfirmedMessage();
-		diaListEmailTypeDefinitionsSteps.clickOnConfirmedOkButton();
-		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(workspaceLabel);
+		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.selectSMSType("Serenity " + smsLabel);
+		diaListSMSMessageTypeDefinitionsSteps.clickOnDeleteButton();
+		diaListSMSMessageTypeDefinitionsSteps.seeDeleteConfirmedPopup();
+		diaListSMSMessageTypeDefinitionsSteps.verifyconfirmedMessage();
+		diaListSMSMessageTypeDefinitionsSteps.clickOnConfirmedOkButton();
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
 	}
 	
-	@Test
-	public void scenario7_CleanUpWorkSpaceDirectEmailTypeStory() {
+	@Pending @Test
+	public void scenario7_CleanUpWorkSpaceDiaSMSTypeStory() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();		
@@ -231,8 +216,8 @@ public class DiaDirectEmailTypeStory {
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();	
 	}
 	
-	@Test
-	public void scenario8_CleanUpContactDatabaseDirectEmailTypeStory() {
+	@Pending @Test
+	public void scenario8_CleanUpContactDatabaseDiaSMSTypeStory() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
@@ -250,4 +235,5 @@ public class DiaDirectEmailTypeStory {
 	public void tearDown() {
 		driver.close();
 	}
+
 }

@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.module.Admin;
+package com.tripolis.qa.dialogueweb.c.module.Admin;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Steps;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DiaContactDatabaseStory {
+public class TestSuite1_DiaContactDatabaseStory {
 	
 	private static String databaseName = "Test DB "+ System.currentTimeMillis();
 	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
@@ -52,7 +52,7 @@ public class DiaContactDatabaseStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "Telerik1!");
+		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.verifyClientName();
 		diaHomeSteps.navigateToAdministrationPage();
@@ -62,7 +62,7 @@ public class DiaContactDatabaseStory {
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	
-	@Test
+	@Pending @Test
 	public void scenario1_ClickOnCancelButtonWhenCreateContactDatabase() {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
@@ -73,7 +73,7 @@ public class DiaContactDatabaseStory {
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	
-	@Test
+	@Pending @Test
 	public void scenario2_CreateContactDatabase() {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
@@ -82,7 +82,7 @@ public class DiaContactDatabaseStory {
 		diaContactDatabaseWizardSteps.setName(databaseName);
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep2();
-		diaContactDatabaseWizardSteps.create_First_Key_Field("Email", "EMAIL", "3", "254", "", "General");
+		diaContactDatabaseWizardSteps.create_Key_Field("Email", "EMAIL", "3", "254", "", "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
 		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
@@ -101,7 +101,7 @@ public class DiaContactDatabaseStory {
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	
-	@Test
+	@Pending @Test
 	public void scenario3_UpdateContactDatabase() {
 		diaListContactDatabasesSteps.selectContactDB(databaseLabel);
 		diaListContactDatabasesSteps.clickOnEditButton();
@@ -114,7 +114,7 @@ public class DiaContactDatabaseStory {
 		diaEditContactDatabaseDetailsSteps.verify_HeaderNameTextEditContactDatabase("SerenityBDD " + databaseLabel);
 	}
 	
-	@Test
+	@Pending @Test
 	public void scenarior4_DeleteContactDatabase() {
 		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
 		diaListContactDatabasesSteps.selectContactDB(BDlabel);
@@ -130,4 +130,5 @@ public class DiaContactDatabaseStory {
 	public void tearDown() {
 		driver.close();
 	}
+
 }

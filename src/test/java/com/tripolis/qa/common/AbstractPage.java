@@ -396,7 +396,7 @@ public class AbstractPage extends PageObject {
 		logger.info("already click on New Link");
     }
 	
-	@FindBy(xpath=".//*[@id='main']/div/div[1]", timeoutInSeconds="5")
+	@FindBy(xpath=".//*[@id='main']/div[1]/div[1]", timeoutInSeconds="5")
 	protected WebElementFacade headerNameText; 
 	
 	public String getheaderNameText() {
