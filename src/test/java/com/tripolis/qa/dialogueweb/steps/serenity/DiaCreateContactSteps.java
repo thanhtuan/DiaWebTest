@@ -80,8 +80,8 @@ public class DiaCreateContactSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickOnSubmitOkButton() {
-		diaCreateContactPage.clickSubmitOkButton();
+	public void clickOnSaveButton() {
+		diaCreateContactPage.clickSaveButton();
 	}
 	
 	@Step

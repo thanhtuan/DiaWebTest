@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.c.module.Admin;
+package com.tripolis.qa.dialogueweb.module.Admin;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateWorkspaceSteps;
@@ -26,13 +27,7 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSuite2_DiaWorkspaceStory {
 	
-	private static String databaseName = "Test DB "+ System.currentTimeMillis();
-	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
-	private String databaseId;
-	private static String workspaceLabel = "Test Workspace "+ System.currentTimeMillis();
-	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
-	private String workspaceId;	
-	private String WSlabel;
+	Variables var = new Variables();
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
@@ -64,7 +59,7 @@ public class TestSuite2_DiaWorkspaceStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.verifyClientName();
 		diaHomeSteps.navigateToAdministrationPage();
@@ -79,24 +74,24 @@ public class TestSuite2_DiaWorkspaceStory {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep1();
-		diaContactDatabaseWizardSteps.setLabel(databaseLabel);
-		diaContactDatabaseWizardSteps.setName(databaseName);
+		diaContactDatabaseWizardSteps.setLabel(Variables.databaseLabel);
+		diaContactDatabaseWizardSteps.setName(Variables.databaseName);
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.create_Key_Field("Email", "EMAIL", "3", "254", "", "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
 		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnFinishButton();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
@@ -106,13 +101,13 @@ public class TestSuite2_DiaWorkspaceStory {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
+		var.databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
 		diaListWorkspacesSteps.clickOnNewLink();
 		diaCreateWorkspaceSteps.onCreateWorkspacesPage();
 		diaCreateWorkspaceSteps.verifyheaderNameTextCreateWorkspaces();
-		diaCreateWorkspaceSteps.setLabel(workspaceLabel);
-		diaCreateWorkspaceSteps.setName(workspaceName);
-		diaCreateWorkspaceSteps.selected_DB(databaseId);
+		diaCreateWorkspaceSteps.setLabel(Variables.workspaceLabel);
+		diaCreateWorkspaceSteps.setName(Variables.workspaceName);
+		diaCreateWorkspaceSteps.selected_DB(var.databaseId);
 		diaCreateWorkspaceSteps.setPublicDomainNameLinkAndPage("");
 		diaCreateWorkspaceSteps.setPublicDomainNameImages("");
 		diaCreateWorkspaceSteps.setBounceDomainName("");
@@ -126,12 +121,12 @@ public class TestSuite2_DiaWorkspaceStory {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.selectWorkspace(workspaceLabel);
+		diaListWorkspacesSteps.selectWorkspace(Variables.workspaceLabel);
 		diaListWorkspacesSteps.clickOnEditButton();
 		diaEditWorkspaceSteps.onEditWorkspacesPage();
-		diaEditWorkspaceSteps.verify_HeaderNameTextEditWorkspaces(workspaceLabel);
-		diaEditWorkspaceSteps.editLabel("SerenityBDD "+ workspaceLabel);
-		diaEditWorkspaceSteps.editName("SerenityBDD "+ workspaceLabel);
+		diaEditWorkspaceSteps.verify_HeaderNameTextEditWorkspaces(Variables.workspaceLabel);
+		diaEditWorkspaceSteps.editLabel(Variables.updatedWorkspaceLabel);
+		diaEditWorkspaceSteps.editName(Variables.updatedWorkspaceLabel);
 		diaEditWorkspaceSteps.checkcontactDatabaseState();
 		diaEditWorkspaceSteps.editPublicDomainNameLinkAndPage("http://site.int.tripolis.com/");
 		diaEditWorkspaceSteps.editPublicDomainNameImages("http://site.int.tripolis.com/");
@@ -146,8 +141,8 @@ public class TestSuite2_DiaWorkspaceStory {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
-		diaListWorkspacesSteps.selectWorkspace(WSlabel);
+		var.WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
+		diaListWorkspacesSteps.selectWorkspace(var.WSlabel);
 		diaListWorkspacesSteps.clickOnDeleteButton();
 		diaListWorkspacesSteps.seeDeleteConfirmedPopup();
 		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
@@ -161,10 +156,10 @@ public class TestSuite2_DiaWorkspaceStory {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		diaListContactDatabasesSteps.selectContactDB(databaseLabel);
+		diaListContactDatabasesSteps.selectContactDB(Variables.databaseLabel);
 		diaListContactDatabasesSteps.clickOnDeleteButton();
 		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
-		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(databaseLabel);
+		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(Variables.databaseLabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();

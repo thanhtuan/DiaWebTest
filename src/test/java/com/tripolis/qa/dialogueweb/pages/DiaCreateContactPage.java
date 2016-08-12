@@ -37,12 +37,6 @@ public class DiaCreateContactPage extends AbstractPage {
 	@FindBy(name="mobile", timeoutInSeconds="5")
 	private WebElementFacade contactMobile;
 	
-	@FindBy(id="submitOk", timeoutInSeconds="5")
-	private WebElementFacade submitOkButton;
-	
-	@FindBy(id="submitCancel", timeoutInSeconds="5")
-	private WebElementFacade submitCancelButton;
-	
 	public void enter_ContactEmail(String keyword) {
 		logger.info("Please input Contact Email");
 		contactEmail.waitUntilPresent().clear();
@@ -68,18 +62,6 @@ public class DiaCreateContactPage extends AbstractPage {
 		logger.info("Please click on Save Link");
 		saveLink.waitUntilClickable().click();
 		logger.info("already click on Save Link");
-	}
-	
-	public void clickSubmitOkButton() {
-		logger.info("Please click on Submit Ok Button");
-		submitOkButton.waitUntilClickable().click();
-		logger.info("already click on Submit Ok Button");
-	}
-	
-	public void clickSubmitCancelButton() {
-		logger.info("Please click on Submit Cancel Button");
-		submitCancelButton.waitUntilClickable().click();
-		logger.info("already click on Submit Cancel Button");
 	}
 
 }

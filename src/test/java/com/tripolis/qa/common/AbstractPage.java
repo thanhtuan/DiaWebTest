@@ -190,6 +190,130 @@ public class AbstractPage extends PageObject {
 	 */
 	
 	/*
+	 * Handle Action Bar
+	 */
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[1]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem1;
+	
+	public void clickOnActionBarItem1() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem1.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[2]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem2;
+	
+	public void clickOnActionBarItem2() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem2.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[3]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem3;
+	
+	public void clickOnActionBarItem3() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem3.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[4]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem4;
+	
+	public void clickOnActionBarItem4() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem4.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[5]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem5;
+	
+	public void clickOnActionBarItem5() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem5.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[6]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem6;
+	
+	public void clickOnActionBarItem6() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem6.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='bb-rgt']/ul[1]/li[7]/a", timeoutInSeconds="5")
+	protected WebElementFacade actionBarItem7;
+	
+	public void clickOnActionBarItem7() {
+		logger.info("Please click on Action Bar Item Link");
+		actionBarItem7.waitUntilClickable().click();
+		logger.info("already click on Action Bar Item Link");
+    }
+	
+	/*
+	 * End handle Action Bar
+	 */
+	
+	/*
+	 * Handle Second Action Bar
+	 */
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[1]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem1;
+	
+	public void clickOnSecondActionBarItem1() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem1.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[2]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem2;
+	
+	public void clickOnSecondActionBarItem2() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem2.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[3]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem3;
+	
+	public void clickOnSecondActionBarItem3() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem3.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[4]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem4;
+	
+	public void clickOnSecondActionBarItem4() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem4.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[5]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem5;
+	
+	public void clickOnSecondActionBarItem5() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem5.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	/*
+	 * End handle Second Action Bar
+	 */
+	
+	/*
 	 * Handle The Left Panel
 	 */
 	
@@ -597,12 +721,21 @@ public class AbstractPage extends PageObject {
 		logger.info("already input ReplyToAddress");
     }
 	
+	@FindBy(id="submitCancel", timeoutInSeconds="5")
+	protected WebElementFacade submitCancelButton;
+	
+	public void clickSubmitCancelButton() {
+		logger.info("Please click on Submit Cancel Button");
+		submitCancelButton.waitUntilClickable().click();
+		logger.info("already click on Submit Cancel Button");
+	}
+	
 	@FindBy(id="submitOk", timeoutInSeconds="5")
-	protected WebElementFacade saveButton;
+	protected WebElementFacade submitSaveButton;
 	
 	public void clickSaveButton() {
 		logger.info("Please click on save Button");
-		saveButton.waitUntilClickable().click();
+		submitSaveButton.waitUntilClickable().click();
 		logger.info("already click on save Button");
 	}
 	

@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.d.module.Contacts;
+package com.tripolis.qa.dialogueweb.module.Contacts;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDashboardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -25,9 +26,7 @@ import net.thucydides.core.annotations.Steps;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestSuite4_DiaContactsCleanUpDataStory {
-	
-	private String BDlabel;
+public class TestSuite2_DiaContactsUnHappyFlowStory {
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
@@ -44,30 +43,41 @@ public class TestSuite4_DiaContactsCleanUpDataStory {
 	@Steps
 	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
 	
+	@Steps
+	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	
+	@Steps
+	public DiaContactDashboardSteps diaContactDashboardSteps;
+	
+	@Steps
+	public DiaListContactsSteps diaListContactsSteps;
+	
+	@Steps
+	public DiaCreateContactSteps diaCreateContactSteps;
+	
+	@Steps
+	public DiaViewContactSteps diaViewContactSteps;
+	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();	
 		diaLoginSteps.verifyClientName();
-		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
 	}
 	
-	@Test
-	public void scenario8_CleanUpContactDatabaseDiaContactsStory() {
-		diaHomeSteps.navigateToAdministrationPage();
-		diaAdministrationSteps.onAdministrationPage();
-		diaAdministrationSteps.navigateToListContactDatabasesPage();
-		diaListContactDatabasesSteps.onListContactDatabasesPage();
-		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		//BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
-		diaListContactDatabasesSteps.selectContactDB(BDlabel);
-		diaListContactDatabasesSteps.clickOnDeleteButton();
-		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
-		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(BDlabel);
-		diaListContactDatabasesSteps.clickOnConfirmedButton();
-		diaListContactDatabasesSteps.clickOnDeleteBtn();
-		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
+	@Pending @Test
+	public void scenario2_CreateContactWith() {
+		diaHomeSteps.navigateToContactPage();
+		diaContactDashboardSteps.navigateToListContactsPage();
+		diaListContactsSteps.verifyheaderNameTextListContacts("");
+		diaListContactsSteps.clickOnNewLink();
+		diaCreateContactSteps.onCreateContactPage();
+		diaCreateContactSteps.setContactEmail("");
+		diaCreateContactSteps.setContactName("");
+		diaCreateContactSteps.setContactMobile("");
+		diaCreateContactSteps.clickOnSaveButton();
+		diaViewContactSteps.onViewContactPage();
 	}
 	
 	@After

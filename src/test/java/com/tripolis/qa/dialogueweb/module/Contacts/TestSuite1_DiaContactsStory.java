@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.d.module.Contacts;
+package com.tripolis.qa.dialogueweb.module.Contacts;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDashboardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -25,15 +26,8 @@ import net.thucydides.core.annotations.Steps;
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSuite1_DiaContactsStory {
-    
-	private static String databaseName = "Test DB "+ System.currentTimeMillis();
-	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
-	private String databaseId;
-	private String BDlabel;
-	private static String workspaceLabel = "Test Workspace "+ System.currentTimeMillis();
-	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
-	private String workspaceId;
-	private String WSlabel;
+	
+	Variables var = new Variables();
 	
 	
 	@Managed(uniqueSession = true)
@@ -59,7 +53,7 @@ public class TestSuite1_DiaContactsStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();	
 		diaLoginSteps.verifyClientName();
 	}
@@ -74,25 +68,25 @@ public class TestSuite1_DiaContactsStory {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep1();
-		diaContactDatabaseWizardSteps.setLabel(databaseLabel);
-		diaContactDatabaseWizardSteps.setName(databaseName);
+		diaContactDatabaseWizardSteps.setLabel(Variables.databaseLabel);
+		diaContactDatabaseWizardSteps.setName(Variables.databaseName);
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep2();
 		diaContactDatabaseWizardSteps.create_Key_Field("Email", "EMAIL", "3", "254", "", "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
 		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnFinishButton();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}	

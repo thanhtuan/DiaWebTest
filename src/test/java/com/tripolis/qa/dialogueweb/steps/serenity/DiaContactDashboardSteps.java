@@ -94,5 +94,10 @@ public class DiaContactDashboardSteps extends ScenarioSteps {
 	/*
 	 * End Sub Menu
 	 */
+	
+	@Step
+	public void onContactDashboardPage() {
+		assert(diaContactDashboardPage.getContactDashboardUrl());
+	}
 
 }

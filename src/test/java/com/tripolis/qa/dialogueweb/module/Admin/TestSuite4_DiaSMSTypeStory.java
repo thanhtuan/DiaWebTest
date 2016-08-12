@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.c.module.Admin;
+package com.tripolis.qa.dialogueweb.module.Admin;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateSMSTypeDefinitionSteps;
@@ -28,16 +29,7 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSuite4_DiaSMSTypeStory {
 	
-	private static String databaseName = "Test DB "+ System.currentTimeMillis();
-	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
-	private String databaseId;
-	private String BDlabel;
-	private static String workspaceLabel = "Test Workspace "+ System.currentTimeMillis();
-	private static String workspaceName = "Test Workspace "+ System.currentTimeMillis();
-	private String workspaceId;	
-	private String WSlabel;
-	private static String smsName = "Test SMS Type "+ System.currentTimeMillis();
-	private static String smsLabel = "Test SMS Type "+ System.currentTimeMillis();
+	Variables var = new Variables();
 			
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
@@ -75,7 +67,7 @@ public class TestSuite4_DiaSMSTypeStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();	
 		diaLoginSteps.verifyClientName();
 		diaHomeSteps.navigateToAdministrationPage();
@@ -90,25 +82,25 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep1();
-		diaContactDatabaseWizardSteps.setLabel(databaseLabel);
-		diaContactDatabaseWizardSteps.setName(databaseName);
+		diaContactDatabaseWizardSteps.setLabel(Variables.databaseLabel);
+		diaContactDatabaseWizardSteps.setName(Variables.databaseName);
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep2();
 		diaContactDatabaseWizardSteps.create_Key_Field("Email", "EMAIL", "3", "254", "", "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
 		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnFinishButton();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
@@ -118,13 +110,13 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
+		var.databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
 		diaListWorkspacesSteps.clickOnNewLink();
 		diaCreateWorkspaceSteps.onCreateWorkspacesPage();
 		diaCreateWorkspaceSteps.verifyheaderNameTextCreateWorkspaces();
-		diaCreateWorkspaceSteps.setLabel(workspaceLabel);
-		diaCreateWorkspaceSteps.setName(workspaceName);
-		diaCreateWorkspaceSteps.selected_DB(databaseId);
+		diaCreateWorkspaceSteps.setLabel(Variables.workspaceLabel);
+		diaCreateWorkspaceSteps.setName(Variables.workspaceName);
+		diaCreateWorkspaceSteps.selected_DB(var.databaseId);
 		diaCreateWorkspaceSteps.setPublicDomainNameLinkAndPage("");
 		diaCreateWorkspaceSteps.setPublicDomainNameImages("");
 		diaCreateWorkspaceSteps.setBounceDomainName("");
@@ -140,7 +132,7 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
 		diaCreateSMSTypeDefinitionSteps.verifyheaderNameTextCreateSMSTypeDefinitions();
 	}
@@ -152,17 +144,17 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
 		diaCreateSMSTypeDefinitionSteps.verifyheaderNameTextCreateSMSTypeDefinitions();
-		diaCreateSMSTypeDefinitionSteps.setLabel(smsLabel);
-		diaCreateSMSTypeDefinitionSteps.setName(smsName);
+		diaCreateSMSTypeDefinitionSteps.setLabel(Variables.smsmessageTypeLabel);
+		diaCreateSMSTypeDefinitionSteps.setName(Variables.smsmessageTypeName);
 		diaCreateSMSTypeDefinitionSteps.setDefaultOriginatorNumber("18001095");
 		diaCreateSMSTypeDefinitionSteps.setDefaultOriginator("Support");
 		diaCreateSMSTypeDefinitionSteps.setMobilePhoneField("Mobile");
 		diaCreateSMSTypeDefinitionSteps.setLongSMSEnabled(false);
 		diaCreateSMSTypeDefinitionSteps.clickOnSaveButton();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	
 	@Pending @Test
@@ -172,18 +164,18 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(smsLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(Variables.smsmessageTypeLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnEditButton();
-		diaEditSMSTypeDefinitionSteps.verifyheaderNameTextEditSMSType(smsLabel);
-		diaEditSMSTypeDefinitionSteps.editLabel("Serenity " + smsLabel);
+		diaEditSMSTypeDefinitionSteps.verifyheaderNameTextEditSMSType(Variables.smsmessageTypeLabel);
+		diaEditSMSTypeDefinitionSteps.editLabel(Variables.updatedSMSMessageTypeLabel);
 		diaEditSMSTypeDefinitionSteps.checkSMSMesageNameState();
 		diaEditSMSTypeDefinitionSteps.editDefaultOriginatorNumber("19002096");
 		diaEditSMSTypeDefinitionSteps.editDefaultOriginator("SupportTeam");
 		diaEditSMSTypeDefinitionSteps.editMobilePhoneField("Mobile");
 		diaEditSMSTypeDefinitionSteps.editLongSMSEnabled(true);
 		diaEditSMSTypeDefinitionSteps.clickOnSaveButton();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	
 	@Pending @Test
@@ -193,13 +185,13 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.selectSMSType("Serenity " + smsLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(Variables.updatedSMSMessageTypeLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnDeleteButton();
 		diaListSMSMessageTypeDefinitionsSteps.seeDeleteConfirmedPopup();
 		diaListSMSMessageTypeDefinitionsSteps.verifyconfirmedMessage();
 		diaListSMSMessageTypeDefinitionsSteps.clickOnConfirmedOkButton();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(workspaceLabel);
+		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	
 	@Pending @Test
@@ -207,8 +199,8 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();		
-		WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
-		diaListWorkspacesSteps.selectWorkspace(WSlabel);
+		var.WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
+		diaListWorkspacesSteps.selectWorkspace(var.WSlabel);
 		diaListWorkspacesSteps.clickOnDeleteButton();
 		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
 		diaListWorkspacesSteps.clickOnConfirmedButton();
@@ -221,11 +213,11 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
-		diaListContactDatabasesSteps.selectContactDB(BDlabel);
+		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		diaListContactDatabasesSteps.selectContactDB(var.BDlabel);
 		diaListContactDatabasesSteps.clickOnDeleteButton();
 		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
-		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(databaseLabel);
+		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(Variables.databaseLabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();

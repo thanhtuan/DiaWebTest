@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.b.module.Login;
+package com.tripolis.qa.dialogueweb.Login;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -31,7 +32,7 @@ public class DiaLoginStory {
 	
 	@Pending @Test
 	public void scenario1_LoginWithBlankClientDomain() {
-		diaLoginSteps.inputDataToLoginForm("", "telerik@tripolis.com", "Telerik1!");
+		diaLoginSteps.inputDataToLoginForm("", Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
@@ -39,7 +40,7 @@ public class DiaLoginStory {
 	
 	@Pending @Test
 	public void scenario2_LoginWithBlankUsername() {
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "", "Telerik1!");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, "", Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
@@ -47,7 +48,7 @@ public class DiaLoginStory {
 	
 	@Pending @Test
 	public void scenario3_LoginWithBlankPassword() {
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, "");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
@@ -55,7 +56,7 @@ public class DiaLoginStory {
 	
 	@Pending @Test
 	public void scenario4_LoginWithWrongClientDomain() {
-		diaLoginSteps.inputDataToLoginForm("harald companies", "telerik@tripolis.com", "Telerik1!");
+		diaLoginSteps.inputDataToLoginForm("harald companies", Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
@@ -63,7 +64,7 @@ public class DiaLoginStory {
 	
 	@Pending @Test
 	public void scenario5_LoginWithWrongPassword() {
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik@tripolis.com", "Pa$$w0rt");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, "Pa$$w0rt");
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
@@ -71,7 +72,7 @@ public class DiaLoginStory {
 	
 	@Pending @Test
 	public void scenario6_LoginWithWrongUsername() {
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "telerik2@tripolis.com", "Telerik1!");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, "telerik2@tripolis.com", Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
@@ -80,7 +81,7 @@ public class DiaLoginStory {
 	@Pending @Test
 	public void scenario7_LoginWithVaildCredentials(){
 		diaLoginSteps.seeLoginForm();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.verifyIsOnHomePage();
 		diaLoginSteps.verifyClientName();

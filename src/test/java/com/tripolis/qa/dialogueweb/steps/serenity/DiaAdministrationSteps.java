@@ -53,10 +53,6 @@ public class DiaAdministrationSteps extends ScenarioSteps {
 		diaAdministrationPage.click_SetupPageLink();
 	}
 	
-	@Step
-	public void onAdministrationPage() {
-		assert(diaAdministrationPage.getAdministrationUrl());
-	}
 	
 	/*
 	 * End Main Menu
@@ -89,5 +85,10 @@ public class DiaAdministrationSteps extends ScenarioSteps {
 	/*
 	 * End Sub Menu
 	 */
+	
+	@Step
+	public void onAdministrationPage() {
+		assert(diaAdministrationPage.getAdministrationUrl());
+	}
 
 }

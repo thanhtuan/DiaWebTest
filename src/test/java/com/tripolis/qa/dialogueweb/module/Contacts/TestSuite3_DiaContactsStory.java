@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.d.module.Contacts;
+package com.tripolis.qa.dialogueweb.module.Contacts;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDashboardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -30,8 +31,8 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 @Concurrent(threads="4x")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSuite3_DiaContactsStory {
-	
-	private String BDlabel;
+
+	Variables var = new Variables();
 	
     private String email;
     private String name;
@@ -85,20 +86,20 @@ public class TestSuite3_DiaContactsStory {
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
 		diaLoginSteps.clickonLoginButton();	
 		diaLoginSteps.verifyClientName();
-		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
 	}
 	
 	@Test
 	public void scenario2_CreateContacts() {
 		diaHomeSteps.navigateToContactPage();
 		diaContactDashboardSteps.navigateToListContactsPage();
-		diaListContactsSteps.verifyheaderNameTextListContacts(BDlabel);
+		diaListContactsSteps.verifyheaderNameTextListContacts(var.BDlabel);
 		diaListContactsSteps.clickOnNewLink();
 		diaCreateContactSteps.onCreateContactPage();
 		diaCreateContactSteps.setContactEmail(email);
 		diaCreateContactSteps.setContactName(name);
 		diaCreateContactSteps.setContactMobile(mobile);
-		diaCreateContactSteps.clickOnSubmitOkButton();
+		diaCreateContactSteps.clickOnSaveButton();
 		diaViewContactSteps.onViewContactPage();
 		diaViewContactSteps.verifyheaderNameTextViewContact(email);
 	}

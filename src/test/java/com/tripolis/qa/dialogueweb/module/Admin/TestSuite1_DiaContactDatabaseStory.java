@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.c.module.Admin;
+package com.tripolis.qa.dialogueweb.module.Admin;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditContactDatabaseDetailsSteps;
@@ -24,9 +25,7 @@ import net.thucydides.core.annotations.Steps;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestSuite1_DiaContactDatabaseStory {
 	
-	private static String databaseName = "Test DB "+ System.currentTimeMillis();
-	private static String databaseLabel = "Test DB "+ System.currentTimeMillis();
-	public String BDlabel;
+	Variables var = new Variables();
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
@@ -52,7 +51,7 @@ public class TestSuite1_DiaContactDatabaseStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaLoginSteps.verifyClientName();
 		diaHomeSteps.navigateToAdministrationPage();
@@ -67,8 +66,8 @@ public class TestSuite1_DiaContactDatabaseStory {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep1();
-		diaContactDatabaseWizardSteps.setLabel(databaseLabel);
-		diaContactDatabaseWizardSteps.setName(databaseName);
+		diaContactDatabaseWizardSteps.setLabel(Variables.databaseLabel);
+		diaContactDatabaseWizardSteps.setName(Variables.databaseName);
 		diaContactDatabaseWizardSteps.clickOnCancelButton();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
@@ -78,49 +77,49 @@ public class TestSuite1_DiaContactDatabaseStory {
 		diaListContactDatabasesSteps.clickOnNewLink();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep1();
-		diaContactDatabaseWizardSteps.setLabel(databaseLabel);
-		diaContactDatabaseWizardSteps.setName(databaseName);
+		diaContactDatabaseWizardSteps.setLabel(Variables.databaseLabel);
+		diaContactDatabaseWizardSteps.setName(Variables.databaseName);
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep2();
 		diaContactDatabaseWizardSteps.create_Key_Field("Email", "EMAIL", "3", "254", "", "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep3();
 		diaContactDatabaseWizardSteps.create_Field("Name", "STRING", "3", "254", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnAddFieldButton();
 		diaContactDatabaseWizardSteps.create_Field("Mobile", "MOBILE", "3", "16", "", false, false, true, "General");
 		diaContactDatabaseWizardSteps.clickOnNextButton();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogOverview();
-		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(databaseLabel);
+		diaContactDatabaseWizardSteps.verify_DatabaseLabelText(Variables.databaseLabel);
 		diaContactDatabaseWizardSteps.clickOnFinishButton();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	
 	@Pending @Test
 	public void scenario3_UpdateContactDatabase() {
-		diaListContactDatabasesSteps.selectContactDB(databaseLabel);
+		diaListContactDatabasesSteps.selectContactDB(Variables.databaseLabel);
 		diaListContactDatabasesSteps.clickOnEditButton();
 		diaEditContactDatabaseDetailsSteps.onEditContactDatabasePage();
-		diaEditContactDatabaseDetailsSteps.verify_HeaderNameTextEditContactDatabase(databaseLabel);
-		diaEditContactDatabaseDetailsSteps.editLabel("SerenityBDD "+ databaseLabel);
-		diaEditContactDatabaseDetailsSteps.editName("SerenityBDD "+ databaseLabel);
+		diaEditContactDatabaseDetailsSteps.verify_HeaderNameTextEditContactDatabase(Variables.databaseLabel);
+		diaEditContactDatabaseDetailsSteps.editLabel(Variables.updatedDatabaseLabel);
+		diaEditContactDatabaseDetailsSteps.editName(Variables.updatedDatabaseLabel);
 		diaEditContactDatabaseDetailsSteps.editPresentationField("Email");
 		diaEditContactDatabaseDetailsSteps.clickOnSubmitButton();
-		diaEditContactDatabaseDetailsSteps.verify_HeaderNameTextEditContactDatabase("SerenityBDD " + databaseLabel);
+		diaEditContactDatabaseDetailsSteps.verify_HeaderNameTextEditContactDatabase(Variables.updatedDatabaseLabel);
 	}
 	
 	@Pending @Test
 	public void scenarior4_DeleteContactDatabase() {
-		BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
-		diaListContactDatabasesSteps.selectContactDB(BDlabel);
+		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		diaListContactDatabasesSteps.selectContactDB(var.BDlabel);
 		diaListContactDatabasesSteps.clickOnDeleteButton();
 		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
-		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(BDlabel);
+		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(var.BDlabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
