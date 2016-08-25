@@ -1,11 +1,15 @@
 package com.tripolis.qa.dialogueweb.steps.serenity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.tripolis.qa.dialogueweb.pages.DiaHomePage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaHomeSteps extends ScenarioSteps {
+	
+	private static final long serialVersionUID = 1L;
 	
 	DiaHomePage diaHomePage;
 	
@@ -55,6 +59,31 @@ public class DiaHomeSteps extends ScenarioSteps {
 	
 	/*
 	 * End Main Menu
+	 */
+	
+	/*
+	 * Steps using methods from diaHomePage
+	 */
+	
+	@Step
+	public void verifyClientName() {
+		assertThat(diaHomePage.getClientName().equalsIgnoreCase("Client: Tripolis QA"));
+	}
+	
+	@Step
+	public void mainMenuShouldVisible() {
+		assertThat(diaHomePage.mainMenuisVisible()).isTrue();
+	}
+	
+	@Step
+	public void verifyIsOnHomePage() {	
+		//System.out.println("-----------Test--------: " + diaHomePage.getHomeurl());
+		assert(diaHomePage.getHomeurl());
+		
+	}
+	
+	/*
+	 * *******End steps using methods from diaHomePage********
 	 */
 
 }

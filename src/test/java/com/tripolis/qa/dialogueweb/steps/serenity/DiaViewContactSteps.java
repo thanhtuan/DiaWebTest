@@ -8,6 +8,8 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaViewContactSteps extends ScenarioSteps {
+	
+	private static final long serialVersionUID = 1L;
 
 	DiaViewContactPage diaViewContactPage;
 	

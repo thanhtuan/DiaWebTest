@@ -1,6 +1,5 @@
 package com.tripolis.qa.dialogueweb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,13 +11,8 @@ import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("/dialogue/admin/content/createSmsMessageTypeDefinition.html")
 public class DiaCreateSMSMessageTypeDefinition extends AbstractPage {
-
-	public DiaCreateSMSMessageTypeDefinition(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
 	
-	Logger logger = LoggerFactory.getLogger(DiaCreateSMSMessageTypeDefinition.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaCreateSMSMessageTypeDefinition.class);
 	
 	@FindBy(id="defaultOriginatorNumber", timeoutInSeconds="5")
 	private WebElementFacade defaultOriginatorNumber;
@@ -34,7 +28,7 @@ public class DiaCreateSMSMessageTypeDefinition extends AbstractPage {
 	
 	public boolean getCreateSMSTypeDefinitionUrl() {
 		logger.info("Get Create SMS Type Definition URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/listSmsMessageTypeDefinitions.html");	
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/listSmsMessageTypeDefinitions.html");	
 	}
 	
 	public void enter_DefaultOriginatorNumber(String keyword) {

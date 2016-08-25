@@ -2,7 +2,6 @@ package com.tripolis.qa.dialogueweb.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,13 +20,8 @@ import net.thucydides.core.annotations.NamedUrls;
 		  }
 		)
 public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
-
-	public DiaListSMSMessageTypeDefinitions(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
 	
-	Logger logger = LoggerFactory.getLogger(DiaListSMSMessageTypeDefinitions.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaListSMSMessageTypeDefinitions.class);
 	
 	@FindBy(id="checkAll", timeoutInSeconds="5")
 	private WebElementFacade selectedAllSMSType;
@@ -43,7 +37,7 @@ public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 	
 	public boolean getListSMSTypeDefinitionUrl() {
 		logger.info("Get List SMS Type Definition URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/listSmsMessageTypeDefinitions.html");	
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/listSmsMessageTypeDefinitions.html");	
 	}
 	
 	public void clickConfirmedOkButton() {
@@ -66,7 +60,7 @@ public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 		value = value.trim();
 		int itemCount = listSMSTypes.size();
 		for(int i=0; i < itemCount; i++) {
-			String smsTypelabel = listSMSTypes.get(i).findBy(".//td[2]/div").waitUntilPresent().getText();
+			String smsTypelabel = listSMSTypes.get(i).findBy(".//td[2]/div").waitUntilPresent().getText().trim();
 			if(value.equals(smsTypelabel)) {
 				WebElementFacade selected = listSMSTypes.get(i).findBy(".//td[1]/input[2]");
 				setCheckbox(selected, true);

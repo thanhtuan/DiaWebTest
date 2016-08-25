@@ -2,7 +2,6 @@ package com.tripolis.qa.dialogueweb.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,18 +10,11 @@ import com.tripolis.qa.common.AbstractPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.NamedUrl;
-import net.thucydides.core.annotations.NamedUrls;
 
 @DefaultUrl("/dialogue/admin/content/listEmailTypeDefinitions.html")
 public class DiaListEmailTypeDefinitions extends AbstractPage {
 
-	public DiaListEmailTypeDefinitions(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
-	Logger logger = LoggerFactory.getLogger(DiaListEmailTypeDefinitions.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaListEmailTypeDefinitions.class);
 	
 	@FindBy(id="checkAll", timeoutInSeconds="5")
 	private WebElementFacade selectedAllDirectEmailType;
@@ -38,7 +30,7 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 	
 	public boolean getListEmailTypeDefinitionUrl() {
 		logger.info("Get List Email Type Definition URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/listEmailTypeDefinitions.html");	
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/listEmailTypeDefinitions.html");	
 	}
 	
 	public void clickConfirmedOkButton() {
@@ -61,7 +53,7 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 		value = value.trim();
 		int itemCount = listDirectEmailTypes.size();
 		for(int i=0; i < itemCount; i++) {
-			String directEmailTypelabel = listDirectEmailTypes.get(i).findBy(".//td[2]/div").waitUntilPresent().getText();
+			String directEmailTypelabel = listDirectEmailTypes.get(i).findBy(".//td[2]/div").waitUntilPresent().getText().trim();
 			if(value.equals(directEmailTypelabel)) {
 				WebElementFacade selected = listDirectEmailTypes.get(i).findBy(".//td[1]/input[2]");
 				setCheckbox(selected, true);

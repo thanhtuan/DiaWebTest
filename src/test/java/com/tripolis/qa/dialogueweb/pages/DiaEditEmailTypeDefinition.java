@@ -1,6 +1,5 @@
 package com.tripolis.qa.dialogueweb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,18 +8,11 @@ import com.tripolis.qa.common.AbstractPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.NamedUrl;
-import net.thucydides.core.annotations.NamedUrls;
 
 @DefaultUrl("/dialogue/admin/content/editEmailTypeDefinition.html")
 public class DiaEditEmailTypeDefinition extends AbstractPage {
 
-	public DiaEditEmailTypeDefinition(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
-	Logger logger = LoggerFactory.getLogger(DiaEditEmailTypeDefinition.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaEditEmailTypeDefinition.class);
 	
 	@FindBy(xpath=".//*[@id='emailTypeDefinitionForm']/input[1]", timeoutInSeconds="5")
 	private WebElementFacade emailTypeId;
@@ -48,7 +40,7 @@ public class DiaEditEmailTypeDefinition extends AbstractPage {
 	
 	public boolean getEditEmailTypeDefinitionUrl() {
 		logger.info("Get Edit Email Type Definition URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/editEmailTypeDefinition.html");	
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/editEmailTypeDefinition.html");	
 	}
 	
 	public void directEmailTypeNameState() {

@@ -2,7 +2,6 @@ package com.tripolis.qa.dialogueweb.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,11 +13,6 @@ import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("/dialogue/contacts/listContacts.html")
 public class DiaListContactsPage extends AbstractPage {
-
-	public DiaListContactsPage(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(DiaListContactsPage.class);
 	
@@ -42,7 +36,7 @@ public class DiaListContactsPage extends AbstractPage {
 	
 	public boolean getListContactsUrl() {
 		logger.info("Get List Contacts URL");
-		return driver.getCurrentUrl().contains("/dialogue/contacts/listContacts.html");
+		return getDriver().getCurrentUrl().contains("/dialogue/contacts/listContacts.html");
 	}
 	
 	public void clickNewLink() {
@@ -77,7 +71,7 @@ public class DiaListContactsPage extends AbstractPage {
 		value = value.trim();
 		int itemCount = listContacts.size();
 		for(int i=0; i < itemCount; i++) {
-			String contactEmail = listContacts.get(i).findBy(".//td[5]/div").waitUntilPresent().getText();
+			String contactEmail = listContacts.get(i).findBy(".//td[5]/div").waitUntilPresent().getText().trim();
 			if(value.equals(contactEmail)) {
 				WebElementFacade selected = listContacts.get(i).findBy(".//td[1]/input[2]");
 				setCheckbox(selected, true);

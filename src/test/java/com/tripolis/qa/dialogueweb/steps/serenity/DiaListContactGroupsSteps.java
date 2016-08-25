@@ -7,6 +7,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaListContactGroupsSteps extends ScenarioSteps {
 	
+	private static final long serialVersionUID = 1L;
+	
 	DiaListContactGroupsPage diaListContactGroupsPage;
 	
 	/*

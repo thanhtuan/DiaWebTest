@@ -9,6 +9,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaEditContentDirectEmailSteps extends ScenarioSteps {
 	
+	private static final long serialVersionUID = 1L;
+	
 	DiaEditContentDirectEmailPage diaEditContentDirectEmailPage;
 	
 	/*
@@ -88,7 +90,7 @@ public class DiaEditContentDirectEmailSteps extends ScenarioSteps {
 	 */
 	
 	@Step
-	public void onPreviewContentDirectEmailPage() {
+	public void onEditContentDirectEmailPage() {
 		assert(diaEditContentDirectEmailPage.getEditDirectEmailUrl());
 	}
 	

@@ -2,7 +2,6 @@ package com.tripolis.qa.dialogueweb.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,12 +14,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/admin/content/listWorkspaces.html")
 public class DiaListWorkspacesPage extends AbstractPage {
 	
-	public DiaListWorkspacesPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
-	
-	Logger logger = LoggerFactory.getLogger(DiaListWorkspacesPage.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaListWorkspacesPage.class);
 	
 	@FindBy(id="checkAll", timeoutInSeconds="5")
 	private WebElementFacade selectedAllWorkspaces;
@@ -33,7 +27,7 @@ public class DiaListWorkspacesPage extends AbstractPage {
 	
 	public boolean getListWorkspacesUrl() {
 		logger.info("Get List Workspaces URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/listWorkspaces.html");		
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/listWorkspaces.html");		
 	}
 	
 	public String getconfirmedMessage() {

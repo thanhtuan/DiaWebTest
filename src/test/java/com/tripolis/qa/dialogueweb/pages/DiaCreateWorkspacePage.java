@@ -1,6 +1,5 @@
 package com.tripolis.qa.dialogueweb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,12 +12,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/admin/content/createWorkspace.html")
 public class DiaCreateWorkspacePage extends AbstractPage {
 	
-	public DiaCreateWorkspacePage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
-	
-	Logger logger = LoggerFactory.getLogger(DiaCreateWorkspacePage.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaCreateWorkspacePage.class);
 		
 	@FindBy(name="contactDatabaseId", timeoutInSeconds="5")
 	private WebElementFacade contactDatabase;
@@ -37,7 +31,7 @@ public class DiaCreateWorkspacePage extends AbstractPage {
 	
 	public boolean getCreateWorkspacesUrl() {
 		logger.info("Get Create Workspaces URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/createWorkspace.html");
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/createWorkspace.html");
 	}
 	
 	public void select_ContactDatabase(String keyword) {

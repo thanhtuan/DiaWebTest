@@ -1,6 +1,6 @@
 package com.tripolis.qa.common;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,14 +10,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 public class AbstractPage extends PageObject {
 	
-	public WebDriver driver=null;
 	private static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
-
-	public AbstractPage(WebDriver driver) {
-		System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-		this.driver = driver;
-		// TODO Auto-generated constructor stub
-	}
 	
 	/*
 	 * Handle MainMenu
@@ -471,7 +464,7 @@ public class AbstractPage extends PageObject {
 		return clientName.waitUntilPresent().getText();
 	}
 	
-	@FindBy(id="contact", timeoutInSeconds="5")
+	@FindBy(id="contact", timeoutInSeconds="10")
 	protected WebElementFacade contactDatabasesDropDown;
 	
 	public String contactDatabasesLabel() {
@@ -488,7 +481,7 @@ public class AbstractPage extends PageObject {
 		return selectedContactDatabases.waitUntilPresent().getAttribute("value");
 	}
 	
-	@FindBy(id="content", timeoutInSeconds="5")
+	@FindBy(id="content", timeoutInSeconds="10")
 	protected WebElementFacade contentWorkspaceDropDown;
 	
 	public String contentWorkspaceLabel() {
@@ -737,6 +730,16 @@ public class AbstractPage extends PageObject {
 		logger.info("Please click on save Button");
 		submitSaveButton.waitUntilClickable().click();
 		logger.info("already click on save Button");
+	}
+	
+	/**
+	 * Gets text of none display element.
+	 * 
+	 * @param elementId
+	 * @return text
+	 */
+	protected String getTextMessageByAttribute(String elementId) {
+		return getDriver().findElement(By.id(elementId)).getAttribute("innerHTML");
 	}
 	
 	/*

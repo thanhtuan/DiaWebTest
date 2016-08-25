@@ -7,6 +7,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaContentDashboardSteps extends ScenarioSteps {
 	
+	private static final long serialVersionUID = 1L;
+	
 	DiaContentDashboardPage diaContentDashboardPage;
 	
 	/*

@@ -1,5 +1,4 @@
 package com.tripolis.qa.dialogueweb.pages;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,16 +9,11 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/home.html")
 public class DiaHomePage extends AbstractPage {
 	
-	public DiaHomePage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
-	
-	Logger logger = LoggerFactory.getLogger(DiaHomePage.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaHomePage.class);
 	
 	public boolean getHomeurl() {
 		logger.info("Get Home URL");
-		return driver.getCurrentUrl().contains("/dialogue/home.html");	
+		return getDriver().getCurrentUrl().contains("/dialogue/home.html");	
 	}
 
 	

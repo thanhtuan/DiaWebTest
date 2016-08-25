@@ -1,6 +1,5 @@
 package com.tripolis.qa.dialogueweb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,11 +11,6 @@ import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("/dialogue/content/directemails/create.html")
 public class DiaCreateContentDirectEmailPage extends AbstractPage {
-
-	public DiaCreateContentDirectEmailPage(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(DiaCreateContentDirectEmailPage.class);
 	
@@ -34,7 +28,7 @@ public class DiaCreateContentDirectEmailPage extends AbstractPage {
 	
 	public boolean getCreateDirectEmailUrl() {
 		logger.info("Get Create Direct Email URL");
-		return driver.getCurrentUrl().contains("/dialogue/content/directemails/create.html");
+		return getDriver().getCurrentUrl().contains("/dialogue/content/directemails/create.html");
 	}
 	
 	public void clickSaveLink() {
@@ -58,7 +52,7 @@ public class DiaCreateContentDirectEmailPage extends AbstractPage {
     }
 	
 	public void directEmailTypeState() {
-		directEmailType.shouldNotBeEnabled();
+		directEmailType.waitUntilPresent().shouldNotBeEnabled();
 	}
 
 }

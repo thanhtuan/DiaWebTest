@@ -2,43 +2,17 @@ package com.tripolis.qa.dialogueweb.steps.serenity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.tripolis.qa.dialogueweb.pages.DiaHomePage;
 import com.tripolis.qa.dialogueweb.pages.DiaLoginPage;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaLoginSteps extends ScenarioSteps {
 	
+	private static final long serialVersionUID = 1L;
+	
 	DiaLoginPage diaLoginPage;
-	DiaHomePage diaHomePage;
-	
-	
-	/*
-	 * Steps using methods from diaHomePage
-	 */
-	
-	@Step
-	public void verifyClientName() {
-		assertThat(diaHomePage.getClientName().equalsIgnoreCase("Client: Tripolis QA"));
-	}
-	
-	@Step
-	public void mainMenuShouldVisible() {
-		assertThat(diaHomePage.mainMenuisVisible()).isTrue();
-	}
-	
-	@Step
-	public void verifyIsOnHomePage() {	
-		//System.out.println("-----------Test--------: " + diaHomePage.getHomeurl());
-		assert(diaHomePage.getHomeurl());
-		
-	}
-	
-	/*
-	 * *******End steps using methods from diaHomePage********
-	 */
-	
 	
 	
 	/*
@@ -56,10 +30,25 @@ public class DiaLoginSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void setDomainName(String keyword) {
+		diaLoginPage.enter_DomainName(keyword);
+	}
+	
+	@Step
+	public void setUserName(String keyword) {
+		diaLoginPage.enter_UserName(keyword);
+	}
+	
+	@Step
+	public void setPassWord(String keyword) {
+		diaLoginPage.enter_passWord(keyword);
+	}
+	
+	@StepGroup
 	public void inputDataToLoginForm(String keyword1, String keyword2, String keyword3) {
-		diaLoginPage.enter_DomainName(keyword1);
-		diaLoginPage.enter_UserName(keyword2);
-		diaLoginPage.enter_passWord(keyword3);
+		setDomainName(keyword1);
+		setUserName(keyword2);
+		setPassWord(keyword3);
 	}
 	
 	@Step
@@ -69,14 +58,12 @@ public class DiaLoginSteps extends ScenarioSteps {
 	
 	@Step
 	public void verify_ErrorMessage() {
-		assertThat(diaLoginPage.getErrorMessage().equalsIgnoreCase("Bad credentials"));
+		assertThat(diaLoginPage.getErrorMessage().contains("Bad credentials"));
 	}
 	
 	@Step
 	public void verifyIsOnErrorLoginPage() {	
-		//System.out.println("-----------Test--------: " + diaLoginPage.getErrorLoginUrl());
 		assert(diaLoginPage.getErrorLoginUrl());
-		
 	}
 
 }

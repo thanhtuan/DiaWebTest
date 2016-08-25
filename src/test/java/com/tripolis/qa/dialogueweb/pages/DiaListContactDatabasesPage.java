@@ -2,7 +2,6 @@ package com.tripolis.qa.dialogueweb.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,12 +14,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/admin/contacts/listContactDatabases.html")
 public class DiaListContactDatabasesPage extends AbstractPage {
 	
-	public DiaListContactDatabasesPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
-	
-	Logger logger = LoggerFactory.getLogger(DiaListContactDatabasesPage.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaListContactDatabasesPage.class);
 	
 	@FindBy(id="checkAll", timeoutInSeconds="5")
 	private WebElementFacade selectedAllContactDatabases;
@@ -33,7 +27,7 @@ public class DiaListContactDatabasesPage extends AbstractPage {
 	
 	public boolean getListContactDatabasesUrl() {
 		logger.info("Get List Contact Databases URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/contacts/listContactDatabases.html");
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/contacts/listContactDatabases.html");
 		
 	}
 	

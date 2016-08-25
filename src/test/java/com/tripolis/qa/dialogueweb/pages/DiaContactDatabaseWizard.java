@@ -2,9 +2,7 @@ package com.tripolis.qa.dialogueweb.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,16 +10,10 @@ import com.tripolis.qa.common.AbstractPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.Pages;
 
 public class DiaContactDatabaseWizard extends AbstractPage {
 	
-	public DiaContactDatabaseWizard(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
-	
-	Logger logger = LoggerFactory.getLogger(DiaContactDatabaseWizard.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaContactDatabaseWizard.class);
 	
 	@FindBy(id="dialog", timeoutInSeconds="5")
 	private WebElementFacade createDatabaseDialog;

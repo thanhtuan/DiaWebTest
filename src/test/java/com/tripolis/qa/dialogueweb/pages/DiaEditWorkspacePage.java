@@ -1,6 +1,5 @@
 package com.tripolis.qa.dialogueweb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,14 +12,9 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/admin/content/editWorkspace.html")
 public class DiaEditWorkspacePage extends AbstractPage {
 	
-	public DiaEditWorkspacePage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
+	private static final Logger logger = LoggerFactory.getLogger(DiaEditWorkspacePage.class);
 	
-	Logger logger = LoggerFactory.getLogger(DiaEditWorkspacePage.class);
-	
-	@FindBy(xpath=".//*[@id='workspaceForm']/div/div[3]/input[2]", timeoutInSeconds="5")
+	@FindBy(xpath=".//*[@id='workspaceForm']/div/div[4]/input[2]", timeoutInSeconds="10")
 	private WebElementFacade contactDatabase;
 	
 	@FindBy(id="publicDomainName", timeoutInSeconds="10")
@@ -32,16 +26,16 @@ public class DiaEditWorkspacePage extends AbstractPage {
 	@FindBy(id="bounceDomainName", timeoutInSeconds="10")
 	private WebElementFacade bounceDomainName;
 	
-	@FindBy(name="addUnsubscribeHeader", timeoutInSeconds="5")
+	@FindBy(name="addUnsubscribeHeader", timeoutInSeconds="10")
 	private WebElementFacade addListUnsubscribeHeader;
 	
 	public boolean getEditWorkspacesUrl() {
 		logger.info("Get Edit Workspaces URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/editWorkspace.html");
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/editWorkspace.html");
 	}
 	
 	public void contactDatabaseState() {
-		contactDatabase.shouldNotBeEnabled();
+		contactDatabase.waitUntilPresent().shouldNotBeEnabled();
 	}
 	
 	public void enter_PublicDomainNameLinkAndPage(String keyword) {

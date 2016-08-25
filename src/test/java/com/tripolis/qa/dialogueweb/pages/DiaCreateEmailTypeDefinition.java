@@ -1,6 +1,5 @@
 package com.tripolis.qa.dialogueweb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,12 +12,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/dialogue/admin/content/createEmailTypeDefinition.html")
 public class DiaCreateEmailTypeDefinition extends AbstractPage {
 
-	public DiaCreateEmailTypeDefinition(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
-	Logger logger = LoggerFactory.getLogger(DiaCreateEmailTypeDefinition.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaCreateEmailTypeDefinition.class);
 	
 	@FindBy(id="externalHtmlUrl", timeoutInSeconds="5")
 	private WebElementFacade externalHtmlUrl;
@@ -43,7 +37,7 @@ public class DiaCreateEmailTypeDefinition extends AbstractPage {
 	
 	public boolean getCreateDirectEmailTypeUrl() {
 		logger.info("Get Create Direct Email Type URL");
-		return driver.getCurrentUrl().contains("/dialogue/admin/content/createEmailTypeDefinition.html");
+		return getDriver().getCurrentUrl().contains("/dialogue/admin/content/createEmailTypeDefinition.html");
 	}
 	
 	public void enter_ExternalHtmlUrl(String keyword) {

@@ -9,6 +9,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaListContactDatabasesSteps extends ScenarioSteps {
 	
+	private static final long serialVersionUID = 1L;
+	
 	DiaListContactDatabasesPage diaListContactDatabasesPage;
 	
 	@Step

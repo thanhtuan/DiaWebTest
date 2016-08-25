@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.module.Admin;
+package com.tripolis.qa.dialogueweb.SetupTestData;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,26 +11,27 @@ import org.openqa.selenium.WebDriver;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateEmailTypeDefinitionSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateSMSTypeDefinitionSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateWorkspaceSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditSMSTypeDefinitionSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditEmailTypeDefinitionSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaListContactDatabasesSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaListEmailTypeDefinitionsSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaListSMSMessageTypeDefinitionsSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaListWorkspacesSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestSuite4_DiaSMSTypeStory {
-	
-	Variables var = new Variables();
-			
+public class Setup {
+
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
 	
@@ -50,10 +51,19 @@ public class TestSuite4_DiaSMSTypeStory {
 	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
 	
 	@Steps
-	public DiaListWorkspacesSteps diaListWorkspacesSteps;
+	DiaListWorkspacesSteps diaListWorkspacesSteps;
 	
 	@Steps
-	public DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
+	DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
+	
+	@Steps
+	public DiaListEmailTypeDefinitionsSteps diaListEmailTypeDefinitionsSteps;
+	
+	@Steps
+	public DiaCreateEmailTypeDefinitionSteps diaCreateEmailTypeDefinitionSteps;
+	
+	@Steps
+	public DiaEditEmailTypeDefinitionSteps diaEditEmailTypeDefinitionSteps;
 	
 	@Steps
 	public DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
@@ -61,21 +71,27 @@ public class TestSuite4_DiaSMSTypeStory {
 	@Steps
 	public DiaCreateSMSTypeDefinitionSteps diaCreateSMSTypeDefinitionSteps;
 	
-	@Steps
-	public DiaEditSMSTypeDefinitionSteps diaEditSMSTypeDefinitionSteps;
+	Variables var = new Variables();
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();	
-		diaLoginSteps.verifyClientName();
+		diaLoginSteps.clickonLoginButton();
+		diaHomeSteps.verifyClientName();
 		diaHomeSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
-	@Pending @Test
-	public void scenario1_CreateContactDatabaseForDiaSMSTypeStory() {		
+	
+	@Test
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Contact Database"),
+	                @WithTag(type="feature", name="Prepare Data")
+	        }
+	)
+	public void scenario1_CreateContactDatabase() {
 		diaAdministrationSteps.navigateToListContactDatabasesPage();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
@@ -105,8 +121,14 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	
-	@Pending @Test
-	public void scenario2_CreateWorkSpaceForDiaSMSTypeStory() {
+	@Test
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Content Workspace"),
+	                @WithTag(type="feature", name="Prepare Data")
+	        }
+	)
+	public void scenario2_CreateWorkspace() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
@@ -120,24 +142,51 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaCreateWorkspaceSteps.setPublicDomainNameLinkAndPage("");
 		diaCreateWorkspaceSteps.setPublicDomainNameImages("");
 		diaCreateWorkspaceSteps.setBounceDomainName("");
-		diaCreateWorkspaceSteps.setAddListUnsubscribeHeader(true);
+		diaCreateWorkspaceSteps.setAddListUnsubscribeHeader(false);
 		diaCreateWorkspaceSteps.clickOnSaveButton();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 	}
 	
-	@Pending @Test
-	public void scenario3_GoTolistSMSTypeDefinitionsPage() {
+	@Test
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Direct Email Type"),
+	                @WithTag(type="feature", name="Prepare Data")
+	        }
+	)
+	public void scenario3_CreateDirectEmailType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
-		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
-		diaCreateSMSTypeDefinitionSteps.verifyheaderNameTextCreateSMSTypeDefinitions();
+		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
+		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
+		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(Variables.workspaceLabel);
+		diaListEmailTypeDefinitionsSteps.clickOnNewLink();
+		diaCreateEmailTypeDefinitionSteps.onCreateDirectEmailTypePage();
+		diaCreateEmailTypeDefinitionSteps.verifyheaderNameTextCreateEmailTypeDefinitions();
+		diaCreateEmailTypeDefinitionSteps.setLabel(Variables.directemailTypeLabel);
+		diaCreateEmailTypeDefinitionSteps.setName(Variables.directemailTypeName);
+		diaCreateEmailTypeDefinitionSteps.setFromAddress("telerik@tripolis.com");
+		diaCreateEmailTypeDefinitionSteps.setFromName("Telerik");
+		diaCreateEmailTypeDefinitionSteps.setReplyToAddress("mimo@tripolis.com");
+		diaCreateEmailTypeDefinitionSteps.setExternalHtmlUrl("");
+		diaCreateEmailTypeDefinitionSteps.setExternalTextUrl("");
+		diaCreateEmailTypeDefinitionSteps.setTinyMceEnabled(true);
+		diaCreateEmailTypeDefinitionSteps.setEmailField("Email");
+		diaCreateEmailTypeDefinitionSteps.setCharacterSetEncoding("ISO8859_1");
+		diaCreateEmailTypeDefinitionSteps.setAttachmentEnabled(false);
+		diaCreateEmailTypeDefinitionSteps.setExternalAttachmentEnabled(false);
+		diaCreateEmailTypeDefinitionSteps.clickOnSaveButton();
+		diaEditEmailTypeDefinitionSteps.verifyheaderNameTextEditDirectEmailType(Variables.directemailTypeLabel);
 	}
 	
-	@Pending @Test
+	@Test
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="SMS Mesage Type"),
+	                @WithTag(type="feature", name="Prepare Data")
+	        }
+	)
 	public void scenario4_CreateSMSMesageType() {
 		diaAdministrationSteps.navigateToListWorkspacePage();
 		diaListWorkspacesSteps.onListWorkspacesPage();
@@ -157,75 +206,8 @@ public class TestSuite4_DiaSMSTypeStory {
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	
-	@Pending @Test
-	public void scenario5_UpdateSMSMesageType() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
-		diaListWorkspacesSteps.onListWorkspacesPage();
-		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
-		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(Variables.smsmessageTypeLabel);
-		diaListSMSMessageTypeDefinitionsSteps.clickOnEditButton();
-		diaEditSMSTypeDefinitionSteps.verifyheaderNameTextEditSMSType(Variables.smsmessageTypeLabel);
-		diaEditSMSTypeDefinitionSteps.editLabel(Variables.updatedSMSMessageTypeLabel);
-		diaEditSMSTypeDefinitionSteps.checkSMSMesageNameState();
-		diaEditSMSTypeDefinitionSteps.editDefaultOriginatorNumber("19002096");
-		diaEditSMSTypeDefinitionSteps.editDefaultOriginator("SupportTeam");
-		diaEditSMSTypeDefinitionSteps.editMobilePhoneField("Mobile");
-		diaEditSMSTypeDefinitionSteps.editLongSMSEnabled(true);
-		diaEditSMSTypeDefinitionSteps.clickOnSaveButton();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
-	}
-	
-	@Pending @Test
-	public void scenario6_DeleteSMSMesageType() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
-		diaListWorkspacesSteps.onListWorkspacesPage();
-		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
-		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(Variables.updatedSMSMessageTypeLabel);
-		diaListSMSMessageTypeDefinitionsSteps.clickOnDeleteButton();
-		diaListSMSMessageTypeDefinitionsSteps.seeDeleteConfirmedPopup();
-		diaListSMSMessageTypeDefinitionsSteps.verifyconfirmedMessage();
-		diaListSMSMessageTypeDefinitionsSteps.clickOnConfirmedOkButton();
-		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
-	}
-	
-	@Pending @Test
-	public void scenario7_CleanUpWorkSpaceDiaSMSTypeStory() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
-		diaListWorkspacesSteps.onListWorkspacesPage();
-		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();		
-		var.WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
-		diaListWorkspacesSteps.selectWorkspace(var.WSlabel);
-		diaListWorkspacesSteps.clickOnDeleteButton();
-		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
-		diaListWorkspacesSteps.clickOnConfirmedButton();
-		diaListWorkspacesSteps.clickOnDeleteBtn();
-		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();	
-	}
-	
-	@Pending @Test
-	public void scenario8_CleanUpContactDatabaseDiaSMSTypeStory() {
-		diaAdministrationSteps.navigateToListContactDatabasesPage();
-		diaListContactDatabasesSteps.onListContactDatabasesPage();
-		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
-		diaListContactDatabasesSteps.selectContactDB(var.BDlabel);
-		diaListContactDatabasesSteps.clickOnDeleteButton();
-		diaListContactDatabasesSteps.seeDeleteConfirmedPopup();
-		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(Variables.databaseLabel);
-		diaListContactDatabasesSteps.clickOnConfirmedButton();
-		diaListContactDatabasesSteps.clickOnDeleteBtn();
-		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-	}
-	
 	@After
 	public void tearDown() {
 		driver.close();
 	}
-
 }

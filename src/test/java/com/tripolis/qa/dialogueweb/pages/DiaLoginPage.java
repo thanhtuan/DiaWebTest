@@ -1,24 +1,15 @@
 package com.tripolis.qa.dialogueweb.pages;
-import org.fluentlenium.core.wait.WaitMessage;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.thoughtworks.selenium.webdriven.commands.WaitForPopup;
 import com.tripolis.qa.common.AbstractPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.pages.jquery.JQueryEnabledPage;
 
 @DefaultUrl("/dialogue/login.html")
 public class DiaLoginPage extends AbstractPage {
-
-	public DiaLoginPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super(driver);
-	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(DiaLoginPage.class);
 	
@@ -36,9 +27,6 @@ public class DiaLoginPage extends AbstractPage {
 	
 	@FindBy(id="loginButton", timeoutInSeconds="5")
 	private WebElementFacade loginButton;
-	
-	@FindBy(xpath=".//*[@id='tagline']/center", timeoutInSeconds="5")
-	private WebElementFacade errorMessage;
 	
 	public void enter_DomainName(String keyword) {
 		logger.info("Please input DomainName");
@@ -77,10 +65,10 @@ public class DiaLoginPage extends AbstractPage {
     }
 	
 	public String getErrorMessage() {
-		return errorMessage.waitUntilPresent().getText();
+		return getTextMessageByAttribute("tagline");
 	}
 	
 	public boolean getErrorLoginUrl() {
-		return driver.getCurrentUrl().contains("/login.html?login_error=1");
+		return getDriver().getCurrentUrl().contains("/login.html?login_error=1");
 	}
 }

@@ -1,4 +1,4 @@
-package com.tripolis.qa.dialogueweb.module.Contacts;
+package com.tripolis.qa.dialogueweb.SetupTestData;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,9 +9,7 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import com.tripolis.qa.common.Variables;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDashboardSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateContactSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaListContactDatabasesSteps;
@@ -22,6 +20,8 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaViewContactSteps;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import net.thucydides.junit.annotations.Concurrent;
 import net.thucydides.junit.annotations.Qualifier;
 import net.thucydides.junit.annotations.UseTestDataFrom;
@@ -30,32 +30,8 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 @UseTestDataFrom(value="testdata/contacts/createcontacts.csv")
 @Concurrent(threads="4x")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestSuite3_DiaContactsStory {
+public class Contacts {
 
-	Variables var = new Variables();
-	
-    private String email;
-    private String name;
-    private String mobile;
-	
-	public void setEmail(String email) {
-        this.email = email;
-    }
-	
-	public void setName(String name) {
-        this.name = name;
-    }
-	
-	public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-	
-	@Qualifier
-    public String qualifier() {
-        return email;
-    }
-	
-	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
 	
@@ -80,17 +56,46 @@ public class TestSuite3_DiaContactsStory {
 	@Steps
 	public DiaViewContactSteps diaViewContactSteps;
 	
+	private String email;
+    private String name;
+    private String mobile;
+	
+	public void setEmail(String email) {
+        this.email = email;
+    }
+	
+	public void setName(String name) {
+        this.name = name;
+    }
+	
+	public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+	
+	@Qualifier
+    public String qualifier() {
+        return email;
+    }
+	
+	Variables var = new Variables();
+	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
 		diaLoginSteps.clickonLoginButton();	
-		diaLoginSteps.verifyClientName();
+		diaHomeSteps.verifyClientName();
 		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
 	}
 	
 	@Test
-	public void scenario2_CreateContacts() {
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Contacts"),
+	                @WithTag(type="feature", name="Prepare Data")
+	        }
+	)
+	public void scenario1_CreateContacts() {
 		diaHomeSteps.navigateToContactPage();
 		diaContactDashboardSteps.navigateToListContactsPage();
 		diaListContactsSteps.verifyheaderNameTextListContacts(var.BDlabel);
@@ -108,5 +113,4 @@ public class TestSuite3_DiaContactsStory {
 	public void tearDown() {
 		driver.close();
 	}
-
 }

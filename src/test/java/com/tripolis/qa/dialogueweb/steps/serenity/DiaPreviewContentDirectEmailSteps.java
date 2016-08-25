@@ -9,6 +9,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaPreviewContentDirectEmailSteps extends ScenarioSteps {
 	
+	private static final long serialVersionUID = 1L;
+	
 	DiaPreviewContentDirectEmailPage diaPreviewContentDirectEmailPage;
 	
 	/*
