@@ -12,9 +12,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("/dialogue/content/directemails/browse.html")
-public class DiaListDirectEmailsPage extends AbstractPage {
+public class DiaDirectEmailsBrowsePage extends AbstractPage {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DiaListDirectEmailsPage.class);
+	private static final Logger logger = LoggerFactory.getLogger(DiaDirectEmailsBrowsePage.class);
 	
 	@FindBy(xpath=".//*[@class='tbody']/tr", timeoutInSeconds="5")
 	private List<WebElementFacade> listdirectemails;

@@ -13,81 +13,7 @@ public class DiaEditContentDirectEmailSteps extends ScenarioSteps {
 	
 	DiaEditContentDirectEmailPage diaEditContentDirectEmailPage;
 	
-	/*
-	 * Sub Menu
-	 */
 	
-	@Step
-	public void navigateToContentDashBoardPage() {
-		diaEditContentDirectEmailPage.clickOnsubMenuItem1();
-	}
-	
-	@Step
-	public void navigateToListNewlettersPage() {
-		diaEditContentDirectEmailPage.clickOnsubMenuItem2();
-	}
-	
-	@Step
-	public void navigateToListDirectEmailsPage() {
-		diaEditContentDirectEmailPage.clickOnsubMenuItem3();
-	}
-	
-	@Step
-	public void navigateToListSMSPage() {
-		diaEditContentDirectEmailPage.clickOnsubMenuItem4();
-	}
-	
-	@Step
-	public void navigateToListArticlesInLibraryPage() {
-		diaEditContentDirectEmailPage.clickOnsubMenuItem5();
-	}
-	
-	/*
-	 * End Sub Menu
-	 */
-	
-	/*
-	 * Action Bar
-	 */
-	
-	@Step
-	public void navigateToDirectEmailPreviewPage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem1();
-	}
-	
-	@Step
-	public void navigateToDirectEmailHTMLEditorPage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem2();
-	}
-	
-	@Step
-	public void navigateToDirectEmailHTMLSourcePage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem3();
-	}
-	
-	@Step
-	public void navigateToDirectEmailTextVersionPage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem4();
-	}
-	
-	@Step
-	public void navigateToDirectEmailDetailsPage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem5();
-	}
-	
-	@Step
-	public void navigateToDirectEmailPropertiesPage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem6();
-	}
-	
-	@Step
-	public void navigateToDirectEmailContentCheckPage() {
-		diaEditContentDirectEmailPage.clickOnActionBarItem7();
-	}
-	
-	/*
-	 * End Action Bar
-	 */
 	
 	@Step
 	public void onEditContentDirectEmailPage() {
@@ -112,6 +38,16 @@ public class DiaEditContentDirectEmailSteps extends ScenarioSteps {
 	@Step
 	public void clickOnSaveButton() {
 		diaEditContentDirectEmailPage.clickSaveButton();
+	}
+	
+	@Step
+	public void verify_UpdateDirectEmailSuccessfulMessage() {
+		assertThat(diaEditContentDirectEmailPage.getSuccessfulMessage().contains("The Email was successfully updated."));
+	}
+	
+	@Step
+	public void verify_UpdateDirectEmailWithoutUnsubscribeURLSuccessfulMessage() {
+		assertThat(diaEditContentDirectEmailPage.getSuccessfulMessage().contains("The Email was successfully updated. - Remark: no unsubscribe url was found."));
 	}
 
 }

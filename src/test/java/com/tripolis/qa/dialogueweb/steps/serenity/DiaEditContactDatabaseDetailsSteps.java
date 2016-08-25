@@ -42,4 +42,9 @@ public class DiaEditContactDatabaseDetailsSteps extends ScenarioSteps {
 	public void clickOnSubmitButton() {
 		diaEditContactDatabaseDetailsPage.clickSaveButton();
 	}
+	
+	@Step
+	public void verify_UpdateContactDatabaseSuccesfulMessage() {
+		assertThat(diaEditContactDatabaseDetailsPage.getSuccesfulMessage().contains("The Database was successfully updated."));
+	}
 }

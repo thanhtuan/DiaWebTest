@@ -77,5 +77,10 @@ public class DiaListContactDatabasesSteps extends ScenarioSteps {
 	public void selectallContactDatabases(boolean value) {
 		diaListContactDatabasesPage.allContactDatabases(value);
 	}
+	
+	@Step
+	public void verify_DeleteContactDatabaseSuccessfulMessage() {
+		assertThat(diaListContactDatabasesPage.getSuccesfulMessage().contains("The contact database was successfully deleted."));
+	}
 
 }

@@ -17,4 +17,8 @@ public class DiaViewContactPage extends AbstractPage {
 		return getDriver().getCurrentUrl().contains("/dialogue/contacts/viewContact.html");
 	}
 	
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
+	
 }

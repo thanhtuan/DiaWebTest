@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -35,52 +38,61 @@ public class DiaSMSMessageTypeStory {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaAdministrationSteps diaAdministrationSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	DiaHomeSteps diaHomeSteps;
 	
 	@Steps
-	public DiaListWorkspacesSteps diaListWorkspacesSteps;
+	DiaAdministrationSteps diaAdministrationSteps;
 	
 	@Steps
-	public DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
 	
 	@Steps
-	public DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
+	DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
 	
 	@Steps
-	public DiaCreateSMSTypeDefinitionSteps diaCreateSMSTypeDefinitionSteps;
+	DiaListWorkspacesSteps diaListWorkspacesSteps;
 	
 	@Steps
-	public DiaEditSMSTypeDefinitionSteps diaEditSMSTypeDefinitionSteps;
+	DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
+	
+	@Steps
+	DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
+	
+	@Steps
+	DiaCreateSMSTypeDefinitionSteps diaCreateSMSTypeDefinitionSteps;
+	
+	@Steps
+	DiaEditSMSTypeDefinitionSteps diaEditSMSTypeDefinitionSteps;
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();	
-		diaHomeSteps.verifyClientName();
-		diaHomeSteps.navigateToAdministrationPage();
+		diaLoginSteps.clickonLoginButton();
+		diaLeftSidebarSteps.verifyClientName();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
 	@Test
 	@WithTag(type="feature", name="SMS Mesage Type")
 	public void scenario5_UpdateSMSMesageType() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem5PresentFor();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(Variables.smsmessageTypeLabel);
@@ -93,6 +105,7 @@ public class DiaSMSMessageTypeStory {
 		diaEditSMSTypeDefinitionSteps.editMobilePhoneField("Mobile");
 		diaEditSMSTypeDefinitionSteps.editLongSMSEnabled(true);
 		diaEditSMSTypeDefinitionSteps.clickOnSaveButton();
+		diaListSMSMessageTypeDefinitionsSteps.verify_UpdateSMSMessageSuccessfulMessage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	

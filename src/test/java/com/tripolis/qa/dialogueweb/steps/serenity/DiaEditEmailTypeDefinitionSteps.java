@@ -107,5 +107,10 @@ public class DiaEditEmailTypeDefinitionSteps extends ScenarioSteps {
 	public void clickOnSaveButton() {
 		diaEditEmailTypeDefinition.clickSaveButton();
 	}
+	
+	@Step
+	public void verify_CreateDirectEmailTypeSuccessfulMessage() {
+		assertThat(diaEditEmailTypeDefinition.getSuccessfulMessage().contains("The Direct email type was successfully created."));
+	}
 
 }

@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -31,32 +34,41 @@ public class DiaContactDatabaseStory {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaAdministrationSteps diaAdministrationSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	DiaHomeSteps diaHomeSteps;
 	
 	@Steps
-	public DiaEditContactDatabaseDetailsSteps diaEditContactDatabaseDetailsSteps;
+	DiaAdministrationSteps diaAdministrationSteps;
+	
+	@Steps
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	
+	@Steps
+	DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	
+	@Steps
+	DiaEditContactDatabaseDetailsSteps diaEditContactDatabaseDetailsSteps;
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
-		diaHomeSteps.verifyClientName();
-		diaHomeSteps.navigateToAdministrationPage();
+		diaLeftSidebarSteps.verifyClientName();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
-		diaAdministrationSteps.navigateToListContactDatabasesPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem1PresentFor();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
@@ -72,6 +84,7 @@ public class DiaContactDatabaseStory {
 		diaEditContactDatabaseDetailsSteps.editName(Variables.updatedDatabaseLabel);
 		diaEditContactDatabaseDetailsSteps.editPresentationField("Email");
 		diaEditContactDatabaseDetailsSteps.clickOnSubmitButton();
+		diaEditContactDatabaseDetailsSteps.verify_UpdateContactDatabaseSuccesfulMessage();
 		diaEditContactDatabaseDetailsSteps.verify_HeaderNameTextEditContactDatabase(Variables.updatedDatabaseLabel);
 	}
 	

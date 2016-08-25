@@ -51,4 +51,8 @@ public class DiaListContactDatabasesPage extends AbstractPage {
 		}
 	}
 	
+	public String getSuccesfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
+	
 }

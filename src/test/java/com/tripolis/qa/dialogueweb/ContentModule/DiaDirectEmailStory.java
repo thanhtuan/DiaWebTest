@@ -4,25 +4,35 @@ import java.io.IOException;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaActionbarSteps;
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContentDashboardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContentDirectEmailHTMLSourceSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateContentDirectEmailSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditContentDirectEmailSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaListDirectEmailsSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaDirectEmailsBrowseSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaPreviewContentDirectEmailSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaSelectDirectEmailTypeSteps;
 import com.tripolis.qa.util.DataHelper;
 
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 
+@RunWith(SerenityRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaDirectEmailStory {
 
 	Variables var = new Variables();
@@ -31,16 +41,28 @@ public class DiaDirectEmailStory {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
+	
+	@Steps
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
+	
+	@Steps
+	DiaActionbarSteps diaActionbarSteps;
+	
+	@Steps
+	DiaLoginSteps diaLoginSteps;
+	
+	@Steps
+	DiaHomeSteps diaHomeSteps;
 	
 	@Steps
 	DiaContentDashboardSteps diaContentDashboardSteps;
 	
 	@Steps
-	DiaListDirectEmailsSteps diaListDirectEmailsSteps;
+	DiaDirectEmailsBrowseSteps diaListDirectEmailsSteps;
 	
 	@Steps
 	DiaSelectDirectEmailTypeSteps diaSelectDirectEmailTypeSteps;
@@ -62,14 +84,14 @@ public class DiaDirectEmailStory {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();	
-		diaHomeSteps.verifyClientName();
+		diaLeftSidebarSteps.verifyClientName();
 	}
 	
 	@Pending @Test
 	public void scenario1_CreateDirectEmail() {
-		diaHomeSteps.navigateToContentPage();
+		diaMainMenuSteps.navigateToContentPage();
 		diaContentDashboardSteps.onContentDashboardPage();
-		diaContentDashboardSteps.navigateToListDirectEmailsPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem3PresentFor();
 		diaListDirectEmailsSteps.onListDirectEmailsPage();
 		diaListDirectEmailsSteps.verifyheaderNameTextListDirectEmails(Variables.workspaceLabel);
 		diaListDirectEmailsSteps.clickOnNewLink();
@@ -94,20 +116,21 @@ public class DiaDirectEmailStory {
 	
 	@Pending @Test
 	public void scenario2_UpdateContentForDirectEmail() throws IOException {
-		diaHomeSteps.navigateToContentPage();
+		diaMainMenuSteps.navigateToContentPage();
 		diaContentDashboardSteps.onContentDashboardPage();
-		diaContentDashboardSteps.navigateToListDirectEmailsPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem3PresentFor();
 		diaListDirectEmailsSteps.onListDirectEmailsPage();
 		diaListDirectEmailsSteps.verifyheaderNameTextListDirectEmails(Variables.workspaceLabel);
 		diaListDirectEmailsSteps.selectDirectEmail(Variables.directemailLabel);
 		diaPreviewContentDirectEmailSteps.onPreviewContentDirectEmailPage();
 		diaPreviewContentDirectEmailSteps.verifyheaderNameTextPreviewDirectEmail(Variables.directemailLabel);
-		diaPreviewContentDirectEmailSteps.navigateToDirectEmailHTMLSourcePage();
+		diaActionbarSteps.navigateToPageThatActionBarItem3PresentFor();
 		diaContentDirectEmailHTMLSourceSteps.onContentDirectEmailHTMLSourcePage();
 		String body = DataHelper.getContentFile("content/html/confirm.html");
 		System.out.print("==================" + body + "===================");
 		diaContentDirectEmailHTMLSourceSteps.setHTMLSourceBody(body);
 		diaContentDirectEmailHTMLSourceSteps.clickOnSaveButton();
+		diaContentDirectEmailHTMLSourceSteps.verify_UpdateDirectEmailWithoutUnsubscribeURLSuccessfulMessage();
 	}
 	
 	@After

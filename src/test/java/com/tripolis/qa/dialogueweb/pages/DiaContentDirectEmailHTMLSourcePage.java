@@ -29,4 +29,7 @@ public class DiaContentDirectEmailHTMLSourcePage extends AbstractPage {
 		logger.info("already input Html Source Body");
     }
 
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
 }

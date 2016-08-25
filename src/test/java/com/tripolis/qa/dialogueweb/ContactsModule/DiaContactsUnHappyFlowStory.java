@@ -3,10 +3,14 @@ package com.tripolis.qa.dialogueweb.ContactsModule;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDashboardSteps;
@@ -20,6 +24,7 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaViewContactSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 
 @RunWith(SerenityRunner.class)
@@ -30,44 +35,54 @@ public class DiaContactsUnHappyFlowStory {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaAdministrationSteps diaAdministrationSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	DiaHomeSteps diaHomeSteps;
 	
 	@Steps
-	public DiaContactDashboardSteps diaContactDashboardSteps;
+	DiaAdministrationSteps diaAdministrationSteps;
 	
 	@Steps
-	public DiaListContactsSteps diaListContactsSteps;
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
 	
 	@Steps
-	public DiaCreateContactSteps diaCreateContactSteps;
+	DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
 	
 	@Steps
-	public DiaViewContactSteps diaViewContactSteps;
+	DiaContactDashboardSteps diaContactDashboardSteps;
+	
+	@Steps
+	DiaListContactsSteps diaListContactsSteps;
+	
+	@Steps
+	DiaCreateContactSteps diaCreateContactSteps;
+	
+	@Steps
+	DiaViewContactSteps diaViewContactSteps;
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();	
-		diaHomeSteps.verifyClientName();
+		diaLeftSidebarSteps.verifyClientName();
 	}
 	
-	/*@Pending @Test
+	@Pending @Test
 	public void scenario2_CreateContactWith() {
-		diaHomeSteps.navigateToContactPage();
-		diaContactDashboardSteps.navigateToListContactsPage();
+		diaMainMenuSteps.navigateToContactPage();
+		diaContactDashboardSteps.onContactDashboardPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListContactsSteps.verifyheaderNameTextListContacts("");
 		diaListContactsSteps.clickOnNewLink();
 		diaCreateContactSteps.onCreateContactPage();
@@ -75,8 +90,9 @@ public class DiaContactsUnHappyFlowStory {
 		diaCreateContactSteps.setContactName("");
 		diaCreateContactSteps.setContactMobile("");
 		diaCreateContactSteps.clickOnSaveButton();
+		diaViewContactSteps.verify_CreateContactSuccessfulMessage();
 		diaViewContactSteps.onViewContactPage();
-	}*/
+	}
 	
 	@After
 	public void tearDown() {

@@ -67,5 +67,15 @@ public class DiaListEmailTypeDefinitionsSteps extends ScenarioSteps {
 	public void clickOnConfirmedOkButton () {
 		diaListEmailTypeDefinitions.clickConfirmedOkButton();
 	}
+	
+	@Step
+	public void verify_UpdateDirectEmailTypeSuccessfulMessage() {
+		assertThat(diaListEmailTypeDefinitions.getSuccessfulMessage().contains("The Direct email type was successfully updated."));
+	}
+	
+	@Step
+	public void verify_DeleteDirectEmailTypeSuccessfulMessage() {
+		assertThat(diaListEmailTypeDefinitions.getSuccessfulMessage().contains("The Direct email type is deleted."));
+	}
 
 }

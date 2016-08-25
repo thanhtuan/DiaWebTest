@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
@@ -23,10 +24,13 @@ public class DiaLoginStory {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaLoginSteps diaLoginSteps;
+	
+	@Steps
+	DiaHomeSteps diaHomeSteps;
 	
 	@Before
 	public void setUp() {
@@ -88,12 +92,12 @@ public class DiaLoginStory {
 	}
 	
 	@Test
-	public void scenario7_LoginWithVaildCredentials(){
+	public void scenario7_LoginWithVaildCredentials(){		
 		diaLoginSteps.seeLoginForm();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
 		diaHomeSteps.verifyIsOnHomePage();
-		diaHomeSteps.verifyClientName();
+		diaLeftSidebarSteps.verifyClientName();
 	}
 	
 	@After

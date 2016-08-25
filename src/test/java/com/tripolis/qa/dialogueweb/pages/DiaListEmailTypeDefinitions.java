@@ -61,4 +61,8 @@ public class DiaListEmailTypeDefinitions extends AbstractPage {
 		}
 	}
 	
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
+	
 }

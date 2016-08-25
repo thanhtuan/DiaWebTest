@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -36,19 +39,28 @@ public class Setup {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaAdministrationSteps diaAdministrationSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	DiaHomeSteps diaHomeSteps;
+	
+	@Steps
+	DiaAdministrationSteps diaAdministrationSteps;
+	
+	@Steps
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	
+	@Steps
+	DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
 	
 	@Steps
 	DiaListWorkspacesSteps diaListWorkspacesSteps;
@@ -57,19 +69,19 @@ public class Setup {
 	DiaCreateWorkspaceSteps diaCreateWorkspaceSteps;
 	
 	@Steps
-	public DiaListEmailTypeDefinitionsSteps diaListEmailTypeDefinitionsSteps;
+	DiaListEmailTypeDefinitionsSteps diaListEmailTypeDefinitionsSteps;
 	
 	@Steps
-	public DiaCreateEmailTypeDefinitionSteps diaCreateEmailTypeDefinitionSteps;
+	DiaCreateEmailTypeDefinitionSteps diaCreateEmailTypeDefinitionSteps;
 	
 	@Steps
-	public DiaEditEmailTypeDefinitionSteps diaEditEmailTypeDefinitionSteps;
+	DiaEditEmailTypeDefinitionSteps diaEditEmailTypeDefinitionSteps;
 	
 	@Steps
-	public DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
+	DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
 	
 	@Steps
-	public DiaCreateSMSTypeDefinitionSteps diaCreateSMSTypeDefinitionSteps;
+	DiaCreateSMSTypeDefinitionSteps diaCreateSMSTypeDefinitionSteps;
 	
 	Variables var = new Variables();
 	
@@ -78,8 +90,8 @@ public class Setup {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
-		diaHomeSteps.verifyClientName();
-		diaHomeSteps.navigateToAdministrationPage();
+		diaLeftSidebarSteps.verifyClientName();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
@@ -92,7 +104,7 @@ public class Setup {
 	        }
 	)
 	public void scenario1_CreateContactDatabase() {
-		diaAdministrationSteps.navigateToListContactDatabasesPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem1PresentFor();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 		diaListContactDatabasesSteps.clickOnNewLink();
@@ -129,7 +141,7 @@ public class Setup {
 	        }
 	)
 	public void scenario2_CreateWorkspace() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		var.databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
@@ -144,6 +156,7 @@ public class Setup {
 		diaCreateWorkspaceSteps.setBounceDomainName("");
 		diaCreateWorkspaceSteps.setAddListUnsubscribeHeader(false);
 		diaCreateWorkspaceSteps.clickOnSaveButton();
+		diaListWorkspacesSteps.verify_CreateWorkspaceSuccessfulMessage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 	}
 	
@@ -155,10 +168,10 @@ public class Setup {
 	        }
 	)
 	public void scenario3_CreateDirectEmailType() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
+		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem4PresentFor();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(Variables.workspaceLabel);
 		diaListEmailTypeDefinitionsSteps.clickOnNewLink();
@@ -177,6 +190,7 @@ public class Setup {
 		diaCreateEmailTypeDefinitionSteps.setAttachmentEnabled(false);
 		diaCreateEmailTypeDefinitionSteps.setExternalAttachmentEnabled(false);
 		diaCreateEmailTypeDefinitionSteps.clickOnSaveButton();
+		diaEditEmailTypeDefinitionSteps.verify_CreateDirectEmailTypeSuccessfulMessage();
 		diaEditEmailTypeDefinitionSteps.verifyheaderNameTextEditDirectEmailType(Variables.directemailTypeLabel);
 	}
 	
@@ -188,10 +202,10 @@ public class Setup {
 	        }
 	)
 	public void scenario4_CreateSMSMesageType() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem5PresentFor();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
@@ -203,6 +217,7 @@ public class Setup {
 		diaCreateSMSTypeDefinitionSteps.setMobilePhoneField("Mobile");
 		diaCreateSMSTypeDefinitionSteps.setLongSMSEnabled(false);
 		diaCreateSMSTypeDefinitionSteps.clickOnSaveButton();
+		diaListSMSMessageTypeDefinitionsSteps.verify_CreateSMSMessageSuccessfulMessage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	

@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
@@ -24,49 +27,58 @@ import net.thucydides.core.annotations.Steps;
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CleanUpData {
-
-Variables var = new Variables();
+	
+	Variables var = new Variables();
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaAdministrationSteps diaAdministrationSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaListWorkspacesSteps diaListWorkspacesSteps;
+	DiaHomeSteps diaHomeSteps;
 	
 	@Steps
-	public DiaListEmailTypeDefinitionsSteps diaListEmailTypeDefinitionsSteps;
+	DiaAdministrationSteps diaAdministrationSteps;
 	
 	@Steps
-	public DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	
+	@Steps
+	DiaListWorkspacesSteps diaListWorkspacesSteps;
+	
+	@Steps
+	DiaListEmailTypeDefinitionsSteps diaListEmailTypeDefinitionsSteps;
+	
+	@Steps
+	DiaListSMSMessageTypeDefinitionsSteps diaListSMSMessageTypeDefinitionsSteps;
 	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();	
-		diaHomeSteps.verifyClientName();	
+		diaLeftSidebarSteps.verifyClientName();	
 	}
 	
 	@Test
 	public void scenario1_DeleteSMSMesageType() {
-		diaHomeSteps.navigateToAdministrationPage();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListSMSTypeDefinitions();
+		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem5PresentFor();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 		diaListSMSMessageTypeDefinitionsSteps.selectSMSType(Variables.updatedSMSMessageTypeLabel);
@@ -74,17 +86,18 @@ Variables var = new Variables();
 		diaListSMSMessageTypeDefinitionsSteps.seeDeleteConfirmedPopup();
 		diaListSMSMessageTypeDefinitionsSteps.verifyconfirmedMessage();
 		diaListSMSMessageTypeDefinitionsSteps.clickOnConfirmedOkButton();
+		//diaListSMSMessageTypeDefinitionsSteps.verify_DeleteSMSMessageSuccessfulMessage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
 	}
 	
 	@Test
 	public void scenario2_DeleteDirectEmailType() {
-		diaHomeSteps.navigateToAdministrationPage();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		diaListWorkspacesSteps.navigateToListEmailTypeDefinitions();
+		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem4PresentFor();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(Variables.workspaceLabel);
 		diaListEmailTypeDefinitionsSteps.selectDirectEmailType(Variables.updatedDirectEmailTypeLabel);
@@ -92,15 +105,16 @@ Variables var = new Variables();
 		diaListEmailTypeDefinitionsSteps.seeDeleteConfirmedPopup();
 		diaListEmailTypeDefinitionsSteps.verifyconfirmedMessage();
 		diaListEmailTypeDefinitionsSteps.clickOnConfirmedOkButton();
+		//diaListEmailTypeDefinitionsSteps.verify_DeleteDirectEmailTypeSuccessfulMessage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(Variables.workspaceLabel);
 	}
 	
 	@Test
 	public void scenario3_DeleteWorkspace() {
 		var.WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
-		diaHomeSteps.navigateToAdministrationPage();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		diaListWorkspacesSteps.selectWorkspace(var.WSlabel);
@@ -109,15 +123,16 @@ Variables var = new Variables();
 		diaListWorkspacesSteps.verifyDeleteconfirmedMessage();
 		diaListWorkspacesSteps.clickOnConfirmedButton();
 		diaListWorkspacesSteps.clickOnDeleteBtn();
+		diaListWorkspacesSteps.verify_DeleteWorkspaceSuccessfulMessage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();	
 	}
 	
 	@Test
 	public void scenarior4_DeleteContactDatabase() {
 		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
-		diaHomeSteps.navigateToAdministrationPage();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
-		diaAdministrationSteps.navigateToListContactDatabasesPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem1PresentFor();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 		diaListContactDatabasesSteps.selectContactDB(var.BDlabel);
@@ -126,6 +141,7 @@ Variables var = new Variables();
 		diaListContactDatabasesSteps.verifyDeleteconfirmedMessage(var.BDlabel);
 		diaListContactDatabasesSteps.clickOnConfirmedButton();
 		diaListContactDatabasesSteps.clickOnDeleteBtn();
+		diaListContactDatabasesSteps.verify_DeleteContactDatabaseSuccessfulMessage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
 	}
 	

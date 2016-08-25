@@ -13,44 +13,6 @@ public class DiaListContactsSteps extends ScenarioSteps {
 	
 	DiaListContactsPage diaListContactsPage;
 	
-	/*
-	 * Sub Menu
-	 */
-	
-	@Step
-	public void navigateToContactDashBoardPage() {
-		diaListContactsPage.clickOnsubMenuItem1();
-	}
-	
-	@Step
-	public void navigateToListContactsPage() {
-		diaListContactsPage.clickOnsubMenuItem2();
-	}
-	
-	@Step
-	public void navigateToListContactGroupsPage() {
-		diaListContactsPage.clickOnsubMenuItem3();
-	}
-	
-	@Step
-	public void navigateToImportWizardPage() {
-		diaListContactsPage.clickOnsubMenuItem4();
-	}
-	
-	@Step
-	public void navigateToExportAsyncContactsPage() {
-		diaListContactsPage.clickOnsubMenuItem5();
-	}
-	
-	@Step
-	public void navigateToQueryWizardPage() {
-		diaListContactsPage.clickOnsubMenuItem6();
-	}
-	
-	/*
-	 * End Sub Menu
-	 */
-	
 	@Step
 	public void onListContactsPage() {
 		assert(diaListContactsPage.getListContactsUrl());

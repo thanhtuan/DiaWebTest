@@ -27,4 +27,8 @@ public class DiaEditContactDatabaseDetailsPage extends AbstractPage {
 		return getDriver().getCurrentUrl().contains("/dialogue/admin/contacts/editContactDatabaseDetails.html");	
 	}
 	
+	public String getSuccesfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
+	
 }

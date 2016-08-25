@@ -67,5 +67,20 @@ public class DiaListSMSMessageTypeDefinitionsSteps extends ScenarioSteps {
 	public void clickOnConfirmedCancelButton () {
 		diaListSMSMessageTypeDefinitions.clickConfirmedCancelButton();
 	}
+	
+	@Step
+	public void verify_CreateSMSMessageSuccessfulMessage() {
+		assertThat(diaListSMSMessageTypeDefinitions.getSuccessfulMessage().contains("The SMS message type was successfully created."));
+	}
+	
+	@Step
+	public void verify_UpdateSMSMessageSuccessfulMessage() {
+		assertThat(diaListSMSMessageTypeDefinitions.getSuccessfulMessage().contains("The SMS message type was successfully updated."));
+	}
+	
+	@Step
+	public void verify_DeleteSMSMessageSuccessfulMessage() {
+		assertThat(diaListSMSMessageTypeDefinitions.getSuccessfulMessage().contains("The SMS message type is deleted."));
+	}
 
 }

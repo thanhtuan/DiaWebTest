@@ -13,44 +13,6 @@ public class DiaCreateContactSteps extends ScenarioSteps {
 	
 	DiaCreateContactPage diaCreateContactPage;
 	
-	/*
-	 * Sub Menu
-	 */
-	
-	@Step
-	public void navigateToContactDashBoardPage() {
-		diaCreateContactPage.clickOnsubMenuItem1();
-	}
-	
-	@Step
-	public void navigateToListContactsPage() {
-		diaCreateContactPage.clickOnsubMenuItem2();
-	}
-	
-	@Step
-	public void navigateToListContactGroupsPage() {
-		diaCreateContactPage.clickOnsubMenuItem3();
-	}
-	
-	@Step
-	public void navigateToImportWizardPage() {
-		diaCreateContactPage.clickOnsubMenuItem4();
-	}
-	
-	@Step
-	public void navigateToExportAsyncContactsPage() {
-		diaCreateContactPage.clickOnsubMenuItem5();
-	}
-	
-	@Step
-	public void navigateToQueryWizardPage() {
-		diaCreateContactPage.clickOnsubMenuItem6();
-	}
-	
-	/*
-	 * End Sub Menu
-	 */
-	
 	@Step
 	public void onCreateContactPage() {
 		assert(diaCreateContactPage.getCreateContactUrl());

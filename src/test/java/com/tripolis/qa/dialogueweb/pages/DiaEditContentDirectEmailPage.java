@@ -38,4 +38,7 @@ public class DiaEditContentDirectEmailPage extends AbstractPage {
 		logger.info("already input Direct Email Body");
     }
 
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
 }

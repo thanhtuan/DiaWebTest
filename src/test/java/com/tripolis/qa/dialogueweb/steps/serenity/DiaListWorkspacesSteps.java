@@ -13,49 +13,6 @@ public class DiaListWorkspacesSteps extends ScenarioSteps {
 	
 	DiaListWorkspacesPage diaListWorkspacesPage;
 	
-	/*
-	 * Handle the Left Panel on List Workspaces Page
-	 */
-	
-	@Step
-	public void navigateToEditWorkspace() {
-		diaListWorkspacesPage.clickOnleftpanelItem1();
-	}
-	
-	@Step
-	public void navigateToListArticleTypeDefinitions() {
-		diaListWorkspacesPage.clickOnleftpanelItem2();
-	}
-	
-	@Step
-	public void navigateToListNewsletterTypeDefinitions() {
-		diaListWorkspacesPage.clickOnleftpanelItem3();
-	}
-	
-	@Step
-	public void navigateToListEmailTypeDefinitions() {
-		diaListWorkspacesPage.clickOnleftpanelItem4();
-	}
-	
-	@Step
-	public void navigateToListSMSTypeDefinitions() {
-		diaListWorkspacesPage.clickOnleftpanelItem5();
-	}
-	
-	@Step
-	public void navigateToListAnalyticsIntegrations() {
-		diaListWorkspacesPage.clickOnleftpanelItem6();
-	}
-	
-	@Step
-	public void navigateToListProcedureDefinitions() {
-		diaListWorkspacesPage.clickOnleftpanelItem7();
-	}
-	
-	/*
-	 * Handle the Left Panel on List Workspaces Page
-	 */
-	
 	@Step
 	public void onListWorkspacesPage() {
 		assert(diaListWorkspacesPage.getListWorkspacesUrl());
@@ -119,6 +76,21 @@ public class DiaListWorkspacesSteps extends ScenarioSteps {
 	@Step
 	public void selectWorkspace(String value) {
 		diaListWorkspacesPage.findWorkspace(value);
+	}
+	
+	@Step
+	public void verify_CreateWorkspaceSuccessfulMessage() {
+		assertThat(diaListWorkspacesPage.getSuccessfulMessage().contains("The Workspace was successfully created."));
+	}
+	
+	@Step
+	public void verify_UpdateWorkspaceSuccessfulMessage() {
+		assertThat(diaListWorkspacesPage.getSuccessfulMessage().contains("The Workspace was successfully updated."));
+	}
+	
+	@Step
+	public void verify_DeleteWorkspaceSuccessfulMessage() {
+		assertThat(diaListWorkspacesPage.getSuccessfulMessage().contains("The workspace is deleted."));
 	}
 	
 	

@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDashboardSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateContactSteps;
@@ -36,25 +39,34 @@ public class Contacts {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaContactDashboardSteps diaContactDashboardSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaListContactsSteps diaListContactsSteps;
+	DiaHomeSteps diaHomeSteps;
 	
 	@Steps
-	public DiaCreateContactSteps diaCreateContactSteps;
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
 	
 	@Steps
-	public DiaViewContactSteps diaViewContactSteps;
+	DiaContactDashboardSteps diaContactDashboardSteps;
+	
+	@Steps
+	DiaListContactsSteps diaListContactsSteps;
+	
+	@Steps
+	DiaCreateContactSteps diaCreateContactSteps;
+	
+	@Steps
+	DiaViewContactSteps diaViewContactSteps;
 	
 	private String email;
     private String name;
@@ -84,8 +96,7 @@ public class Contacts {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
 		diaLoginSteps.clickonLoginButton();	
-		diaHomeSteps.verifyClientName();
-		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		diaLeftSidebarSteps.verifyClientName();
 	}
 	
 	@Test
@@ -96,8 +107,10 @@ public class Contacts {
 	        }
 	)
 	public void scenario1_CreateContacts() {
-		diaHomeSteps.navigateToContactPage();
-		diaContactDashboardSteps.navigateToListContactsPage();
+		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		diaMainMenuSteps.navigateToContactPage();
+		diaContactDashboardSteps.onContactDashboardPage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListContactsSteps.verifyheaderNameTextListContacts(var.BDlabel);
 		diaListContactsSteps.clickOnNewLink();
 		diaCreateContactSteps.onCreateContactPage();
@@ -105,6 +118,7 @@ public class Contacts {
 		diaCreateContactSteps.setContactName(name);
 		diaCreateContactSteps.setContactMobile(mobile);
 		diaCreateContactSteps.clickOnSaveButton();
+		diaViewContactSteps.verify_CreateContactSuccessfulMessage();
 		diaViewContactSteps.onViewContactPage();
 		diaViewContactSteps.verifyheaderNameTextViewContact(email);
 	}

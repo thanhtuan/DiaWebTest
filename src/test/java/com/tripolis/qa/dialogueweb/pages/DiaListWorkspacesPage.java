@@ -50,4 +50,8 @@ public class DiaListWorkspacesPage extends AbstractPage {
 		}
 	}
 	
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
+	
 }

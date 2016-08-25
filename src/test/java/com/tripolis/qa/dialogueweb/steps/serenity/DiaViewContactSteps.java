@@ -13,44 +13,6 @@ public class DiaViewContactSteps extends ScenarioSteps {
 
 	DiaViewContactPage diaViewContactPage;
 	
-	/*
-	 * Sub Menu
-	 */
-	
-	@Step
-	public void navigateToContactDashBoardPage() {
-		diaViewContactPage.clickOnsubMenuItem1();
-	}
-	
-	@Step
-	public void navigateToListContactsPage() {
-		diaViewContactPage.clickOnsubMenuItem2();
-	}
-	
-	@Step
-	public void navigateToListContactGroupsPage() {
-		diaViewContactPage.clickOnsubMenuItem3();
-	}
-	
-	@Step
-	public void navigateToImportWizardPage() {
-		diaViewContactPage.clickOnsubMenuItem4();
-	}
-	
-	@Step
-	public void navigateToExportAsyncContactsPage() {
-		diaViewContactPage.clickOnsubMenuItem5();
-	}
-	
-	@Step
-	public void navigateToQueryWizardPage() {
-		diaViewContactPage.clickOnsubMenuItem6();
-	}
-	
-	/*
-	 * End Sub Menu
-	 */
-	
 	@Step
 	public void onViewContactPage() {
 		assert(diaViewContactPage.getViewContactsUrl());
@@ -59,5 +21,15 @@ public class DiaViewContactSteps extends ScenarioSteps {
 	@Step
 	public void verifyheaderNameTextViewContact(String value) {
 		assertThat(diaViewContactPage.getheaderNameText().equalsIgnoreCase("View profile for " + value));
+	}
+	
+	@Step
+	public void verify_CreateContactSuccessfulMessage() {
+		assertThat(diaViewContactPage.getSuccessfulMessage().contains("The contact was successfully created."));
+	}
+	
+	@Step
+	public void verify_UpdateContactSuccessfulMessage() {
+		assertThat(diaViewContactPage.getSuccessfulMessage().contains("Contact successfully updated"));
 	}
 }

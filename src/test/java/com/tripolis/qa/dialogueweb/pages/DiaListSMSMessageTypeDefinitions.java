@@ -67,5 +67,9 @@ public class DiaListSMSMessageTypeDefinitions extends AbstractPage {
 			}
 		}
 	}
+	
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
 
 }

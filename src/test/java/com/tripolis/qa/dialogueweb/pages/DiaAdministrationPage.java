@@ -17,4 +17,5 @@ public class DiaAdministrationPage extends AbstractPage {
 		return getDriver().getCurrentUrl().contains("/dialogue/administration.html");
 		
 	}
+
 }

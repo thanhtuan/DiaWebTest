@@ -88,4 +88,9 @@ public class DiaEditEmailTypeDefinition extends AbstractPage {
 	public void checkbox_ExternalAttachmentEnabled(boolean value) {
 		setCheckbox(externalAttachmentEnabled.waitUntilPresent(), value);
 	}
+	
+	public String getSuccessfulMessage() {
+		return getTextMessageByAttribute("taglineSucces");
+	}
+	
 }

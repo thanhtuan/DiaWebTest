@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContactDatabaseWizardSteps;
@@ -33,19 +36,28 @@ public class DiaWorkspaceStory {
 	public WebDriver driver;
 	
 	@Steps
-	public DiaLoginSteps diaLoginSteps;
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
-	public DiaHomeSteps diaHomeSteps;
+	DiaSubMenuSteps diaSubMenuSteps;
 	
 	@Steps
-	public DiaAdministrationSteps diaAdministrationSteps;
+	DiaLeftSidebarSteps diaLeftSidebarSteps;
 	
 	@Steps
-	public DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
-	public DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
+	DiaHomeSteps diaHomeSteps;
+	
+	@Steps
+	DiaAdministrationSteps diaAdministrationSteps;
+	
+	@Steps
+	DiaListContactDatabasesSteps diaListContactDatabasesSteps;
+	
+	@Steps
+	DiaContactDatabaseWizardSteps diaContactDatabaseWizardSteps;
 	
 	@Steps
 	DiaListWorkspacesSteps diaListWorkspacesSteps;
@@ -61,15 +73,15 @@ public class DiaWorkspaceStory {
 		diaLoginSteps.isOnLoginPage();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
 		diaLoginSteps.clickonLoginButton();
-		diaHomeSteps.verifyClientName();
-		diaHomeSteps.navigateToAdministrationPage();
+		diaLeftSidebarSteps.verifyClientName();
+		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
 	@Test
 	@WithTag(type="feature", name="Content Workspace")
 	public void scenario1_UpdateWorkspace() {
-		diaAdministrationSteps.navigateToListWorkspacePage();
+		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 		diaListWorkspacesSteps.selectWorkspace(Variables.workspaceLabel);
@@ -84,6 +96,7 @@ public class DiaWorkspaceStory {
 		diaEditWorkspaceSteps.editBounceDomainName("");
 		diaEditWorkspaceSteps.editAddListUnsubscribeHeader(true);
 		diaEditWorkspaceSteps.clickOnSaveButton();
+		diaListWorkspacesSteps.verify_UpdateWorkspaceSuccessfulMessage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
 	}
 	
