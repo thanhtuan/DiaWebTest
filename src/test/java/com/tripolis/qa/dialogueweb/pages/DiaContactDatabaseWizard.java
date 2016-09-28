@@ -16,7 +16,7 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	private static final Logger logger = LoggerFactory.getLogger(DiaContactDatabaseWizard.class);
 	
 	@FindBy(id="dialog", timeoutInSeconds="5")
-	private WebElementFacade createDatabaseDialog;
+	private WebElementFacade diaLog;
 	
 	@FindBy(xpath=".//*[@id='wizardForm']/div[1]/div[1]", timeoutInSeconds="5")
 	private WebElementFacade createDatabaseDialogheaderNameText;
@@ -75,9 +75,9 @@ public class DiaContactDatabaseWizard extends AbstractPage {
 	@FindBy(name="defaultValue", timeoutInSeconds="5")
 	private WebElementFacade defaultValue;
 	
-	public boolean isShowCreateDatabaseDialog() {
+	public boolean isShowDialog() {
 		try {
-			createDatabaseDialog.isDisplayed();
+			diaLog.isDisplayed();
 			return true;
 		} catch (Exception e) {
 			return false;

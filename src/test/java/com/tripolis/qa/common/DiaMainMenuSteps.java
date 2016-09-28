@@ -55,5 +55,10 @@ public class DiaMainMenuSteps extends ScenarioSteps {
 	public void navigateToAdministrationPage() {
 		diaMainMenuPage.click_SetupPageLink();
 	}
+	
+	@Step
+	public void shouldBeAbleToSeeLogoutText() {
+		assertThat(diaMainMenuPage.getLogoutText().equalsIgnoreCase("Log out"));
+	}
 
 }

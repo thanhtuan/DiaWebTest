@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.tripolis.qa.dialogueweb.pages.DiaCreateContactPage;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DiaCreateContactSteps extends ScenarioSteps {
@@ -20,7 +21,7 @@ public class DiaCreateContactSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextCreateContact(String value) {
-		assertThat(diaCreateContactPage.getheaderNameText().equalsIgnoreCase("Create a new contact in the database " + value));
+		assertThat(diaCreateContactPage.getHeaderNameText().equalsIgnoreCase("Create a new contact in the database " + value));
 	}
 	
 	@Step
@@ -51,6 +52,18 @@ public class DiaCreateContactSteps extends ScenarioSteps {
 	@Step
 	public void clickOnSubmitCancelButton() {
 		diaCreateContactPage.clickSubmitCancelButton();
+	}
+
+	@StepGroup
+	public void setInformationToCreateContact(String keyword1, String keyword2, String keyword3) {
+		setContactEmail(keyword1);
+		setContactName(keyword2);
+		setContactMobile(keyword3);
+	}
+	
+	@Step
+	public void shouldBeAbleToSeeTheEmailValidationMessage() {
+		assertThat(diaCreateContactPage.getEmailValidationMessage().equalsIgnoreCase("The Email is required."));
 	}
 
 }

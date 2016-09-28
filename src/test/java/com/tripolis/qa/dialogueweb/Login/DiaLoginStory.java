@@ -8,20 +8,31 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import com.tripolis.qa.common.DiaLeftSidebarSteps;
+import com.tripolis.qa.common.DiaMainMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Narrative;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
+@Narrative(text={"In order to navigate to Home Page in Dialogue Web",                      
+        "As a user",
+        "I want to be able to login to Dialogue Web"})
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DiaLoginStory {
 	
 	@Managed(uniqueSession = true)
 	public WebDriver driver;
+	
+	@Steps
+	DiaMainMenuSteps diaMainMenuSteps;
 	
 	@Steps
 	DiaLeftSidebarSteps diaLeftSidebarSteps;
@@ -34,74 +45,126 @@ public class DiaLoginStory {
 	
 	@Before
 	public void setUp() {
+		
 		diaLoginSteps.isOnLoginPage();
+		//driver.manage().window().maximize();
 	}
 	
 	@Test
+	@Title(value = "Login With Blank Client Domain")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with blank client domain")
+	        }
+	)
 	public void scenario1_LoginWithBlankClientDomain() {
 		diaLoginSteps.inputDataToLoginForm("", Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.clickOnLoginButton();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.verify_ErrorMessage();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
 	}
 	
 	@Test
+	@Title(value = "Login With Blank Username")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with blank Username")
+	        }
+	)
 	public void scenario2_LoginWithBlankUsername() {
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, "", Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.clickOnLoginButton();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.verify_ErrorMessage();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
 	}
 	
 	@Test
+	@Title(value = "Login With Blank Password")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with blank Password")
+	        }
+	)
 	public void scenario3_LoginWithBlankPassword() {
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, "");
-		diaLoginSteps.clickonLoginButton();
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.clickOnLoginButton();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.verify_ErrorMessage();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
 	}
 	
 	@Test
+	@Title(value = "Login With Wrong Client Domain")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with wrong Client Domain")
+	        }
+	)
 	public void scenario4_LoginWithWrongClientDomain() {
 		diaLoginSteps.inputDataToLoginForm("harald companies", Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.clickOnLoginButton();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.verify_ErrorMessage();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
 	}
 	
 	@Test
+	@Title(value = "Login With Wrong Password")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with wrong Password")
+	        }
+	)
 	public void scenario5_LoginWithWrongPassword() {
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, "Pa$$w0rt");
-		diaLoginSteps.clickonLoginButton();
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.clickOnLoginButton();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.verify_ErrorMessage();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
 	}
 	
 	@Test
+	@Title(value = "Login With Wrong Username")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with wrong Username")
+	        }
+	)
 	public void scenario6_LoginWithWrongUsername() {
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, "telerik2@tripolis.com", Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.clickOnLoginButton();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.verify_ErrorMessage();
 		diaLoginSteps.verifyIsOnErrorLoginPage();
 	}
 	
 	@Test
+	@Title(value = "Login With Vaild Credentials")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Login"),
+	                @WithTag(type="Story", name="User login with Vaild Credentials")
+	        }
+	)
 	public void scenario7_LoginWithVaildCredentials(){		
-		diaLoginSteps.seeLoginForm();
+		diaLoginSteps.shouldSeeLoginForm();
 		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
+		diaLoginSteps.clickOnLoginButton();
 		diaHomeSteps.verifyIsOnHomePage();
-		diaLeftSidebarSteps.verifyClientName();
+		diaMainMenuSteps.shouldBeAbleToSeeLogoutText();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 	}
 	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		driver.close();
 	}
 }

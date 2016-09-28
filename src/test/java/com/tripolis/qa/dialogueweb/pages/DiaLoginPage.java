@@ -25,9 +25,6 @@ public class DiaLoginPage extends AbstractPage {
 	@FindBy(id="j_password", timeoutInSeconds="5")
 	private WebElementFacade passWord;
 	
-	@FindBy(id="loginButton", timeoutInSeconds="5")
-	private WebElementFacade loginButton;
-	
 	public void enter_DomainName(String keyword) {
 		logger.info("Please input DomainName");
 		clientDomainName.waitUntilPresent().clear();
@@ -60,7 +57,7 @@ public class DiaLoginPage extends AbstractPage {
 	
 	public void click_login() {
 		logger.info("Please click on Login button");
-		loginButton.waitUntilClickable().click();
+		$("#loginButton").waitUntilClickable().click();
 		logger.info("already click on Login button");
     }
 	

@@ -1,5 +1,7 @@
 package com.tripolis.qa.dialogueweb.steps.serenity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.tripolis.qa.dialogueweb.pages.DiaHomePage;
 
 import net.thucydides.core.annotations.Step;
@@ -13,7 +15,8 @@ public class DiaHomeSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyIsOnHomePage() {	
-		assert(diaHomePage.getHomeurl());
+		//assert(diaHomePage.getHomeurl());
+		assertThat(diaHomePage.getHomeurl()).isTrue();
 		
 	}
 	

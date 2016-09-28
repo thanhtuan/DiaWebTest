@@ -7,9 +7,10 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	Setup.class,
-	Content.class,
-	Contacts.class
+	Contacts.class,
+	ContactGroup.class,
+	Content.class
 })
-public class SetupDataAllTests {
+public class SetupDataTestSuites {
 
 }

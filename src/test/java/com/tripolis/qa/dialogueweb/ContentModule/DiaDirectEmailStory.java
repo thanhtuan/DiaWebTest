@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import com.tripolis.qa.common.DiaActionbarSteps;
 import com.tripolis.qa.common.DiaLeftSidebarSteps;
 import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSecondActionbarSteps;
 import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaContentDashboardSteps;
@@ -20,7 +21,7 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaContentDirectEmailHTMLSourc
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaCreateContentDirectEmailSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaEditContentDirectEmailSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaHomeSteps;
-import com.tripolis.qa.dialogueweb.steps.serenity.DiaDirectEmailsBrowseSteps;
+import com.tripolis.qa.dialogueweb.steps.serenity.DiaListDirectEmailsSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaPreviewContentDirectEmailSteps;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaSelectDirectEmailTypeSteps;
@@ -53,6 +54,9 @@ public class DiaDirectEmailStory {
 	DiaActionbarSteps diaActionbarSteps;
 	
 	@Steps
+	DiaSecondActionbarSteps diaSecondActionbarSteps;
+	
+	@Steps
 	DiaLoginSteps diaLoginSteps;
 	
 	@Steps
@@ -62,7 +66,7 @@ public class DiaDirectEmailStory {
 	DiaContentDashboardSteps diaContentDashboardSteps;
 	
 	@Steps
-	DiaDirectEmailsBrowseSteps diaListDirectEmailsSteps;
+	DiaListDirectEmailsSteps diaListDirectEmailsSteps;
 	
 	@Steps
 	DiaSelectDirectEmailTypeSteps diaSelectDirectEmailTypeSteps;
@@ -82,9 +86,9 @@ public class DiaDirectEmailStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();	
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();	
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 	}
 	
 	@Pending @Test
@@ -94,7 +98,7 @@ public class DiaDirectEmailStory {
 		diaSubMenuSteps.navigateToPageThatSubMenuItem3PresentFor();
 		diaListDirectEmailsSteps.onListDirectEmailsPage();
 		diaListDirectEmailsSteps.verifyheaderNameTextListDirectEmails(Variables.workspaceLabel);
-		diaListDirectEmailsSteps.clickOnNewLink();
+		diaSecondActionbarSteps.navigateToPageThatSecondActionBarItem1PresentFor();
 		diaCreateContentDirectEmailSteps.onCreateContentDirectEmailPage();
 		diaSelectDirectEmailTypeSteps.verifyheaderNameTextSelectDirectEmailType();
 		diaSelectDirectEmailTypeSteps.selected_DirectEmailType(Variables.directemailTypeLabel);

@@ -20,7 +20,7 @@ public class DiaEditEmailTypeDefinitionSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextEditDirectEmailType(String value) {
-		assertThat(diaEditEmailTypeDefinition.getheaderNameText().equalsIgnoreCase("Edit direct email type " + '"' + value + '"'));
+		assertThat(diaEditEmailTypeDefinition.getHeaderNameText().equalsIgnoreCase("Edit direct email type " + '"' + value + '"'));
 	}
 	
 	@Step

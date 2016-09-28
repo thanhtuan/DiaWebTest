@@ -20,7 +20,7 @@ public class DiaPreviewContentDirectEmailSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextPreviewDirectEmail(String value) {
-		assertThat(diaPreviewContentDirectEmailPage.getheaderNameText().equalsIgnoreCase("Direct email " + value));
+		assertThat(diaPreviewContentDirectEmailPage.getHeaderNameText().equalsIgnoreCase("Direct email " + value));
 	}
 
 }

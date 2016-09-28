@@ -16,6 +16,18 @@ public class DiaLeftSidebarPage extends AbstractPage {
 	@FindBy(id="leftcontent", timeoutInSeconds="10")
 	protected WebElementFacade leftSidebar;
 	
+	@FindBy(id="contact", timeoutInSeconds="10")
+	protected WebElementFacade contactDatabasesDropDown;
+	
+	@FindBy(id="content", timeoutInSeconds="10")
+	protected WebElementFacade contentWorkspaceDropDown;
+	
+	@FindBy(xpath=".//*[@id='contact']/option[@selected]", timeoutInSeconds="5")
+	protected WebElementFacade selectedContactDatabases;
+	
+	@FindBy(xpath=".//*[@id='content']/option[@selected]", timeoutInSeconds="5")
+	protected WebElementFacade selectedContentWorkspace;
+	
 	@FindBy(id="acmenu", timeoutInSeconds="10")
 	protected WebElementFacade leftSidebarItems;
 	
@@ -65,6 +77,25 @@ public class DiaLeftSidebarPage extends AbstractPage {
 	
 	public String getClientName() {
 		return clientName.waitUntilPresent().getText();
+	}
+	
+	public String contactDatabasesLabel() {
+		/*Set<String> listDb = getSelectedOptionLabelsFrom(contactDatabasesDropDown);
+		System.out.println(">>>>>> listDb: " + listDb);
+		return listDb.iterator().next();*/
+		return getSelectedLabelFrom(contactDatabasesDropDown);
+	}
+	
+	public String contentWorkspaceLabel() {
+		return getSelectedLabelFrom(contentWorkspaceDropDown);
+	}
+	
+	public String contactDatabasesAttribute() {
+		return selectedContactDatabases.waitUntilPresent().getAttribute("value");
+	}
+	
+	public String contentWorkspaceAttribute() {
+		return selectedContentWorkspace.waitUntilPresent().getAttribute("value");
 	}
 	
 	public void leftSidebarItemsisVisible() {

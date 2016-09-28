@@ -20,7 +20,7 @@ public class DiaSelectDirectEmailTypeSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextSelectDirectEmailType() {
-		assertThat(diaSelectDirectEmailTypePage.getheaderNameText().equalsIgnoreCase("Select a direct email type"));
+		assertThat(diaSelectDirectEmailTypePage.getHeaderNameText().equalsIgnoreCase("Select a direct email type"));
 	}
 	
 	@Step

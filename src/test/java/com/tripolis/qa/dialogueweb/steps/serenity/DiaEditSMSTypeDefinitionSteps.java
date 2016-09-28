@@ -20,7 +20,7 @@ public class DiaEditSMSTypeDefinitionSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextEditSMSType(String value) {
-		assertThat(diaEditSMSMessageTypeDefinition.getheaderNameText().equalsIgnoreCase("Edit SMS message type " + '"' + value + '"'));
+		assertThat(diaEditSMSMessageTypeDefinition.getHeaderNameText().equalsIgnoreCase("Edit SMS message type " + '"' + value + '"'));
 	}
 	
 	@Step

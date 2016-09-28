@@ -3,7 +3,9 @@ package com.tripolis.qa.common;
 public class Variables {
 
 	public static final String clientDomain = "Tripolis QA";
-	public static final String userName = "test_automated_user@tripolis.com";
+	public static final String adminUserName = "test_admin_automated_user@tripolis.com";
+	public static final String advancedUserName = "test_advanced_automated_user@tripolis.com";
+	public static final String userName = "test_user_automated_user@tripolis.com";
 	public static final String passWord = "test";
 	
 	public static final String databaseName = "Test DB "+ System.currentTimeMillis();
@@ -49,6 +51,13 @@ public class Variables {
 	public static final String smsmessageLabel = "Test SMS "+ System.currentTimeMillis();
 	public static final String updatedSMSMessageName = "Updated SMS "+ System.currentTimeMillis();
 	public static final String updatedSMSMessageLabel = "Updated SMS "+ System.currentTimeMillis();
+	
+	public static final String staticGroupLabel = "Static group " + System.currentTimeMillis();
+	public static final String staticGroupName = "Static group " + System.currentTimeMillis();
+	public static final String testGroupLabel = "Test group" + System.currentTimeMillis();
+	public static final String testGroupName = "Test group" + System.currentTimeMillis();
+	public static final String subscriptionGroupLabel = "Subscription group " + System.currentTimeMillis();
+	public static final String subscriptionGroupName = "Subscription group" + System.currentTimeMillis();
 	
 	
 }

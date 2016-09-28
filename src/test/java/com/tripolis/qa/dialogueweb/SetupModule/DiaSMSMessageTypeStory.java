@@ -26,7 +26,9 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -79,16 +81,22 @@ public class DiaSMSMessageTypeStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
 	@Test
-	@WithTag(type="feature", name="SMS Mesage Type")
-	public void scenario5_UpdateSMSMesageType() {
+	@Title(value = "Create a SMS Message Type")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="SMS Mesage Type"),
+	                @WithTag(type="story", name="Create SMS Message Type")
+	        }
+	)
+	public void scenario1_UpdateSMSMesageType() {
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();

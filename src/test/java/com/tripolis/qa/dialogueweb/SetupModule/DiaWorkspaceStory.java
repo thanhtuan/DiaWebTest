@@ -24,7 +24,9 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -71,15 +73,21 @@ public class DiaWorkspaceStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
 	@Test
-	@WithTag(type="feature", name="Content Workspace")
+	@Title(value = "Update Workspace")
+	@WithTags (
+	        {  
+	        		@WithTag(type="feature", name="Content Workspace"),
+	                @WithTag(type="story", name="Update a Workspace")
+	        }
+	)
 	public void scenario1_UpdateWorkspace() {
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();

@@ -20,13 +20,13 @@ public class DiaListContactDatabasesSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextListContactDatabases() {
-		assertThat(diaListContactDatabasesPage.getheaderNameText().equalsIgnoreCase("List of contact databases"));
+		assertThat(diaListContactDatabasesPage.getHeaderNameText().equalsIgnoreCase("List of contact databases"));
 	}
 	
-	@Step
+/*	@Step
 	public void clickOnNewLink() {
 		diaListContactDatabasesPage.clickNewLink();
-	}
+	}*/
 
 	@Step
 	public void clickOnEditButton() {
@@ -56,16 +56,6 @@ public class DiaListContactDatabasesSteps extends ScenarioSteps {
 	@Step
 	public void clickOnDeleteBtn () {
 		diaListContactDatabasesPage.clickDeleteBtn();
-	}
-	
-	@Step
-	public String getcontactDatabasesAttribute() {
-		return diaListContactDatabasesPage.contactDatabasesAttribute();
-	}
-	
-	@Step
-	public String getcontactDatabasesLabel() {
-		return diaListContactDatabasesPage.contactDatabasesLabel();
 	}
 	
 	@Step

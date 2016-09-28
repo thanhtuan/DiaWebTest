@@ -20,7 +20,7 @@ public class DiaEditWorkspaceSteps extends ScenarioSteps {
 	
 	@Step
 	public void verify_HeaderNameTextEditWorkspaces(String keyword) {
-		assertThat(diaEditWorkspacePage.getheaderNameText().equalsIgnoreCase("Edit workspace " + '"' + keyword + '"'));
+		assertThat(diaEditWorkspacePage.getHeaderNameText().equalsIgnoreCase("Edit workspace " + '"' + keyword + '"'));
 	}
 	
 	@Step

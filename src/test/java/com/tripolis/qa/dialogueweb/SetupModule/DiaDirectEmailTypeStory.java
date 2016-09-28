@@ -26,7 +26,9 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -80,16 +82,22 @@ public class DiaDirectEmailTypeStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
 	@Test
-	@WithTag(type="feature", name="Direct Email Type")
-	public void scenario5_UpdateDirectEmailType() {
+	@Title(value = "Update a Direct Email Type")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Direct Email Type"),
+	                @WithTag(type="story", name="Update Direct Email Type")
+	        }
+	)
+	public void scenario1_UpdateDirectEmailType() {
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();

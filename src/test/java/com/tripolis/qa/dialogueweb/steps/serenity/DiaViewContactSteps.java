@@ -20,7 +20,7 @@ public class DiaViewContactSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextViewContact(String value) {
-		assertThat(diaViewContactPage.getheaderNameText().equalsIgnoreCase("View profile for " + value));
+		assertThat(diaViewContactPage.getHeaderNameText().equalsIgnoreCase("View profile for " + value));
 	}
 	
 	@Step

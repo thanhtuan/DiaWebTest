@@ -37,6 +37,9 @@ public class DiaMainMenuPage extends AbstractPage {
 	@FindBy(xpath=".//*[@id='global-nav']/ul/li[8]/a", timeoutInSeconds="5")
 	protected WebElementFacade menuAdministrationPage;
 	
+	@FindBy(xpath=".//*[@id='login']/ul/li/a", timeoutInSeconds="5")
+	protected WebElementFacade logoutLink;
+	
 	public boolean mainMenuisVisible() {
 		return mainMenu.isCurrentlyVisible();
 
@@ -89,5 +92,9 @@ public class DiaMainMenuPage extends AbstractPage {
 		menuAdministrationPage.waitUntilClickable().click();
 		logger.info("already click on Admin Page Link");
     }
+	
+	public String getLogoutText() {
+		return logoutLink.waitUntilPresent().getText();
+	}
 	
 }

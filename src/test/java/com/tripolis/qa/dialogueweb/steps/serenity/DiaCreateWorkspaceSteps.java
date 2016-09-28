@@ -20,7 +20,7 @@ public class DiaCreateWorkspaceSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextCreateWorkspaces() {
-		assertThat(diaCreateWorkspacePage.getheaderNameText().equalsIgnoreCase("New workspace"));
+		assertThat(diaCreateWorkspacePage.getHeaderNameText().equalsIgnoreCase("New workspace"));
 	}
 	
 	@Step

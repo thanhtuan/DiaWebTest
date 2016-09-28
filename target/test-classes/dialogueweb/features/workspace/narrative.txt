@@ -1,0 +1,4 @@
+Manage Content Workspace
+In order to manage the Content Workspace feature in Dialogue Web
+As a user
+I want to be able to create, edit, delete a Content Workspace

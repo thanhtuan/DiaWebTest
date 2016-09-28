@@ -20,7 +20,7 @@ public class DiaListContactsSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextListContacts(String value) {
-		assertThat(diaListContactsPage.getheaderNameText().equalsIgnoreCase("List of contacts for database " + value));
+		assertThat(diaListContactsPage.getHeaderNameText().equalsIgnoreCase("List of contacts for database " + value));
 	}
 	
 	@Step
@@ -37,6 +37,26 @@ public class DiaListContactsSteps extends ScenarioSteps {
 	public void clickOnNewLink() {
 		diaListContactsPage.clickNewLink();
 	}
+	
+	@Step
+	public void typeAndEnterOnFilterEmail(String keyword) {
+		diaListContactsPage.typeAndEnterFilterEmail(keyword);
+	}
+	
+	@Step
+	public void typeAndEnterOnFilterName(String keyword) {
+		diaListContactsPage.typeAndEnterFilterName(keyword);
+	}
+	
+	@Step
+	public void typeAndEnterOnFilterMobile(String keyword) {
+		diaListContactsPage.typeAndEnterFilterMobile(keyword);
+	}
+	
+	/*@Step
+	public void dataForFilter(String keyword) {
+		diaListContactsPage.enterDataForFilter(keyword);
+	}*/
 	
 	@Step
 	public void clickOnViewButton() {

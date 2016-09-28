@@ -22,7 +22,7 @@ public class DiaEditContentDirectEmailSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextEditDirectEmail(String value) {
-		assertThat(diaEditContentDirectEmailPage.getheaderNameText().equalsIgnoreCase("Direct email " + value));
+		assertThat(diaEditContentDirectEmailPage.getHeaderNameText().equalsIgnoreCase("Direct email " + value));
 	}
 	
 	@Step

@@ -31,6 +31,9 @@ public class DiaCreateContactPage extends AbstractPage {
 	@FindBy(name="mobile", timeoutInSeconds="5")
 	private WebElementFacade contactMobile;
 	
+	@FindBy(xpath=".//*[@id='required']/ul/li[1]", timeoutInSeconds="5")
+	private WebElementFacade emailValidationMessage;
+	
 	public void enter_ContactEmail(String keyword) {
 		logger.info("Please input Contact Email");
 		contactEmail.waitUntilPresent().clear();
@@ -56,6 +59,10 @@ public class DiaCreateContactPage extends AbstractPage {
 		logger.info("Please click on Save Link");
 		saveLink.waitUntilClickable().click();
 		logger.info("already click on Save Link");
+	}
+	
+	public String getEmailValidationMessage() {
+		return emailValidationMessage.waitUntilPresent().getText();
 	}
 
 }

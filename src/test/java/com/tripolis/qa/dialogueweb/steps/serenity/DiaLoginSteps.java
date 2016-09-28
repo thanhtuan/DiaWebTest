@@ -25,7 +25,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void seeLoginForm() {
+	public void shouldSeeLoginForm() {
 		assertThat(diaLoginPage.isshowloginForm()).isTrue();
 	}
 	
@@ -52,7 +52,7 @@ public class DiaLoginSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickonLoginButton(){
+	public void clickOnLoginButton(){
 		diaLoginPage.click_login();
 	}
 	

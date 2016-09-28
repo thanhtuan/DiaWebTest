@@ -12,109 +12,34 @@ public class AbstractPage extends PageObject {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AbstractPage.class);
 	
-	/*
-	 * Handle The Objects on the left area
-	 */
-	
-	@FindBy(id="contact", timeoutInSeconds="10")
-	protected WebElementFacade contactDatabasesDropDown;
-	
-	public String contactDatabasesLabel() {
-		/*Set<String> listDb = getSelectedOptionLabelsFrom(contactDatabasesDropDown);
-		System.out.println(">>>>>> listDb: " + listDb);
-		return listDb.iterator().next();*/
-		return getSelectedLabelFrom(contactDatabasesDropDown);
-	}
-	
-	@FindBy(xpath=".//*[@id='contact']/option[@selected]", timeoutInSeconds="5")
-	protected WebElementFacade selectedContactDatabases;
-	
-	public String contactDatabasesAttribute() {
-		return selectedContactDatabases.waitUntilPresent().getAttribute("value");
-	}
-	
-	@FindBy(id="content", timeoutInSeconds="10")
-	protected WebElementFacade contentWorkspaceDropDown;
-	
-	public String contentWorkspaceLabel() {
-		return getSelectedLabelFrom(contentWorkspaceDropDown);
-	}
-	
-	@FindBy(xpath=".//*[@id='content']/option[@selected]", timeoutInSeconds="5")
-	protected WebElementFacade selectedContentWorkspace;
-	
-	public String contentWorkspaceAttribute() {
-		return selectedContentWorkspace.waitUntilPresent().getAttribute("value");
-	}
-	
-	/*
-	 * End handle the objects on the left area
-	 */
-	
 	
 	/*
 	 * Handle The Objects on the main area
 	 */
 	
-	@FindBy(id="editable", timeoutInSeconds="5")
-	protected WebElementFacade newLink; 
-	
-	public void clickNewLink() {
-		logger.info("Please click on New Link");
-		newLink.waitUntilClickable().click();	
-		logger.info("already click on New Link");
-    }
-	
 	@FindBy(xpath=".//*[@id='main']/div[1]/div[1]", timeoutInSeconds="5")
 	protected WebElementFacade headerNameText; 
 	
-	public String getheaderNameText() {
+	public String getHeaderNameText() {
 		return headerNameText.waitUntilPresent().getText();
-	}
-	
-	/*
-	 * End handle The Objects on the main area
-	 */
-	
-	/*
-	 * Handle the list action buttons on the main area
-	 */
-	
-	@FindBy(className="ui-dialogue-frame", timeoutInSeconds="5")
-	protected WebElementFacade confirmedPopup;
-	
-	public boolean isshowconfirmedPopup() {
-		try {
-			confirmedPopup.isDisplayed();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
-	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
-	protected WebElementFacade confirmedMessage;
-	
-	public String getconfirmedMessage() {
-		return confirmedMessage.waitUntilPresent().getText();
 	}
 	
 	@FindBy(id="archive", timeoutInSeconds="5")
 	protected WebElementFacade archiveButton;
 	
 	public void clickArchiveButton() {
-		logger.info("Please click on Edit Button");
+		logger.info("Please click on Archive Button");
 		archiveButton.waitUntilClickable().click();
-		logger.info("already click on Edit Button");
+		logger.info("already click on Archive Button");
 	}
 	
 	@FindBy(id="view", timeoutInSeconds="5")
 	protected WebElementFacade viewButton;
 	
 	public void clickViewButton() {
-		logger.info("Please click on Edit Button");
+		logger.info("Please click on View Button");
 		viewButton.waitUntilClickable().click();
-		logger.info("already click on Edit Button");
+		logger.info("already click on View Button");
 	}
 	
 	@FindBy(id="edit", timeoutInSeconds="5")
@@ -133,6 +58,65 @@ public class AbstractPage extends PageObject {
 		logger.info("Please click on Delete Button");
 		deleteButton.waitUntilClickable().click();
 		logger.info("already click on Delete Button");
+	}
+	
+	@FindBy(className="pagenating", timeoutInSeconds="5")
+	protected WebElementFacade pagingDropDown;
+	
+	public void select_pagingNumber(String keyword) {
+		pagingDropDown.selectByValue(keyword);
+	}
+	
+	@FindBy(xpath=".//*[@id='table']/thead/tr[1]/td[2]/div", timeoutInSeconds="5")
+	protected WebElementFacade filtercolumn1;
+	
+	public void typeAndEnterFilterFilterColumn1(String keyword) {
+		logger.info("Please type and enter Filter Column1");
+		filtercolumn1.waitUntilClickable().click();
+		WebElementFacade dynFilterInput1 = filtercolumn1.find(By.id("dynFilterInput"));
+		dynFilterInput1.waitUntilPresent().typeAndEnter(keyword);
+		logger.info("already type and enter Filter Column1");
+	}
+	
+	@FindBy(xpath=".//*[@id='table']/thead/tr[1]/td[3]/div", timeoutInSeconds="5")
+	protected WebElementFacade filtercolumn2;
+	
+	public void typeAndEnterFilterFilterColumn2(String keyword) {
+		logger.info("Please type and enter Filter Column2");
+		filtercolumn2.waitUntilClickable().click();
+		WebElementFacade dynFilterInput2 = filtercolumn2.find(By.id("dynFilterInput"));
+		dynFilterInput2.waitUntilPresent().typeAndEnter(keyword);
+		logger.info("already type and enter Filter Column2");
+	}
+	
+	@FindBy(xpath=".//*[@id='table']/thead/tr[1]/td[4]/div", timeoutInSeconds="5")
+	protected WebElementFacade filtercolumn3;
+	
+	public void typeAndEnterFilterFilterColumn3(String keyword) {
+		logger.info("Please type and enter Filter Column3");
+		filtercolumn3.waitUntilClickable().click();
+		WebElementFacade dynFilterInput3 = filtercolumn3.find(By.id("dynFilterInput"));
+		dynFilterInput3.waitUntilPresent().typeAndEnter(keyword);
+		logger.info("already type and enter Filter Column3");
+	}
+	
+	@FindBy(className="ui-dialogue-frame", timeoutInSeconds="5")
+	protected WebElementFacade confirmedPopup;
+	
+	public boolean isshowconfirmedPopup() {
+		try {
+			confirmedPopup.isDisplayed();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	@FindBy(xpath=".//*[@id='dialog']", timeoutInSeconds="5")
+	protected WebElementFacade confirmedMessage;
+	
+	public String getconfirmedMessage() {
+		return confirmedMessage.waitUntilPresent().getText();
 	}
 	
 	@FindBy(name="confirmed", timeoutInSeconds="5")
@@ -154,7 +138,7 @@ public class AbstractPage extends PageObject {
 	}
 	
 	/*
-	 * End handle the list action buttons on the main area
+	 * End handle The Objects on the main area
 	 */
 	
 	/*

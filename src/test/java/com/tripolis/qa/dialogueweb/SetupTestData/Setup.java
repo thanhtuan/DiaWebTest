@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.tripolis.qa.common.DiaLeftSidebarSteps;
 import com.tripolis.qa.common.DiaMainMenuSteps;
+import com.tripolis.qa.common.DiaSecondActionbarSteps;
 import com.tripolis.qa.common.DiaSubMenuSteps;
 import com.tripolis.qa.common.Variables;
 import com.tripolis.qa.dialogueweb.steps.serenity.DiaAdministrationSteps;
@@ -28,6 +29,7 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
 
@@ -46,6 +48,9 @@ public class Setup {
 	
 	@Steps
 	DiaLeftSidebarSteps diaLeftSidebarSteps;
+	
+	@Steps
+	DiaSecondActionbarSteps diaSecondActionbarSteps;
 	
 	@Steps
 	DiaLoginSteps diaLoginSteps;
@@ -88,26 +93,28 @@ public class Setup {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 	}
 	
 	
 	@Test
+	@Title(value = "Create Contact Database")
 	@WithTags (
 	        {
 	                @WithTag(type="feature", name="Contact Database"),
-	                @WithTag(type="feature", name="Prepare Data")
+	                @WithTag(type="feature", name="Prepare Data"),
+	                @WithTag(type="story", name="Create a Contact Database")
 	        }
 	)
 	public void scenario1_CreateContactDatabase() {
 		diaSubMenuSteps.navigateToPageThatSubMenuItem1PresentFor();
 		diaListContactDatabasesSteps.onListContactDatabasesPage();
 		diaListContactDatabasesSteps.verifyheaderNameTextListContactDatabases();
-		diaListContactDatabasesSteps.clickOnNewLink();
+		diaSecondActionbarSteps.navigateToPageThatSecondActionBarItem1PresentFor();
 		diaContactDatabaseWizardSteps.seeCreateDatabaseDialog();
 		diaContactDatabaseWizardSteps.verifyheaderNameTextCreateDatabaseDialogStep1();
 		diaContactDatabaseWizardSteps.setLabel(Variables.databaseLabel);
@@ -134,18 +141,20 @@ public class Setup {
 	}
 	
 	@Test
+	@Title(value = "Create a Workspace")
 	@WithTags (
 	        {
 	                @WithTag(type="feature", name="Content Workspace"),
-	                @WithTag(type="feature", name="Prepare Data")
+	                @WithTag(type="feature", name="Prepare Data"),
+	                @WithTag(type="story", name="Create Workspace")
 	        }
 	)
 	public void scenario2_CreateWorkspace() {
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListWorkspacesSteps.onListWorkspacesPage();
 		diaListWorkspacesSteps.verifyheaderNameTextListWorkspaces();
-		var.databaseId = diaListContactDatabasesSteps.getcontactDatabasesAttribute();
-		diaListWorkspacesSteps.clickOnNewLink();
+		var.databaseId = diaLeftSidebarSteps.getcontactDatabasesAttribute();
+		diaSecondActionbarSteps.navigateToPageThatSecondActionBarItem1PresentFor();
 		diaCreateWorkspaceSteps.onCreateWorkspacesPage();
 		diaCreateWorkspaceSteps.verifyheaderNameTextCreateWorkspaces();
 		diaCreateWorkspaceSteps.setLabel(Variables.workspaceLabel);
@@ -161,10 +170,12 @@ public class Setup {
 	}
 	
 	@Test
+	@Title(value = "Create a Direct Email Type")
 	@WithTags (
 	        {
 	                @WithTag(type="feature", name="Direct Email Type"),
-	                @WithTag(type="feature", name="Prepare Data")
+	                @WithTag(type="feature", name="Prepare Data"),
+	                @WithTag(type="story", name="Create Direct Email Type")
 	        }
 	)
 	public void scenario3_CreateDirectEmailType() {
@@ -174,7 +185,7 @@ public class Setup {
 		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem4PresentFor();
 		diaListEmailTypeDefinitionsSteps.onListEmailTypeDefinitionsPage();
 		diaListEmailTypeDefinitionsSteps.verifyheaderNameTextListEmailTypeDefinitions(Variables.workspaceLabel);
-		diaListEmailTypeDefinitionsSteps.clickOnNewLink();
+		diaSecondActionbarSteps.navigateToPageThatSecondActionBarItem1PresentFor();
 		diaCreateEmailTypeDefinitionSteps.onCreateDirectEmailTypePage();
 		diaCreateEmailTypeDefinitionSteps.verifyheaderNameTextCreateEmailTypeDefinitions();
 		diaCreateEmailTypeDefinitionSteps.setLabel(Variables.directemailTypeLabel);
@@ -195,10 +206,12 @@ public class Setup {
 	}
 	
 	@Test
+	@Title(value = "Create a SMS Message Type")
 	@WithTags (
 	        {
 	                @WithTag(type="feature", name="SMS Mesage Type"),
-	                @WithTag(type="feature", name="Prepare Data")
+	                @WithTag(type="feature", name="Prepare Data"),
+	                @WithTag(type="story", name="Create SMS Message Type")
 	        }
 	)
 	public void scenario4_CreateSMSMesageType() {
@@ -208,7 +221,7 @@ public class Setup {
 		diaLeftSidebarSteps.navigateToPageThatLeftSidebarItem5PresentFor();
 		diaListSMSMessageTypeDefinitionsSteps.onListSMSTypeDefinitionsPage();
 		diaListSMSMessageTypeDefinitionsSteps.verifyheaderNameTextListSMSTypeDefinitions(Variables.workspaceLabel);
-		diaListSMSMessageTypeDefinitionsSteps.clickOnNewLink();
+		diaSecondActionbarSteps.navigateToPageThatSecondActionBarItem1PresentFor();
 		diaCreateSMSTypeDefinitionSteps.verifyheaderNameTextCreateSMSTypeDefinitions();
 		diaCreateSMSTypeDefinitionSteps.setLabel(Variables.smsmessageTypeLabel);
 		diaCreateSMSTypeDefinitionSteps.setName(Variables.smsmessageTypeName);

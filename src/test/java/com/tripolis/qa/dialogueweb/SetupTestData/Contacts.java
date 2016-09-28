@@ -23,6 +23,7 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaViewContactSteps;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
 import net.thucydides.junit.annotations.Concurrent;
@@ -68,6 +69,8 @@ public class Contacts {
 	@Steps
 	DiaViewContactSteps diaViewContactSteps;
 	
+	Variables var = new Variables();
+	
 	private String email;
     private String name;
     private String mobile;
@@ -89,34 +92,34 @@ public class Contacts {
         return email;
     }
 	
-	Variables var = new Variables();
-	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm("Tripolis QA", "test_automated_user@tripolis.com", "test");
-		diaLoginSteps.clickonLoginButton();	
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();	
+		diaMainMenuSteps.shouldBeAbleToSeeLogoutText();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 	}
 	
 	@Test
+	@Title(value = "Create some contacts using data from CSV")
 	@WithTags (
 	        {
-	                @WithTag(type="feature", name="Contacts"),
-	                @WithTag(type="feature", name="Prepare Data")
+	        	@WithTag(type="feature", name="Prepare Data"),
+	        	@WithTag(type="feature", name="Contact Module"),
+                @WithTag(type="feature", name="Contacts"),
+                @WithTag(type="story", name="Create Contacts")
 	        }
 	)
 	public void scenario1_CreateContacts() {
-		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		var.BDlabel = diaLeftSidebarSteps.getcontactDatabasesLabel();
 		diaMainMenuSteps.navigateToContactPage();
 		diaContactDashboardSteps.onContactDashboardPage();
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
 		diaListContactsSteps.verifyheaderNameTextListContacts(var.BDlabel);
 		diaListContactsSteps.clickOnNewLink();
 		diaCreateContactSteps.onCreateContactPage();
-		diaCreateContactSteps.setContactEmail(email);
-		diaCreateContactSteps.setContactName(name);
-		diaCreateContactSteps.setContactMobile(mobile);
+		diaCreateContactSteps.setInformationToCreateContact(email, name, mobile);
 		diaCreateContactSteps.clickOnSaveButton();
 		diaViewContactSteps.verify_CreateContactSuccessfulMessage();
 		diaViewContactSteps.onViewContactPage();

@@ -33,5 +33,30 @@ public class DiaSecondActionbarSteps extends ScenarioSteps {
 	public void navigateToPageThatSecondActionBarItem5PresentFor() {
 		diaSecondActionbarPage.clickOnSecondActionBarItem5();
 	}
+	
+	@Step
+	public void navigateToPageThatSecondActionBarItem6PresentFor() {
+		diaSecondActionbarPage.clickOnSecondActionBarItem6();
+	}
+	
+	@Step
+	public void navigateToPageThatSecondActionBarItem7PresentFor() {
+		diaSecondActionbarPage.clickOnSecondActionBarItem7();
+	}
+	
+	@Step
+	public void navigateToPageThatSecondActionBarItem8PresentFor() {
+		diaSecondActionbarPage.clickOnSecondActionBarItem8();
+	}
+	
+	@Step
+	public void navigateToPageThatSecondActionBarItem9PresentFor() {
+		diaSecondActionbarPage.clickOnSecondActionBarItem9();
+	}
+	
+	@Step
+	public void navigateToPageThatSecondActionBarItem10PresentFor() {
+		diaSecondActionbarPage.clickOnSecondActionBarItem10();
+	}
 
 }

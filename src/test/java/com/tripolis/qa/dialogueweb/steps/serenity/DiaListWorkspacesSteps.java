@@ -20,13 +20,13 @@ public class DiaListWorkspacesSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextListWorkspaces() {
-		assertThat(diaListWorkspacesPage.getheaderNameText().equalsIgnoreCase("List of workspaces"));
+		assertThat(diaListWorkspacesPage.getHeaderNameText().equalsIgnoreCase("List of workspaces"));
 	}
 	
-	@Step
+	/*@Step
 	public void clickOnNewLink() {
 		diaListWorkspacesPage.clickNewLink();
-	}
+	}*/
 	
 	@Step
 	public void clickOnEditButton() {
@@ -56,16 +56,6 @@ public class DiaListWorkspacesSteps extends ScenarioSteps {
 	@Step
 	public void clickOnDeleteBtn () {
 		diaListWorkspacesPage.clickDeleteBtn();
-	}
-	
-	@Step
-	public String getcontentWorkspaceAttribute() {
-		return diaListWorkspacesPage.contentWorkspaceAttribute();
-	}
-	
-	@Step
-	public String getcontentWorkspaceLabel() {
-		return diaListWorkspacesPage.contentWorkspaceLabel();
 	}
 	
 	@Step

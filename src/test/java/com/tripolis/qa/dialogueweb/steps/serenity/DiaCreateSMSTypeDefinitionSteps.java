@@ -20,7 +20,7 @@ public class DiaCreateSMSTypeDefinitionSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextCreateSMSTypeDefinitions() {
-		assertThat(diaCreateSMSMessageTypeDefinition.getheaderNameText().equalsIgnoreCase("Create SMS message type"));
+		assertThat(diaCreateSMSMessageTypeDefinition.getHeaderNameText().equalsIgnoreCase("Create SMS message type"));
 	}
 	
 	@Step

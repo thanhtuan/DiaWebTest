@@ -20,7 +20,7 @@ public class DiaEditContactDatabaseDetailsSteps extends ScenarioSteps {
 	
 	@Step
 	public void verify_HeaderNameTextEditContactDatabase(String keyword) {
-		assertThat(diaEditContactDatabaseDetailsPage.getheaderNameText().equalsIgnoreCase("Edit contact database " + '"' + keyword + '"'));
+		assertThat(diaEditContactDatabaseDetailsPage.getHeaderNameText().equalsIgnoreCase("Edit contact database " + '"' + keyword + '"'));
 	}
 	
 	@Step

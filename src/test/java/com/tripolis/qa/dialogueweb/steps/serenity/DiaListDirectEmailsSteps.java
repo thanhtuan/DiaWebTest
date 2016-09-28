@@ -2,16 +2,16 @@ package com.tripolis.qa.dialogueweb.steps.serenity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.tripolis.qa.dialogueweb.pages.DiaDirectEmailsBrowsePage;
+import com.tripolis.qa.dialogueweb.pages.DiaListDirectEmailsPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class DiaDirectEmailsBrowseSteps extends ScenarioSteps {
+public class DiaListDirectEmailsSteps extends ScenarioSteps {
 	
 	private static final long serialVersionUID = 1L;
 	
-	DiaDirectEmailsBrowsePage diaDirectEmailsBrowsePage;
+	DiaListDirectEmailsPage diaDirectEmailsBrowsePage;
 	
 	@Step
 	public void onListDirectEmailsPage() {
@@ -19,13 +19,8 @@ public class DiaDirectEmailsBrowseSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickOnNewLink() {
-		diaDirectEmailsBrowsePage.clickNewLink();
-	}
-	
-	@Step
 	public void verifyheaderNameTextListDirectEmails(String value) {
-		assertThat(diaDirectEmailsBrowsePage.getheaderNameText().equalsIgnoreCase("Direct emails for " + value));
+		assertThat(diaDirectEmailsBrowsePage.getHeaderNameText().equalsIgnoreCase("Direct emails for " + value));
 	}
 	
 	@Step

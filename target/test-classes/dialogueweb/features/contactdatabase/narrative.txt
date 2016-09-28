@@ -1,0 +1,4 @@
+Manage Contact Database
+In order to manage the Contact Database feature in Dialogue Web
+As a user
+I want to be able to create, edit, delete a contact Database

@@ -1,0 +1,6 @@
+Dear ${contact.name} ,
+This is a test sms message.
+
+Thanks,
+
+Support Team

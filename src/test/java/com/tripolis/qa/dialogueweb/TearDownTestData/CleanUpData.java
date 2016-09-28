@@ -23,6 +23,9 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -66,12 +69,20 @@ public class CleanUpData {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();	
-		diaLeftSidebarSteps.verifyClientName();	
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();	
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();	
 	}
 	
 	@Test
+	@Title(value = "Delete SMS Message Type")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="SMS Mesage Type"),
+	                @WithTag(type="feature", name="Cleanup Data"),
+	                @WithTag(type="story", name="Delete a SMS Message Type")
+	        }
+	)
 	public void scenario1_DeleteSMSMesageType() {
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
@@ -91,6 +102,14 @@ public class CleanUpData {
 	}
 	
 	@Test
+	@Title(value = "Delete Direct Email Type")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Direct Email Type"),
+	                @WithTag(type="feature", name="Cleanup Data"),
+	                @WithTag(type="story", name="Delete a Direct Email Type")
+	        }
+	)
 	public void scenario2_DeleteDirectEmailType() {
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
@@ -110,8 +129,16 @@ public class CleanUpData {
 	}
 	
 	@Test
+	@Title(value = "Delete Workspace")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Content Workspace"),
+	                @WithTag(type="feature", name="Cleanup Data"),
+	                @WithTag(type="story", name="Delete a Workspace")
+	        }
+	)
 	public void scenario3_DeleteWorkspace() {
-		var.WSlabel = diaListWorkspacesSteps.getcontentWorkspaceLabel();
+		var.WSlabel = diaLeftSidebarSteps.getcontentWorkspaceLabel();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
@@ -128,8 +155,16 @@ public class CleanUpData {
 	}
 	
 	@Test
+	@Title(value = "Delete Contact Database")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Contact Database"),
+	                @WithTag(type="feature", name="Cleanup Data"),
+	                @WithTag(type="story", name="Delete a Contact Database")
+	        }
+	)
 	public void scenarior4_DeleteContactDatabase() {
-		var.BDlabel = diaListContactDatabasesSteps.getcontactDatabasesLabel();
+		var.BDlabel = diaLeftSidebarSteps.getcontactDatabasesLabel();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 		diaSubMenuSteps.navigateToPageThatSubMenuItem1PresentFor();

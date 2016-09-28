@@ -31,41 +31,72 @@ public class DiaSecondActionbarPage extends AbstractPage {
 	@FindBy(xpath=".//*[@id='main-hd']/ul/li[7]/a", timeoutInSeconds="5")
 	protected WebElementFacade secondActionBarItem7;
 	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[8]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem8;
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[9]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem9;
+	
+	@FindBy(xpath=".//*[@id='main-hd']/ul/li[10]/a", timeoutInSeconds="5")
+	protected WebElementFacade secondActionBarItem10;
+	
 	public void clickOnSecondActionBarItem1() {
 		logger.info("Please click on Second Action Bar Item Link");
 		secondActionBarItem1.waitUntilClickable().click();
 		logger.info("already click on Second Action Bar Item Link");
     }
-	
-	
-	
+
 	public void clickOnSecondActionBarItem2() {
 		logger.info("Please click on Second Action Bar Item Link");
 		secondActionBarItem2.waitUntilClickable().click();
 		logger.info("already click on Second Action Bar Item Link");
     }
 	
-	
-	
 	public void clickOnSecondActionBarItem3() {
 		logger.info("Please click on Second Action Bar Item Link");
 		secondActionBarItem3.waitUntilClickable().click();
 		logger.info("already click on Second Action Bar Item Link");
     }
-	
-	
-	
+		
 	public void clickOnSecondActionBarItem4() {
 		logger.info("Please click on Second Action Bar Item Link");
 		secondActionBarItem4.waitUntilClickable().click();
 		logger.info("already click on Second Action Bar Item Link");
     }
-	
-	
-	
+		
 	public void clickOnSecondActionBarItem5() {
 		logger.info("Please click on Second Action Bar Item Link");
 		secondActionBarItem5.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	public void clickOnSecondActionBarItem6() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem6.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+
+	public void clickOnSecondActionBarItem7() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem7.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+	
+	public void clickOnSecondActionBarItem8() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem8.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+		
+	public void clickOnSecondActionBarItem9() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem9.waitUntilClickable().click();
+		logger.info("already click on Second Action Bar Item Link");
+    }
+		
+	public void clickOnSecondActionBarItem10() {
+		logger.info("Please click on Second Action Bar Item Link");
+		secondActionBarItem10.waitUntilClickable().click();
 		logger.info("already click on Second Action Bar Item Link");
     }
 

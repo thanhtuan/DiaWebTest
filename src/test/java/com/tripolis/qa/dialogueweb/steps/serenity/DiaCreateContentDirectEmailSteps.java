@@ -20,7 +20,7 @@ public class DiaCreateContentDirectEmailSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextCreateContentDirectEmail() {
-		assertThat(diaCreateContentDirectEmailPage.getheaderNameText().equalsIgnoreCase("Properties for direct email"));
+		assertThat(diaCreateContentDirectEmailPage.getHeaderNameText().equalsIgnoreCase("Properties for direct email"));
 	}
 	
 	@Step

@@ -22,7 +22,9 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaLoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -63,9 +65,9 @@ public class DiaContactDatabaseStory {
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 		diaMainMenuSteps.navigateToAdministrationPage();
 		diaAdministrationSteps.onAdministrationPage();
 		diaSubMenuSteps.navigateToPageThatSubMenuItem1PresentFor();
@@ -74,7 +76,13 @@ public class DiaContactDatabaseStory {
 	}
 	
 	@Test
-	@WithTag(type="feature", name="Contact Database")
+	@Title(value = "Update a Contact Database")
+	@WithTags (
+	        {
+	                @WithTag(type="feature", name="Contact Database"),
+	                @WithTag(type="story", name="Update Contact Database")
+	        }
+	)
 	public void scenario1_UpdateContactDatabase() {
 		diaListContactDatabasesSteps.selectContactDB(Variables.databaseLabel);
 		diaListContactDatabasesSteps.clickOnEditButton();

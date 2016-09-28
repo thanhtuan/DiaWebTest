@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.tripolis.qa.common.AbstractPage;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -18,6 +19,15 @@ public class DiaListContactsPage extends AbstractPage {
 	
 	@FindBy(xpath=".//*[@id='main-hd']/ul/li/a", timeoutInSeconds="5")
 	private WebElementFacade newLink; 
+	
+	@FindBy(xpath=".//*[@id='test']/thead/tr[1]/td[2]/div", timeoutInSeconds="5")
+	private WebElementFacade filterEmail;
+	
+	@FindBy(xpath=".//*[@id='test']/thead/tr[1]/td[3]/div", timeoutInSeconds="5")
+	private WebElementFacade filterName;
+	
+	@FindBy(xpath=".//*[@id='test']/thead/tr[1]/td[4]/div", timeoutInSeconds="5")
+	private WebElementFacade filterMobile;
 	
 	@FindBy(id="checkAll", timeoutInSeconds="5")
 	private WebElementFacade selectedAllContacts;
@@ -44,6 +54,31 @@ public class DiaListContactsPage extends AbstractPage {
 		newLink.waitUntilClickable().click();	
 		logger.info("already click on New Link");
     }
+	
+	
+	public void typeAndEnterFilterEmail(String keyword) {
+		logger.info("Please type and enter Filter Email");
+		filterEmail.waitUntilClickable().click();
+		WebElementFacade dynFilterInputEmail = filterEmail.find(By.id("dynFilterInput"));
+		dynFilterInputEmail.waitUntilPresent().typeAndEnter(keyword);
+		logger.info("already type and enter Filter Email");
+	}
+	
+	public void typeAndEnterFilterName(String keyword) {
+		logger.info("Please type and enter Filter Name");
+		filterName.waitUntilClickable().click();
+		WebElementFacade dynFilterInputName = filterName.find(By.id("dynFilterInput"));
+		dynFilterInputName.waitUntilPresent().typeAndEnter(keyword);
+		logger.info("already type and enter Filter Name");
+	}
+	
+	public void typeAndEnterFilterMobile(String keyword) {
+		logger.info("Please type and enter Filter Mobile");
+		filterMobile.waitUntilClickable().click();
+		WebElementFacade dynFilterInputMobile = filterMobile.find(By.id("dynFilterInput"));
+		dynFilterInputMobile.waitUntilPresent().typeAndEnter(keyword);
+		logger.info("already type and enter Filter Mobile");
+	}
 	
 	public void clickconfirmButton() {
 		logger.info("Please click on confirmed Button");

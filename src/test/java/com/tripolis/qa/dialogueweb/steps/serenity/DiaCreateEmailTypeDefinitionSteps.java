@@ -20,7 +20,7 @@ public class DiaCreateEmailTypeDefinitionSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextCreateEmailTypeDefinitions() {
-		assertThat(diaCreateEmailTypeDefinition.getheaderNameText().equalsIgnoreCase("New direct email type"));
+		assertThat(diaCreateEmailTypeDefinition.getHeaderNameText().equalsIgnoreCase("New direct email type"));
 	}
 	
 	@Step

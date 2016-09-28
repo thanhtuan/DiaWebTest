@@ -1,14 +1,17 @@
-package com.tripolis.qa.dialogueweb.ContentModule;
+package com.tripolis.qa.dialogueweb.ContactsModule;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+
+
 @RunWith(Suite.class)
 @SuiteClasses({
-	DiaDirectEmailStory.class
-})
-public class ContentAllTests {
+	DiaContactsStory.class,
+	DiaContactsUnHappyFlowStory.class
+	})
+public class ContactsModuleTestSuites {
 
 	// the class remains empty,
 	// used only as a holder for the above annotations

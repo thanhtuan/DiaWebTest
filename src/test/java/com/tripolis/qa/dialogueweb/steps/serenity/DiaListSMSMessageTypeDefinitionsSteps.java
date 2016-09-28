@@ -20,7 +20,7 @@ public class DiaListSMSMessageTypeDefinitionsSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextListSMSTypeDefinitions(String value) {
-		assertThat(diaListSMSMessageTypeDefinitions.getheaderNameText().equalsIgnoreCase("SMS message types in " + '"' + value + '"'));
+		assertThat(diaListSMSMessageTypeDefinitions.getHeaderNameText().equalsIgnoreCase("SMS message types in " + '"' + value + '"'));
 	}
 	
 	@Step
@@ -33,10 +33,10 @@ public class DiaListSMSMessageTypeDefinitionsSteps extends ScenarioSteps {
 		diaListSMSMessageTypeDefinitions.findSMSype(value);
 	}
 	
-	@Step
+	/*@Step
 	public void clickOnNewLink() {
 		diaListSMSMessageTypeDefinitions.clickNewLink();
-	}
+	}*/
 	
 	@Step
 	public void clickOnEditButton() {

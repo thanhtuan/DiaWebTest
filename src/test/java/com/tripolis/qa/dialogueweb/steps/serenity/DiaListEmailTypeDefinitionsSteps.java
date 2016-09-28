@@ -20,7 +20,7 @@ public class DiaListEmailTypeDefinitionsSteps extends ScenarioSteps {
 	
 	@Step
 	public void verifyheaderNameTextListEmailTypeDefinitions(String value) {
-		assertThat(diaListEmailTypeDefinitions.getheaderNameText().equalsIgnoreCase("Direct email types in " + '"' + value + '"'));
+		assertThat(diaListEmailTypeDefinitions.getHeaderNameText().equalsIgnoreCase("Direct email types in " + '"' + value + '"'));
 	}
 	
 	@Step
@@ -33,10 +33,10 @@ public class DiaListEmailTypeDefinitionsSteps extends ScenarioSteps {
 		diaListEmailTypeDefinitions.findDirectEmailType(value);
 	}
 	
-	@Step
+	/*@Step
 	public void clickOnNewLink() {
 		diaListEmailTypeDefinitions.clickNewLink();
-	}
+	}*/
 	
 	@Step
 	public void clickOnEditButton() {

@@ -12,8 +12,34 @@ public class DiaLeftSidebarSteps extends ScenarioSteps {
 	DiaLeftSidebarPage diaLeftSidebarPage;
 	
 	@Step
-	public void verifyClientName() {
+	public void shouldBeAbleToSeeClientDomainName() {
 		assertThat(diaLeftSidebarPage.getClientName().equalsIgnoreCase("Client: Tripolis QA"));
+	}
+	
+	@Step
+	public String getcontactDatabasesLabel() {
+		return diaLeftSidebarPage.contactDatabasesLabel();
+	}
+	
+	@Step
+	public String getcontentWorkspaceLabel() {
+		return diaLeftSidebarPage.contentWorkspaceLabel();
+	}
+	
+	/*
+	 * Get ID of contact Database
+	 */
+	@Step
+	public String getcontactDatabasesAttribute() {
+		return diaLeftSidebarPage.contactDatabasesAttribute();
+	}
+	
+	/*
+	 * Get ID of content Workspace
+	 */
+	@Step
+	public String getcontentWorkspaceAttribute() {
+		return diaLeftSidebarPage.contentWorkspaceAttribute();
 	}
 	
 	@Step

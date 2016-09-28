@@ -15,7 +15,7 @@ public class DiaContactDatabaseWizardSteps extends ScenarioSteps {
 	
 	@Step
 	public void seeCreateDatabaseDialog() {
-		assertThat(diaContactDatabaseWizard.isShowCreateDatabaseDialog()).isTrue();
+		assertThat(diaContactDatabaseWizard.isShowDialog()).isTrue();
 	}
 	
 	@Step

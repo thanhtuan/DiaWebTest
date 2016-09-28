@@ -24,8 +24,10 @@ import com.tripolis.qa.dialogueweb.steps.serenity.DiaViewContactSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Title;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -70,28 +72,36 @@ public class DiaContactsUnHappyFlowStory {
 	@Steps
 	DiaViewContactSteps diaViewContactSteps;
 	
+	Variables var = new Variables();
+	
 	@Before
 	public void setUp() {
 		diaLoginSteps.isOnLoginPage();
-		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.userName, Variables.passWord);
-		diaLoginSteps.clickonLoginButton();	
-		diaLeftSidebarSteps.verifyClientName();
+		diaLoginSteps.inputDataToLoginForm(Variables.clientDomain, Variables.adminUserName, Variables.passWord);
+		diaLoginSteps.clickOnLoginButton();	
+		diaLeftSidebarSteps.shouldBeAbleToSeeClientDomainName();
 	}
 	
-	@Pending @Test
-	public void scenario2_CreateContactWith() {
+	@Test
+	@Title(value = "Check the validation message when leave empty required field and click save button")
+	@WithTags (
+	        {
+	        	@WithTag(type="feature", name="Contact Module"),
+                @WithTag(type="feature", name="Contacts"),
+                @WithTag(type="story", name="Validation message when create Contact")
+	        }
+	)
+	public void scenario1_CreateContactLeaveEmptyRequiredFields() {
+		var.BDlabel = diaLeftSidebarSteps.getcontactDatabasesLabel();
 		diaMainMenuSteps.navigateToContactPage();
 		diaContactDashboardSteps.onContactDashboardPage();
 		diaSubMenuSteps.navigateToPageThatSubMenuItem2PresentFor();
-		diaListContactsSteps.verifyheaderNameTextListContacts("");
+		diaListContactsSteps.verifyheaderNameTextListContacts(var.BDlabel);
 		diaListContactsSteps.clickOnNewLink();
 		diaCreateContactSteps.onCreateContactPage();
-		diaCreateContactSteps.setContactEmail("");
-		diaCreateContactSteps.setContactName("");
-		diaCreateContactSteps.setContactMobile("");
+		diaCreateContactSteps.setInformationToCreateContact("", "required field", "00000000016");
 		diaCreateContactSteps.clickOnSaveButton();
-		diaViewContactSteps.verify_CreateContactSuccessfulMessage();
-		diaViewContactSteps.onViewContactPage();
+		diaCreateContactSteps.shouldBeAbleToSeeTheEmailValidationMessage();
 	}
 	
 	@After
